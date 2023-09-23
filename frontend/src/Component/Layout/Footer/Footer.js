@@ -12,7 +12,7 @@ const Footer = () => {
     <footer id="footer">
       <div className="leftFooter">
         <h4>DOWNLOAD OUR APP</h4>
-        <p>Download App for Android and IOS mobile phone</p>
+        <p>Download App for Android and IOS mobile phone for free</p>
         <img className='play' src={playStore} alt="playstore" />
         <img className='app' src={appStore} alt="Appstore" />
       </div>
