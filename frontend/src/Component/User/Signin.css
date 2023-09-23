@@ -1,0 +1,132 @@
+.LoginSignUpContainer {
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0%;
+  left: 0;
+}
+
+section .imgBx {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  display: flex;
+}
+
+section .imgBx:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section .contentBx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+}
+
+section .contentBx .formBx {
+  width: 50%;
+}
+
+section .contentBx .formBx h2 {
+  color: #13aa52;
+  font: 600 2.8vmax "Roboto";
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+section .contentBx .formBx .inputBx {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+section .contentBx .formBx .inputBx span {
+  font-size: 16px;
+  color: #21313c;
+  margin-right: 10px;
+}
+
+section .contentBx .formBx .inputBx input {
+  width: 1000%;
+  padding: 10px 20px;
+  outline: none;
+  font: 400 16px "Roboto";
+  color: #21313c;
+  border-radius: 30px;
+}
+
+.btn {
+  margin-left: 18px;
+}
+
+.signin-btn {
+  margin-left: 10px;
+  background-color: #13aa52;
+  color: #ffffff !important;
+  border: none;
+  transition: all 0.5s;
+  border: 2px solid #13aa52;
+}
+
+.signin-btn:hover {
+  margin-left: 10px;
+  background-color: #ffffff;
+  color: #13aa52 !important;
+}
+
+section .contentBx .formBx .inputBx p {
+  color: #21313c;
+}
+
+section .contentBx .formBx .inputBx a {
+  color: #13aa52;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  section .imgBx {
+    display: none;
+  }
+
+  .LoginSignUpContainer {
+    background-color: #21313c;
+    position: fixed;
+  }
+
+  section .contentBx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000%;
+    height: 100%;
+  }
+
+  section .contentBx .formBx {
+    width: 100%;
+    padding: 40px;
+    margin: 50px;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+}

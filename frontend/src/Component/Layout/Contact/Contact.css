@@ -1,0 +1,97 @@
+.contactBox {
+  display: flex;
+  margin: 7%;
+  margin-bottom: 0;
+  /* background-color: rgb(255, 255, 255); */
+}
+
+.contact_info_item {
+  width: calc((100% - 60px) / 3);
+  height: 100px;
+  border: solid 1px #e8e8e8;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding-left: 32px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2%;
+  font: 500 1vmax "Roboto";
+}
+
+.icon {
+  text-align: center;
+  max-width: 100%;
+  color: #13aa52 !important;
+}
+
+.contact_info_content {
+  padding-left: 17px;
+}
+
+.contact_info_text {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.contactContainer {
+  height: 59vh;
+  width: 100vw;
+  max-width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-image: url("../../../images/bg-cl.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mailBtn {
+  text-decoration: none;
+  transform: translateX(-100vw);
+  animation: mailBtnAnimation 2s forwards;
+}
+
+.mailBtn > button {
+  text-decoration: none;
+  font: 200 1.5vmax "Roboto";
+  cursor: pointer;
+  padding: 1.5vmax;
+  color: rgba(84, 73, 73, 0.892);
+  text-transform: capitalize;
+  background-color: rgba(255, 255, 255, 0.768);
+}
+
+.mailBtn > button > span {
+  text-transform: lowercase;
+}
+
+@keyframes mailBtnAnimation {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contactBox {
+    display: grid;
+    align-items: center;
+    margin-top: 30%;
+    width: 70%;
+  }
+
+  .contact_info_item {
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 1.5vmax;
+  }
+
+  .contact_info_item:last-child {
+    margin-bottom: 0px;
+  }
+}

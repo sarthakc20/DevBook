@@ -1,0 +1,298 @@
+.homepage1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+
+.banner {
+  flex: 1;
+  padding: 20px;
+}
+
+.banner > h1 {
+  margin: 5vmax 5vmax 5px 5vmax;
+  font: 500 3.5vmax "Roboto";
+}
+
+.banner > p {
+  margin: 1vmax 5vmax 0 5vmax;
+  font: 300 2.5vmax "Lucida Sans";
+  color: #13aa52;
+}
+
+.banner > p > img {
+  width: 14vmax;
+}
+
+.lorem {
+  margin: 1vmax 5vmax 0 5vmax;
+  font: 100 1vmax "Lucida Sans";
+}
+
+.homepage2 {
+  flex: 1;
+  padding-left: 20px;
+  background-color: #21313c;
+}
+
+.homepage2 > img {
+  width: 38vmax;
+  padding-left: 3.5vmax;
+  padding-top: 2vmax;
+}
+
+.buttons {
+  display: flex;
+  padding-left: 60px;
+}
+
+.buttons > a {
+  background-color: #13aa52;
+  color: white;
+  padding: 0.9vmax 2.9vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 1vmax;
+  border: 0.1vmax solid #13aa52;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+
+.buttons > a:hover {
+  background-color: white;
+  color: #13aa52;
+}
+
+.homepage3 {
+  background-color: #21313c;
+  color: white;
+  padding-top: 3vmax;
+}
+
+.homepage3 > h1 {
+  color: #13aa52;
+  font: 500 2.8vmax "Roboto";
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.homepage3-sub {
+  display: flex;
+  font: 200 1.4vmax "Lucida Sans";
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.7vmax;
+}
+
+.homepage3-sub > p {
+  padding-right: 2.2vmax;
+}
+
+.homepage3-sub > p:last-child {
+  padding-right: 0;
+}
+
+.homepage3-sub1 > h1 {
+  color: #dcdcdc;
+  font: 500 2.8vmax "Lucida Sans";
+  margin: 5vmax 5vmax 0px 5vmax;
+}
+
+.homepage3-sub1 > p {
+  color: #13aa52;
+  font: 500 2vmax "Roboto";
+  margin: 0vmax 5vmax 5px 5vmax;
+}
+
+.homepage4 {
+  padding-top: 2vmax;
+  padding-bottom: 4vmax;
+  /* border-bottom-left-radius: 15px; */
+}
+
+.homepage4 > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 55%;
+  border: 5px solid #13aa52;
+  border-radius: 15px 50px;
+}
+
+.homepage4-1 {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2vmax;
+}
+
+.feature-box {
+  flex: 1; 
+  padding: 20px;
+  border: 2px solid #13aa52;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 10px; 
+  min-height: 10vmax;
+}
+
+.feature-box h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.homepage5 > {
+  background-color: #ffffff;
+}
+
+.homepage5 > h1 {
+  color: #21313c;
+  font: 600 2.8vmax "Roboto";
+  margin: 0vmax 5vmax 5px 5vmax;
+  padding-top: 2vmax;
+}
+
+.homepage5 > h2 {
+  color: #13aa52;
+  font: 300 2vmax "Roboto";
+  margin: 0vmax 5vmax 5px 5vmax;
+}
+
+.homepage5 > p {
+  color: #565656;
+  font: 100 1.2vmax "Lucida Sans";
+  margin: 0vmax 5vmax 5px 5vmax;
+}
+
+.last-btn {
+  padding-top: 1vmax;
+}
+
+.homepage5 > h1:last-child {
+  padding-top: 0vmax;
+}
+
+#icon {
+  animation: moveIcon 2s linear infinite;
+}
+
+@keyframes moveIcon {
+  0% {
+    transform: translateX(0); /* Start position */
+  }
+  50% {
+    transform: translateX(15px); /* Midway position to the right */
+  }
+  100% {
+    transform: translateX(0); /* End position, back to the starting point */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homepage2 {
+    display: none;
+  }
+
+  .homepage1 {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .banner > h1 {
+    font-size: 3vmax;
+    text-align: center;
+  }
+
+  .banner > p {
+    font-size: 2vmax;
+    text-align: center;
+  }
+
+  .banner > p > img {
+    width: 12vmax;
+  }
+
+  .lorem {
+    font-size: 1.5vmax;
+    text-align: center;
+  }
+
+  .buttons {
+    flex-direction: column;
+    padding-left: 0;
+    text-align: center;
+    margin-top: 1vmax;
+  }
+
+  .buttons > a {
+    margin: 1vmax 0;
+  }
+
+  .homepage3 {
+    padding-top: 2vmax;
+  }
+
+  .homepage3 > h1 {
+    font-size: 2.5vmax;
+    text-align: center;
+  }
+
+  .homepage3-sub {
+    flex-direction: column;
+    padding: 1.5vmax 0;
+    text-align: center;
+  }
+
+  .homepage3-sub > p {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .homepage3-sub1 > h1 {
+    font-size: 2.5vmax;
+    margin: 2vmax 0 0 0;
+  }
+
+  .homepage3-sub1 > p {
+    font-size: 2vmax;
+    margin: 0 0 2vmax 0;
+  }
+
+  .homepage4 > img {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+  }
+
+  .homepage5 > h1 {
+    font-size: 2.5vmax;
+    margin: 2vmax 0 0 0;
+    padding-top: 1vmax;
+  }
+
+  .homepage5 > h2 {
+    font-size: 2vmax;
+    margin: 0 0 2vmax 0;
+  }
+
+  .homepage5 > p {
+    font-size: 1.2vmax;
+    margin: 0 0 2vmax 0;
+  }
+
+  .last-btn {
+    padding-top: 1vmax;
+  }
+
+  .homepage5 > h1:last-child {
+    padding-top: 0;
+  }
+}
