@@ -20,16 +20,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 // Route Imports
-// const user = require("./routes/userRoute");
+const user = require("./routes/userRoute");
+const community = require("./routes/communityRoute");
 
-// app.use("/api/v1", user);
+app.use("/api/v1", user);
+app.use("/api/v1", community);
 
 // Let Node serve the files for our built React app
 // app.use(express.static(path.resolve(__dirname, "../frontend/build")));
 
-app.get("/*", (req, res) => {
+// app.get("/*", (req, res) => {
 //   res.sendFile(path.resolve(__dirname + "/../frontend/build/index.html"));
-});
+// });
 
 // Middleware for errors
 // app.use(errorMiddleware);

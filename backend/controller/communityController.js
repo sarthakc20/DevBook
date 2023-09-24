@@ -1,8 +1,8 @@
 const Community = require("../model/communityModel");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const cloudinary = require("cloudinary");
-const ApiFeatures = require("../utils/apiFeatures");
 const ErrorHandler = require("../utils/errorHandler");
+const ApiFeatures = require("../utils/apiFeatures");
 
 // Create post
 exports.createPost = catchAsyncError(async (req, res, next) => {
@@ -119,17 +119,31 @@ exports.deletePosts = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Post not found", 404));
   }
 
-  if (post.image) {
-    // Delete the image from Cloudinary
-    await cloudinary.v2.uploader.destroy(post.image.public_id);
-    post.image = null;
-  }
+  // if (post.image) {
+  //   // Delete the image from Cloudinary
+  //   await cloudinary.v2.uploader.destroy(post.image.public_id);
+  //   post.image = null;
+  // }
 
   await post.deleteOne();
 
   return res.status(200).json({
     success: true,
     message: "Post deleted successfully",
+  });
+});
+
+// Get All Comments of a Post
+exports.getPostComment = catchAsyncError(async (req, res, next) => {
+  const post = await Community.findById(req.query.id); //query is -> after equals to in postman
+
+  if (!post) {
+    return next(new ErrorHandler("Post not found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    reviews: post.comments,
   });
 });
 

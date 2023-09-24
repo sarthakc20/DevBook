@@ -6,8 +6,11 @@ import "./Home.css";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import MetaData from "../Layout/MetaData";
+import Post from "./postCard";
 
 const Home = () => {
+
+  const posts = [];
   return (
     <>
     <MetaData title={`DevBook`} />
@@ -130,6 +133,11 @@ const Home = () => {
             maxime, illo quod harum atque, quis et perferendis odio.
           </h5>
       </div>
+
+      <div className="container" id="container">
+            {posts &&
+              posts.map((post) => <Post post={post} />)} 
+          </div>
     </>
   );
 };

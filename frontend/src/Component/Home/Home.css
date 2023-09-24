@@ -127,20 +127,20 @@
 }
 
 .homepage4-1 {
-  display: flex; 
-  flex-wrap: wrap; 
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 2vmax;
 }
 
 .feature-box {
-  flex: 1; 
+  flex: 1;
   padding: 20px;
   border: 2px solid #13aa52;
   border-radius: 5px;
   text-align: center;
-  margin: 0 10px; 
+  margin: 0 10px;
   min-height: 10vmax;
 }
 
@@ -196,12 +196,67 @@
   }
 }
 
+.container {
+  display: flex;
+  margin: 2vmax auto;
+  width: 80vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.postCard {
+  width: 14vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+}
+
+.postCard > img {
+  width: 14vmax;
+}
+
+.postCard > div {
+  margin: 0.5vmax;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.postCardSpan {
+  margin: 0.5vmax;
+  font: 300 0.8vmax "Roboto";
+}
+
+.postCard > p {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+}
+
+.postCard > span {
+  margin: 0.5vmax;
+  color: tomato;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vmax;
+}
+
+.postCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1vmax);
+}
+
 @media screen and (max-width: 768px) {
   .homepage2 {
     display: none;
   }
 
-  .homepage1 {
+  /* .homepage1 {
     flex-direction: column;
     padding: 20px;
   }
@@ -294,5 +349,5 @@
 
   .homepage5 > h1:last-child {
     padding-top: 0;
-  }
+  } */
 }
