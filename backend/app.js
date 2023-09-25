@@ -22,9 +22,11 @@ app.use(fileUpload());
 // Route Imports
 const user = require("./routes/userRoute");
 const community = require("./routes/communityRoute");
+const resource = require("./routes/resourceRoute");
 
 app.use("/api/v1", user);
 app.use("/api/v1", community);
+app.use("/api/v1", resource);
 
 // Let Node serve the files for our built React app
 // app.use(express.static(path.resolve(__dirname, "../frontend/build")));

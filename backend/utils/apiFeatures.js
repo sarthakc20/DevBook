@@ -5,27 +5,18 @@ class ApiFeatures {
   }
 
   search() {
-    const keyword = this.queryStr.keyword
-      ? {
-          name: {
-            $regex: this.queryStr.keyword,
-            $options: "i", // to make the search incaseSensitive
-          },
-        }
-      : {};
-
-    this.query = this.query.find({ ...keyword });
-    return this;
-  }
-
-  filter() {
-    const queryCopy = { ...this.queryStr };
-    // Removing some fields for category
-    const removeFields = ["keyword", "page", "limit"];
-
-    removeFields.forEach((key) => delete queryCopy[key]);
-
-    this.query = this.query.find(JSON.parse(queryStr));
+    const keyword = this.queryStr.keyword;
+  
+    if (keyword) {
+      this.query = this.query.find({
+        $or: [
+          { name: { $regex: keyword, $options: "i" } },
+          { category: { $regex: keyword, $options: "i" } },
+          { topic: { $regex: keyword, $options: "i" } },
+        ],
+      });
+    }
+  
     return this;
   }
 
