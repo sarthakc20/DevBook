@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route("/resource/new").post(isAuthenticatedUser, createResource);
 
-router.route("/resource").get(getAllResource);
+router.route("/resources").get(getAllResource);
 
 router.route("/me/resource/:id").delete(isAuthenticatedUser, deleteResource);
 

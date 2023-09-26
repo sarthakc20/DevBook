@@ -39,7 +39,8 @@ exports.getAllPosts = catchAsyncError(async (req, res) => {
   // In MongoDB, the countDocuments() method counts the number of documents that matches to the selection criteria.
 
   const apifeature = new ApiFeatures(Community.find(), req.query)
-    .search();
+    .search()
+    .filter();
 
   let posts = await apifeature.query;
 

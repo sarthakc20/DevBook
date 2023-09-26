@@ -107,11 +107,11 @@ const Header = () => {
         />
       </div>
 
-      <div className="mobile-logo">
+      {/* <div className="mobile-logo">
         <NavLink to="/" onClick={() => setOpenMenue(false)}>
           <img src={logo} alt="logo" />
         </NavLink>
-      </div>
+      </div> */}
       </div>
     </>
   );

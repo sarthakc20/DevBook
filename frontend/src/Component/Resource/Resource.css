@@ -1,0 +1,249 @@
+.resBox {
+  background-color: #21313c;
+}
+
+.resourcesHeading {
+  margin: 2vmax auto;
+  width: 15vw;
+  border-bottom: 2px solid #13aa52;
+  padding: 2vmax;
+  color: #13aa52;
+  font: 500 1.5vmax "Roboto";
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.resourceFound {
+  margin: 2vmax auto;
+  width: 17vw;
+  padding: 1.3vmax;
+  color: rgba(217, 217, 217, 0.6);
+  font: 500 1.3vmax "Roboto";
+  text-align: center;
+}
+
+.resources {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 5vmax;
+  justify-content: center;
+  min-height: 25vh;
+}
+
+.paginationBoxx {
+  display: flex;
+  justify-content: center;
+  margin: 6vmax;
+  padding-bottom: 3vmax;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.page-item {
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+  padding: 1vmax 1.5vmax;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.page-item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.page-item:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.page-link {
+  text-decoration: none;
+  font: 300 0.7vmax "Roboto";
+  color: rgb(80, 80, 80);
+  transition: all 0.3s;
+}
+
+.page-item:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.page-item:hover .page-link {
+  color: rgb(0, 0, 0);
+}
+
+.pageItemActive {
+  background-color: #13aa52;
+}
+
+.pageLinkActive {
+  color: white;
+}
+
+.filterBox {
+  width: 10vmax;
+  position: absolute;
+  top: 10vmax;
+  left: 4vmax;
+  padding-top: 2vmax;
+}
+
+.typo {
+  color: white;
+}
+
+.categoryBox {
+  padding: 1%;
+  border: 2px solid #13aa52;
+  border-radius: 4px;
+  /* background-color: rgb(255, 255, 255); */
+}
+
+.category-link {
+  list-style: none;
+  color: #13aa52;
+  font: 400 0.9vmax "Roboto";
+  margin: 0.4vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.category-link:hover {
+  color: #ffffff;
+}
+
+.resourceCard {
+  width: 19.2vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.resourceCard > img {
+  width: 14vmax;
+}
+
+.resourceCard > div {
+  margin: 0.5vmax;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.resourceCardSpan {
+  margin: 0.5vmax;
+  font: 300 0.8vmax "Roboto";
+}
+
+.resourceCard > p {
+  font-family: "Roboto";
+  font-size: 1.4vmax;
+  font-weight: 600;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+  align-items: center;
+  text-align: center;
+}
+
+.resourceCard > span {
+  margin: 0.5vmax;
+  color: #13aa52;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vmax;
+}
+
+.resourceCard > h5 {
+  margin: 0.5vmax;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1.2vmax;
+}
+
+.resourceCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1vmax);
+}
+
+.resourceCard > a {
+  background-color: #13aa52;
+  color: white;
+  padding: 0.9vmax 2.9vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 1vmax;
+  border: 0.1vmax solid #13aa52;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.resourceCard > a:hover {
+  background-color: white;
+  color: #13aa52;
+}
+
+.aboutRes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.aboutRes p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.aboutRes span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #13aa52;
+}
+
+@media screen and (max-width: 768px) {
+  .resourcesHeading {
+    font: 500 2vmax "Roboto";
+  }
+
+  .filterBox {
+    padding-top: 2%;
+    width: 20vmax;
+    position: static;
+    margin: auto;
+    align-items: center;
+  }
+
+  .centered-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .page-link {
+    font: 300 1.7vmax "Roboto";
+  }
+
+  .category-link {
+    font: 400 1.8vmax "Roboto";
+  }
+}

@@ -199,14 +199,30 @@
 .container {
   display: flex;
   margin: 2vmax auto;
-  width: 80vw;
+  width: 96vw;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
 }
 
+.preContainer > h2 {
+  background-color: #21313c;
+  font: 500 1.2vmax "Roboto";
+}
+
+.preContainer > h2 {
+  margin: 2vmax auto;
+  width: 15vw;
+  padding: 2vmax;
+  color: #f2f2f2;
+  font: 500 1.5vmax "Roboto";
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
 .postCard {
-  width: 14vmax;
+  width: 28vmax;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -234,21 +250,72 @@
 
 .postCard > p {
   font-family: "Roboto";
-  font-size: 1.2vmax;
+  font-size: 1.4vmax;
+  font-weight: 600;
   margin: 1vmax 0.5vmax;
   margin-bottom: 0;
+  align-items: center;
+  text-align: center;
 }
 
 .postCard > span {
   margin: 0.5vmax;
-  color: tomato;
+  color: #13aa52;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 1vmax;
+}
+
+.postCard > h5 {
+  margin: 0.5vmax;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1.2vmax;
 }
 
 .postCard:hover {
   box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
   transform: translateY(-1vmax);
+}
+
+.postCard > button {
+  background-color: #13aa52;
+  color: white;
+  padding: 0.9vmax 2.9vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 1vmax;
+  border: 0.1vmax solid #13aa52;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+
+.postCard > button:hover {
+  background-color: white;
+  color: #13aa52;
+}
+
+.homeComm {
+  display: flex;
+  justify-content: center;
+}
+
+.homeComm > a {
+  background-color: #21313c;
+  color: #eaeaea;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 1vmax;
+  border: 0.1vmax solid #21313c;
+  border-radius: 4px;
+  transition: all 0.5s;
+}
+
+.homeComm > a:hover {
+  background-color: white;
+  color: #13aa52;
+  
 }
 
 @media screen and (max-width: 768px) {

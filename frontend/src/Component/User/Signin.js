@@ -43,6 +43,12 @@ const Signin = () => {
                   Don't have an account? <NavLink to="/signup">Sign Up</NavLink>
                 </p>
               </div>
+
+              <div className="inputBx">
+                <p>
+                <NavLink to="/password/forgot">Forgot Password ?</NavLink>
+                </p>
+              </div>
             </form>
           </div>
         </div>

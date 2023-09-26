@@ -94,18 +94,11 @@ nav {
   display: flex;
 }
 
-.mobile-logo {
+/* .mobile-logo {
   display: none;
-}
+} */
 
 @media screen and (max-width: 768px) {
-  .menuIcon {
-    background-image: url("../../../images/coding.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
   .menuIcon ul {
     background-color: #21313c;
     padding-top: 13vmax;
@@ -129,14 +122,14 @@ nav {
     font-size: 4rem;
   }
 
-  .mobile-logo {
+  /* .mobile-logo {
     display: flex;
     transform: scale(0.2);
     cursor: pointer;
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-  }
+  } */
 
   .logo {
     display: none;

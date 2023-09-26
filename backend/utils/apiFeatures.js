@@ -20,6 +20,15 @@ class ApiFeatures {
     return this;
   }
 
+  filter() {
+    const queryCopy = {...this.queryStr};
+    // Removing some fields for category
+    const removeFields = ["keyword", "page", "limit"];
+
+    removeFields.forEach((key) => delete queryCopy[key]);
+    return this;
+}
+
   pagination(resultPerPage) {
     const currentPage = Number(this.queryStr.page) || 1;
 
