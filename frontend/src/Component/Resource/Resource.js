@@ -8,6 +8,7 @@ import Pagination from "react-js-pagination";
 import { Typography } from "@mui/material";
 import ResourceCard from "./ResourceCard.js";
 import "./Resource.css";
+import Loader from "../../Loader/Loader";
 
 const categories = [
   "AI-chatbot",
@@ -61,7 +62,7 @@ const Resource = () => {
   return (
     <>
       {loading ? (
-        "Loading..."
+        <Loader />
       ) : (
         <>
           <MetaData title={`Resource (${currentPage})`} />

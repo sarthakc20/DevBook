@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import PostCard from "../Home/postCard";
 import { useAlert } from "react-alert";
-import { useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getAllPost } from "../../actions/postAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
 import { Typography } from "@mui/material";
 import "./Community.css";
+import { AiOutlinePlus } from "react-icons/ai";
+import Loader from "../../Loader/Loader.js"
 
 const topics = [
   "Development",
@@ -19,7 +21,7 @@ const topics = [
   "Node",
   "Express",
   "Python",
-  "All"
+  "All",
 ];
 
 const Community = () => {
@@ -32,6 +34,8 @@ const Community = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [topic, setTopic] = useState("");
+
+  const { user } = useSelector((state) => state.user);
 
   const {
     loading,
@@ -58,6 +62,20 @@ const Community = () => {
 
   let count = filteredPostsCount;
 
+  const [key, setKey] = useState();
+
+  const navigate = useNavigate();
+
+  const searchSubmitHandler = (e) => {
+    e.preventDefault();
+    if (key.trim()) {
+      navigate(`/community?${key}`);
+    } else {
+      navigate(`/community`);
+    }
+  };
+  
+
   return (
     <>
       <div className="filterBox">
@@ -74,19 +92,38 @@ const Community = () => {
           ))}
         </ul>
       </div>
+
       {loading ? (
-        "Loading..."
+        <Loader />
       ) : (
         <>
           <MetaData title={`Community Post (${currentPage})`} />
           <h2 className="postsHeading">Our Community Posts</h2>
+
+          {user && user ? (
+            <NavLink to={`/community/new`} className="postTogg">
+              <span className="postToggText">Create Post</span>
+              <AiOutlinePlus />
+            </NavLink>
+          ) : null}
+
+          <div className="searchBox">
+            <form className="searchBox" onSubmit={searchSubmitHandler}>
+              <input
+                type="text"
+                placeholder="Search Posts..."
+                onChange={(e) => setKey(e.target.value)}
+              />
+              <input type="submit" value="Search" />
+            </form>
+          </div>
 
           <h3 className="postFound">
             {count < 1
               ? "No Post Found"
               : count < 2
               ? "We Have 1 Post"
-              : `We Have ${count} Posts`}{" "}
+              : `We Have ${count} Posts`}
             !
           </h3>
 

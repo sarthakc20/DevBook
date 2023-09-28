@@ -36,7 +36,7 @@ const resourceSchema = new mongoose.Schema({
   },
 
   user: {
-    type: mongoose.Schema.ObjectId,
+    type: String,
     ref: "User",
     requireed: true,
   },

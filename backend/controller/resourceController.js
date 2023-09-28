@@ -22,7 +22,7 @@ exports.createResource = catchAsyncError(async (req, res, next) => {
     req.body.image = imageLink;
   }
 
-  req.body.user = req.user.id; // mongoose.Schema.ObjectId
+  req.body.user = req.user.name; // who posted
 
   const resource = await Resource.create(req.body);
 

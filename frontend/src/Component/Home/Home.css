@@ -233,7 +233,7 @@
 }
 
 .postCard > img {
-  width: 14vmax;
+  width: 28vmax;
 }
 
 .postCard > div {
@@ -292,6 +292,30 @@
 .postCard > button:hover {
   background-color: white;
   color: #13aa52;
+}
+
+.postCardBtn {
+  display: flex;
+}
+
+.readLink {
+  background-color: #00684a;
+  color: white;
+  padding: 0.9vmax 2.2vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 1vmax;
+  border: 0.1vmax solid #00684a;
+  border-radius: 5px;
+  transition: all 0.5s;
+  align-items: center;
+  text-align: center;
+}
+
+.readLink:hover {
+  background-color: white;
+  color: #00684a;
 }
 
 .homeComm {

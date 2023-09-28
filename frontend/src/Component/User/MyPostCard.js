@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./Home.css";
 import {
   Button,
   Dialog,
@@ -9,7 +8,7 @@ import {
   DialogActions,
 } from "@mui/material";
 
-const PostCard = ({ post }) => {
+const MyPostCard = ({ post }) => {
   const [open, setOpen] = useState(false);
 
   const commentToggle = () => {
@@ -24,9 +23,12 @@ const PostCard = ({ post }) => {
     e.stopPropagation(); // Stop the click event from propagating
     commentToggle();
   };
+
+  const deletePosthandler = () => {};
+
   return (
     <>
-      <div className="postCard" to={`/community/${post._id}`}>
+      <div className="postCard">
         {post.images && post.images[0] && post.images[0].url ? (
           <img src={post.images[0].url} alt={post.name} />
         ) : (
@@ -40,13 +42,10 @@ const PostCard = ({ post }) => {
           </span>
         </div>
         <h5>Posted by {post.user}</h5>
-        <div className="postCardBtn">
-          <button onClick={commentToggle}>
-            Comments ({post.numOfComments})
-          </button>
-          <NavLink className="readLink" to={`/community/${post._id}`}>
-            Click To Read
-          </NavLink>
+        <button onClick={commentToggle}>Comments ({post.numOfComments})</button>
+        <div className="btnContainer">
+          <NavLink to={`/account/my/posts/${post._id}`}>Edit Post</NavLink>
+          <button onClick={deletePosthandler}>Delete Post</button>
         </div>
       </div>
 
@@ -81,4 +80,4 @@ const PostCard = ({ post }) => {
   );
 };
 
-export default PostCard;
+export default MyPostCard;

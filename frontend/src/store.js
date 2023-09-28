@@ -1,12 +1,19 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { postReducer } from "./reducers/postReducer";
+import { editPostReducer, myPostsReducer, newPostReducer, postReducer } from "./reducers/postReducer";
 import { resourceReducer } from "./reducers/resourceReducer";
+import { forgotPasswordReducer, profileReducer, userReducer } from "./reducers/userReducer";
 
 const reducer = combineReducers({
   posts: postReducer,
   resource: resourceReducer,
+  user: userReducer,
+  profile: profileReducer,
+  forgotPassword: forgotPasswordReducer,
+  newPost: newPostReducer,
+  myPosts: myPostsReducer,
+  editPost: editPostReducer,
 });
 
 let initialState = {};

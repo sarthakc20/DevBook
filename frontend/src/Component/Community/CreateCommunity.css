@@ -1,0 +1,161 @@
+.backdrop {
+  width: 100vw;
+  max-width: 100%;
+  position: absolute;
+}
+
+.newPostContainer {
+  width: 100%;
+  box-sizing: border-box;
+  background-image: url("../../images/bg-in.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-left: 1px solid rgba(0, 0, 0, 0.158);
+  display: flex;
+  flex-direction: column;
+  height: 150vh;
+}
+
+.newPostContainer h1 {
+  color: rgba(0, 0, 0, 0.733);
+  font: 300 2rem "Roboto";
+  text-align: center;
+  padding-bottom: 1%;
+}
+
+.createPostForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 3vmax;
+  justify-content: space-evenly;
+  height: 70%;
+  width: 120vh;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
+}
+
+.createPostForm > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.createPostForm > div > input,
+.createPostForm > div > select {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax Lucida Sans;
+  outline: none;
+}
+
+.createPostForm > div > textarea {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax Lucida Sans;
+  outline: none;
+  height: 20vh;
+}
+
+.createPostForm > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: #13aa52;
+}
+
+#createPostFormFile > input {
+  display: flex;
+  padding: 0%;
+}
+
+#createPostFormFile > input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  z-index: 2;
+  height: 5vh;
+  border: none;
+  margin: 0%;
+  font: 400 0.8vmax Lucida Sans;
+  transition: all 0.5s;
+  padding: 0 1vmax;
+  color: rgba(0, 0, 0, 0.623);
+  background-color: rgb(255, 255, 255);
+}
+
+#createPostFormFile > input::file-selector-button:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+#createPostFormImage {
+  width: 100%;
+  overflow: auto;
+}
+
+#createPostFormImage > img {
+  width: 3vmax;
+  margin: 0 0.5vmax;
+}
+
+#createPostBtn {
+  border: none;
+  background-color: #13aa52;
+  color: white;
+  font: 300 0.9vmax "Roboto";
+  width: 100%;
+  padding: 0.8vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+}
+
+#createPostBtn:hover {
+  background-color: #119247;
+}
+
+@media screen and (max-width: 768px) {
+  .newPostContainer {
+    background-color: rgb(255, 255, 255);
+  }
+  .createPostForm {
+    padding: 5vmax;
+  }
+
+  .createPostForm > div > input,
+  .createPostForm > div > select,
+  .createPostForm > div > textarea {
+    padding: 2.5vmax 5vmax;
+    font: 300 1.7vmax Lucida Sans;
+  }
+
+  .createPostForm > div > svg {
+    font-size: 2.8vmax;
+  }
+
+  #createPostFormFile > img {
+    width: 8vmax;
+    border-radius: 100%;
+  }
+
+  #createPostFormFile > input::file-selector-button {
+    height: 7vh;
+    font: 400 1.8vmax Lucida Sans;
+  }
+
+  #createPostBtn {
+    font: 300 1.9vmax "Roboto";
+    padding: 1.8vmax;
+  }
+}

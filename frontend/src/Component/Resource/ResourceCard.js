@@ -11,7 +11,7 @@ const ResourceCard = ({resource}) => {
             {resource.description}
           </span>
         </div>
-        <h5>Resourceed by user</h5>
+        <h5>Resourceed by {resource.user}</h5>
         <a href={resource.link} target="_blank">Click To Visit</a>
       </div>
   )

@@ -12,7 +12,7 @@ const communitySchema = new mongoose.Schema({
     required: [true, "Please enter description"],
   },
 
-  image: [
+  images: [
     {
       public_id: {
         type: String,
@@ -54,6 +54,12 @@ const communitySchema = new mongoose.Schema({
   ],
 
   user: {
+    type: String,
+    ref: "User",
+    requireed: true,
+  },
+
+  userID: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
     requireed: true,

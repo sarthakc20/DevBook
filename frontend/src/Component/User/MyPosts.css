@@ -1,0 +1,41 @@
+.mypostHeading {
+  margin: 2vmax auto;
+  width: 35vw;
+  padding: 2vmax;
+  color: rgba(0, 0, 0, 0.678);
+  font: 500 1.7vmax "Roboto";
+  text-align: center;
+}
+
+.btnContainer {
+  display: flex;
+}
+
+.btnContainer > a,
+button {
+  background-color: #13aa52;
+  color: white;
+  padding: 0.9vmax 2.9vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 1vmax;
+  border: 0.1vmax solid #13aa52;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+
+.btnContainer > a:hover {
+  background-color: white;
+  color: #13aa52;
+}
+
+.btnContainer > button {
+  background-color: #e74c3c;
+  border: 0.1vmax solid #e74c3c;
+}
+
+.btnContainer > button:hover {
+  background-color: #ffffff;
+  color: #e74c3c;
+}

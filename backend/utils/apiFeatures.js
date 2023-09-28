@@ -6,7 +6,7 @@ class ApiFeatures {
 
   search() {
     const keyword = this.queryStr.keyword;
-  
+
     if (keyword) {
       this.query = this.query.find({
         $or: [
@@ -16,18 +16,23 @@ class ApiFeatures {
         ],
       });
     }
-  
+
     return this;
   }
 
   filter() {
-    const queryCopy = {...this.queryStr};
-    // Removing some fields for category
-    const removeFields = ["keyword", "page", "limit"];
+    const queryCopy = { ...this.queryStr };
+    const removeFields = ["keyword", "page", "limit", "topic"]; // Add "topic" to removeFields
 
     removeFields.forEach((key) => delete queryCopy[key]);
+
+    // Handle the "topic" filter
+    if (this.queryStr.topic) {
+      this.query = this.query.find({ topic: this.queryStr.topic });
+    }
+
     return this;
-}
+  }
 
   pagination(resultPerPage) {
     const currentPage = Number(this.queryStr.page) || 1;

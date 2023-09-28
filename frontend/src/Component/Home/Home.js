@@ -10,6 +10,7 @@ import Post from "./postCard";
 import { useAlert } from "react-alert";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getAllPost } from "../../actions/postAction";
+import Loader from "../../Loader/Loader";
 
 const Home = () => {
   const alert = useAlert();
@@ -17,6 +18,8 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { loading, error, posts } = useSelector((state) => state.posts);
+
+  const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (error) {
@@ -29,13 +32,16 @@ const Home = () => {
   return (
     <>
       {loading ? (
-        "Loading..."
+        <Loader />
       ) : (
         <>
           <MetaData title={`DevBook`} />
           <div className="homepage1">
             <div className="banner">
-              <h1>JOIN OUR COMMUNITY</h1>
+              <h1>
+                {user && user ? `Hello ${user.name}` : "JOIN OUR COMMUNITY"}
+              </h1>
+
               <p>
                 Welcome to <img src={logo} alt="logo" />
               </p>
@@ -46,10 +52,10 @@ const Home = () => {
               </h5>
 
               <div className="buttons">
-                <NavLink to="/signup">
-                  Start Now <AiOutlineArrowRight id="icon" />
+                <NavLink to={user ? `/community` : `/signup`}>
+                {user ? `Explore Community` : `Strat Now`} <AiOutlineArrowRight id="icon" />
                 </NavLink>
-                <NavLink to="/signin">Sign In</NavLink>
+                <NavLink to={user ? `/resources` : `/signin`}>{user ? `What's in Resources?` : `Sign In`}</NavLink>
               </div>
             </div>
 

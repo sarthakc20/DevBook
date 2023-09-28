@@ -6,29 +6,39 @@ const ApiFeatures = require("../utils/apiFeatures");
 
 // Create post
 exports.createPost = catchAsyncError(async (req, res, next) => {
-  const image = req.body.image;
+  let images = [];
 
-  if (typeof image === "string") {
-    // If it's a string, there is only one image
-    const result = await cloudinary.v2.uploader.upload(image, {
-      folder: "posts",
-    });
-
-    const imageLink = {
-      public_id: result.public_id,
-      url: result.secure_url,
-    };
-
-    req.body.image = imageLink;
+  if (typeof req.body.images === "string") {
+    // "string" means there is only one image
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
   }
 
-  req.body.user = req.user.id; // mongoose.Schema.ObjectId
+  const imagesLinks = [];
 
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "products",
+    });
+
+    imagesLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+
+  req.body.images = imagesLinks;
+
+  req.body.user = req.user.name; // who posted
+
+  req.body.userID = req.user._id; // user's ID
+  
   const post = await Community.create(req.body);
 
   res.status(201).json({
     success: true,
-    post,
+    post
   });
 });
 
@@ -81,24 +91,37 @@ exports.updatePost = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Post not found", 404));
   }
 
-  // Update Image
-  const image = req.body.image;
+  // Update Images
+  let images = [];
 
-  if (image !== undefined) {
-    // Delete the old image from Cloudinary
-    await cloudinary.v2.uploader.destroy(post.image.public_id);
+  if (typeof req.body.images === "string") {
+    // "string" means there is only one image
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
 
-    // Upload the new image to Cloudinary
-    const result = await cloudinary.v2.uploader.upload(image, {
-      folder: "posts",
-    });
+  if (images !== undefined) {
+    // Deleting Images from Cloudinary
 
-    const imageLink = {
-      public_id: result.public_id,
-      url: result.secure_url,
-    };
+    for (let i = 0; i < product.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+    }
 
-    req.body.image = imageLink;
+    const imagesLinks = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
+
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+
+    req.body.images = imagesLinks;
   }
 
   post = await Community.findByIdAndUpdate(req.params.id, req.body, {
@@ -132,6 +155,16 @@ exports.deletePosts = catchAsyncError(async (req, res, next) => {
   return res.status(200).json({
     success: true,
     message: "Post deleted successfully",
+  });
+});
+
+// Get Logged in user posts
+exports.myPosts = catchAsyncError(async (req, res, next) => {
+  const posts = await Community.find({ userID: req.user._id }); // 'userID' field to filter
+
+  res.status(200).json({
+    success: true,
+    posts,
   });
 });
 

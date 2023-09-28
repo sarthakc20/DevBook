@@ -6,7 +6,7 @@ const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 const path = require("path");
 
-// const errorMiddleware = require("./middleware/error");
+const errorMiddleware = require("./middleware/error");
 
 //config
 if (process.env.NODE_ENV !== "PRODUCTION") {
@@ -36,6 +36,6 @@ app.use("/api/v1", resource);
 // });
 
 // Middleware for errors
-// app.use(errorMiddleware);
+app.use(errorMiddleware);
 
 module.exports = app;

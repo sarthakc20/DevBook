@@ -1,5 +1,5 @@
 const express = require("express");
-const { createPost, getAllPosts, getPostDetails, updatePost, deletePosts, getPostComment, createPostComment } = require("../controller/communityController");
+const { createPost, getAllPosts, getPostDetails, updatePost, deletePosts, getPostComment, createPostComment, myPosts } = require("../controller/communityController");
 const { isAuthenticatedUser } = require("../middleware/auth");
 const router = express.Router();
 
@@ -8,6 +8,8 @@ router.route("/community/new").post(isAuthenticatedUser, createPost);
 router.route("/community").get(getAllPosts);
 
 router.route("/community/:id").get(getPostDetails);
+
+router.route("/me/community/posts").get(isAuthenticatedUser, myPosts);
 
 router.route("/me/community/:id").put(isAuthenticatedUser, updatePost);
 
