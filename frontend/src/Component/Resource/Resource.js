@@ -67,7 +67,7 @@ const Resource = () => {
         <>
           <MetaData title={`Resource (${currentPage})`} />
           <div className="resBox">
-            <h2 className="resourcesHeading">Resources</h2>
+            <h2 className="resourcesHeading">AI-Powered Coding Resources | Your Coding Journey Companion</h2>
 
             <h3 className="resourceFound">
               {count < 1

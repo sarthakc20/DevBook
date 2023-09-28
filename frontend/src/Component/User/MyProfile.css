@@ -28,7 +28,7 @@
 }
 
 .profileContainer > div:first-child > h1 {
-  color: rgba(255, 255, 255, 0.829);;
+  color: rgba(255, 255, 255, 0.829);
   font: 500 1.6vmax "Roboto";
   padding: 0.3vmax;
   transform: translateX(42vmax) translateY(-13vmax);
@@ -40,10 +40,10 @@
 }
 
 .profImg {
-  width: 2vmax; 
-  height: 2vmax; 
-  border-radius: 50%; 
-  margin-right: 10px; 
+  width: 2vmax;
+  height: 2vmax;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .flexBox p {
@@ -124,15 +124,20 @@
 .profileContainer > div:last-child > div:last-child > a:hover {
   background-color: rgb(31, 31, 31);
 }
-
+/* 
 @media screen and (max-width: 768px) {
   .profileContainer {
     flex-direction: column;
+    background-color: white;
   }
 
   .profileContainer > div:first-child > h1 {
     font: 500 3.2vmax "Roboto";
     transform: translateY(-2vmax);
+  }
+
+  .flexBox p {
+    padding-top: 1vmax;
   }
 
   .profileContainer > div:first-child > a {
@@ -159,4 +164,4 @@
     padding: 1vmax;
     margin: 2vmax 0;
   }
-}
+} */

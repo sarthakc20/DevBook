@@ -19,7 +19,7 @@ button {
   cursor: pointer;
   font: 400 1vmax "Roboto";
   text-decoration: none;
-  margin: 1vmax;
+  margin: 0.5vmax;
   border: 0.1vmax solid #13aa52;
   border-radius: 5px;
   transition: all 0.5s;
@@ -33,6 +33,7 @@ button {
 .btnContainer > button {
   background-color: #e74c3c;
   border: 0.1vmax solid #e74c3c;
+  margin-left: 1vmax;
 }
 
 .btnContainer > button:hover {

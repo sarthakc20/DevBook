@@ -21,6 +21,7 @@ const Footer = () => {
         <img src={mainLogo} alt="logo" />
         <h1>Join Our Community</h1>
         <p>Quality, Trust and Large</p>
+        <p>Built by Developers, for Developers. Our model maps to how you think and how you code.</p>
 
         <p style={{ fontSize: '0.9vmax' }}>Copyrights 2023 &copy; Sarthak Chatterjee</p>
       </div>
