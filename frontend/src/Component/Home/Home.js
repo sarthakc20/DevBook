@@ -3,7 +3,7 @@ import logo from "../../images/DevbookLogo.png";
 import coading from "../../images/coading1.png";
 import join from "../../images/join.gif";
 import "./Home.css";
-import { AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineArrowRight, AiOutlineArrowUp } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import MetaData from "../Layout/MetaData";
 import Post from "./postCard";
@@ -27,6 +27,26 @@ const Home = () => {
       dispatch(clearErrors());
     }
     dispatch(getAllPost());
+
+    // Function to handle scroll event
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > 100) {  // If the user scrolls down more than 100 pixels, show the button
+      document.body.classList.add("show-back-to-top");
+    } else {
+      // Otherwise, hide the button
+      document.body.classList.remove("show-back-to-top");
+    }
+  };
+
+  // Attach the scroll event listener
+  window.addEventListener("scroll", handleScroll);
+
+  // Clean up the event listener on component unmount
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
   }, [dispatch, error, alert]);
 
   return (
@@ -36,7 +56,7 @@ const Home = () => {
       ) : (
         <>
           <MetaData title={`DevBook`} />
-          <div className="homepage1">
+          <div className="homepage1" id="homeContainer1">
             <div className="banner">
               <h1>
                 {user && user ? `Hello ${user.name}` : "JOIN OUR COMMUNITY"}
@@ -53,9 +73,12 @@ const Home = () => {
 
               <div className="buttons">
                 <NavLink to={user ? `/community` : `/signup`}>
-                {user ? `Explore Community` : `Strat Now`} <AiOutlineArrowRight id="icon" />
+                  {user ? `Explore Community` : `Strat Now`}{" "}
+                  <AiOutlineArrowRight id="icon" />
                 </NavLink>
-                <NavLink to={user ? `/resources` : `/signin`}>{user ? `What's in Resources?` : `Sign In`}</NavLink>
+                <NavLink to={user ? `/resources` : `/signin`}>
+                  {user ? `What's in Resources?` : `Sign In`}
+                </NavLink>
               </div>
             </div>
 
@@ -64,7 +87,14 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="homepage3">
+          <button
+            className="back-to-top-button"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <AiOutlineArrowUp />
+          </button>
+
+          <div className="homepage3" id="homeContainer2">
             <h1>We have</h1>
             <div className="homepage3-sub">
               <p>100+ Users</p>

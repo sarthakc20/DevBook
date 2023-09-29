@@ -50,7 +50,7 @@ const MyProfile = () => {
               </div>
 
               <div className="contsub btns">
-                <NavLink to="/account/my/posts">My Pots</NavLink>
+                <NavLink to="/account/my/posts">My Posts</NavLink>
                 <NavLink to="/account/my/resources">My Resources</NavLink>
                 <NavLink to="/password/update">Change Password</NavLink>
               </div>

@@ -20,13 +20,9 @@ const PostCard = ({ post }) => {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
   }
 
-  const handleButtonClick = (e) => {
-    e.stopPropagation(); // Stop the click event from propagating
-    commentToggle();
-  };
   return (
     <>
-      <div className="postCard" to={`/community/${post._id}`}>
+      <div className="postCard">
         {post.images && post.images[0] && post.images[0].url ? (
           <img src={post.images[0].url} alt={post.name} />
         ) : (
@@ -41,7 +37,7 @@ const PostCard = ({ post }) => {
         </div>
         <h5>Posted by {post.user}</h5>
         <div className="postCardBtn">
-          <button onClick={commentToggle}>
+          <button className="cmntLink" onClick={commentToggle}>
             Comments ({post.numOfComments})
           </button>
           <NavLink className="readLink" to={`/community/${post._id}`}>
@@ -72,7 +68,7 @@ const PostCard = ({ post }) => {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleButtonClick} color="secondary">
+          <Button onClick={commentToggle} color="secondary">
             Close
           </Button>
         </DialogActions>

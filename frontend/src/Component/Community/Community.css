@@ -35,7 +35,7 @@
 }
 
 .postTogg:hover .postToggText {
-  left: -85px; /* Move the text inside the circle on hover */
+  left: -90px; /* Move the text inside the circle on hover */
   color: rgb(81, 81, 81);
 }
 

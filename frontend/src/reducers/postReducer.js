@@ -14,6 +14,9 @@ import {
   NEW_POST_REQUEST,
   NEW_POST_RESET,
   NEW_POST_SUCCESS,
+  POST_DETAILS_FAIL,
+  POST_DETAILS_REQUEST,
+  POST_DETAILS_SUCCESS,
   UPDATE_POST_FAIL,
   UPDATE_POST_REQUEST,
   UPDATE_POST_RESET,
@@ -164,6 +167,33 @@ export const editPostReducer = (state = { post: {} }, action) => {
         error: null,
       };
 
+    default:
+      return state;
+  }
+};
+
+export const postDetailsReducer = (state = { post: {} }, action) => {
+  switch (action.type) {
+    case POST_DETAILS_REQUEST:
+      return {
+        loading: true,
+        ...state, //to access the curent state
+      };
+    case POST_DETAILS_SUCCESS:
+      return {
+        loading: false,
+        post: action.payload,
+      };
+    case POST_DETAILS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

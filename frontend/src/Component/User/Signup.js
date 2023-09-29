@@ -117,7 +117,7 @@ const Signin = () => {
                     <div className="inputBx">
                       <p>
                         Already have an account?
-                        <NavLink to="/signin">Sign In</NavLink>
+                        <NavLink to="/signin"> Sign In</NavLink>
                       </p>
                     </div>
                   </form>

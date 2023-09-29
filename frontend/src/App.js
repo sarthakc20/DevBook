@@ -17,6 +17,7 @@ import ProtectedRoute from "./Component/Route/ProtectedRoute";
 import { useSelector } from "react-redux";
 import Logout from "./Component/User/Logout";
 import CreateCommunity from "./Component/Community/CreateCommunity";
+import CommunityPostDetails from "./Component/Community/CommunityPostDetails";
 import Profile from "./Component/User/MyProfile"
 import MyPosts from "./Component/User/MyPosts"
 import UpdateMyPost from "./Component/User/UpdateMyPost"
@@ -48,6 +49,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/community" element={<Community />} />
         <Route path="/resources" element={<Resource />} />
+        <Route path="/community/:id" element={<CommunityPostDetails />} />
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>

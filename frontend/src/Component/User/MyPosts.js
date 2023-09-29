@@ -5,6 +5,7 @@ import { clearErrors, myPosts } from "../../actions/postAction";
 import { useAlert } from "react-alert";
 import "./MyPosts.css";
 import Loader from "../../Loader/Loader";
+import MetaData from "../Layout/MetaData";
 
 const MyPosts = () => {
   const alert = useAlert();
@@ -30,6 +31,7 @@ const MyPosts = () => {
         <Loader />
       ) : (
         <>
+          <MetaData title={`${user.name.split(" ")[0]}'s Posts`} />
           <h1 className="mypostHeading">
             {user && user.name}'s Community Posts
           </h1>
