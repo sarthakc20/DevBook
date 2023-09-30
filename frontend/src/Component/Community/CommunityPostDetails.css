@@ -117,6 +117,13 @@ body {
   margin: 20px 0;
 }
 
+.userIcon {
+  margin-right: 0.5vmax;
+  color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 50%;
+}
+
 /* 
 .PostDetails {
   background-color: rgb(255, 255, 255);

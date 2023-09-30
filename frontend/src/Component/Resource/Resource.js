@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { clearErrors, getAllResources } from "../../actions/resourceAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
@@ -9,17 +9,20 @@ import { Typography } from "@mui/material";
 import ResourceCard from "./ResourceCard.js";
 import "./Resource.css";
 import Loader from "../../Loader/Loader";
+import { RiFilter3Fill } from "react-icons/ri";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const categories = [
   "AI-chatbot",
+  "AI-chatbot Advanced",
   "AI Code Assistant",
   "Resume with AI",
-  "JavaScript",
-  "React",
-  "Redux",
-  "Node",
-  "Express",
-  "Python",
+  "Development with AI",
+  "Design with AI",
+  "SEO with AI",
+  "Bugs Finder", // DeepCode
+  "Auto Code Completion", // tabnine, copilot
+  "Documentation Generator", // Mintlify
   "All",
 ];
 
@@ -33,6 +36,8 @@ const Resource = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [category, setCategory] = useState("");
+
+  const { user } = useSelector((state) => state.user);
 
   const {
     loading,
@@ -61,20 +66,44 @@ const Resource = () => {
 
   return (
     <>
+      <div className="filterBox_Res">
+        <Typography className="typo">Categories <RiFilter3Fill /></Typography>
+        <ul className="categoryBox">
+          {categories.map((category) => (
+            <li
+              className="category-link"
+              key={category}
+              onClick={() => setCategory(category)}
+            >
+              {category}
+            </li>
+          ))}
+        </ul>
+      </div>
       {loading ? (
         <Loader />
       ) : (
         <>
           <MetaData title={`Resource (${currentPage})`} />
+
+          {user && user ? (
+            <NavLink to={`/resources/new`} className="postTogg">
+              <span className="postToggText" id="resTogg">Add Yours</span>
+              <AiOutlinePlus />
+            </NavLink>
+          ) : null}
+
           <div className="resBox">
-            <h2 className="resourcesHeading">AI-Powered Coding Resources | Your Coding Journey Companion</h2>
+            <h2 className="resourcesHeading">
+              AI-Powered Coding Resources | Your Coding Journey Companion
+            </h2>
 
             <h3 className="resourceFound">
               {count < 1
                 ? "No Resource Found"
                 : count < 2
                 ? "We Have 1 Resource"
-                : `We Have ${count} Resources`}{" "}
+                : `We Have ${count} Resources`}
               !
             </h3>
 
@@ -107,45 +136,29 @@ const Resource = () => {
 
           <div className="aboutRes">
             <p>
-            In the fast-paced world of technology and coding, staying up-to-date
-            with the latest tools, frameworks, and resources is essential for
-            anyone on a coding journey. Artificial Intelligence (AI) has emerged
-            as a transformative force, revolutionizing industries and opening
-            new horizons for developers. To help you navigate this exciting
-            field, we have introduced the "Resources" feature on our website,
-            designed to provide you with a comprehensive collection of AI
-            websites, tools, and opportunities to contribute to the coding
-            community. 
+              In the fast-paced world of technology and coding, staying
+              up-to-date with the latest tools, frameworks, and resources is
+              essential for anyone on a coding journey. Artificial Intelligence
+              (AI) has emerged as a transformative force, revolutionizing
+              industries and opening new horizons for developers. To help you
+              navigate this exciting field, we have introduced the "Resources"
+              feature on our website, designed to provide you with a
+              comprehensive collection of AI websites, tools, and opportunities
+              to contribute to the coding community.
             </p>
-            <span>A Treasure Trove of AI Websites:</span> 
+            <span>A Treasure Trove of AI Websites:</span>
             <p>
-            Our "Resources" section
-            serves as a treasure trove of carefully curated AI websites. Whether
-            you are a seasoned AI practitioner or just starting your coding
-            journey, you'll find something valuable here. Explore a wide range
-            of websites that cover topics such as machine learning, deep
-            learning, natural language processing, computer vision, and more.
-            Each website is accompanied by a brief description, helping you
-            understand its focus and relevance.
+              Our "Resources" section serves as a treasure trove of carefully
+              curated AI websites. Whether you are a seasoned AI practitioner or
+              just starting your coding journey, you'll find something valuable
+              here. Explore a wide range of websites that cover topics such as
+              machine learning, deep learning, natural language processing,
+              computer vision, and more. Each website is accompanied by a brief
+              description, helping you understand its focus and relevance.
             </p>
           </div>
         </>
       )}
-
-      <div className="filterBox">
-        <Typography className="typo">Categories</Typography>
-        <ul className="categoryBox">
-          {categories.map((category) => (
-            <li
-              className="category-link"
-              key={category}
-              onClick={() => setCategory(category)}
-            >
-              {category}
-            </li>
-          ))}
-        </ul>
-      </div>
     </>
   );
 };

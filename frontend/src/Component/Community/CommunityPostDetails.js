@@ -13,8 +13,8 @@ import {
 } from "@mui/material";
 import { clearErrors, getPostDetails } from "../../actions/postAction";
 import "./CommunityPostDetails.css";
-import profile from "../../images/user.png";
 import { MdEdit } from "react-icons/md";
+import { BiSolidUser } from "react-icons/bi";
 
 const CommunityPostDetails = () => {
   const { id } = useParams();
@@ -53,7 +53,7 @@ const CommunityPostDetails = () => {
         <>
           <MetaData title={`${post.name}`} />
 
-          {user && post.userID == user._id ? (
+          {user && post.userID === user._id ? (
             <NavLink to={`/account/my/posts/${id}`} className="postTogg">
               <span className="postToggText">Edit My Post</span>
               <MdEdit />
@@ -96,11 +96,7 @@ const CommunityPostDetails = () => {
               post.comments.map((comment, index) => (
                 <div key={index}>
                   <p>
-                    <img
-                      src={profile}
-                      alt="image"
-                      className="profImg commentAvatar"
-                    />
+                    <BiSolidUser className="userIcon"/>
                     <strong>{comment.name}:</strong> {comment.comment}
                   </p>
                 </div>

@@ -1,5 +1,14 @@
 const express = require("express");
-const { createPost, getAllPosts, getPostDetails, updatePost, deletePosts, getPostComment, createPostComment, myPosts } = require("../controller/communityController");
+const {
+  createPost,
+  getAllPosts,
+  getPostDetails,
+  updatePost,
+  deletePosts,
+  getPostComment,
+  createPostComment,
+  myPosts,
+} = require("../controller/communityController");
 const { isAuthenticatedUser } = require("../middleware/auth");
 const router = express.Router();
 
@@ -20,4 +29,3 @@ router.route("/comments").get(getPostComment);
 router.route("/comment").put(isAuthenticatedUser, createPostComment);
 
 module.exports = router;
-

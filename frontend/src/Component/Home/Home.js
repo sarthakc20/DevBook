@@ -11,6 +11,8 @@ import { useAlert } from "react-alert";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getAllPost } from "../../actions/postAction";
 import Loader from "../../Loader/Loader";
+import { getAllResources } from "../../actions/resourceAction";
+import ResourceCard from "../Resource/ResourceCard";
 
 const Home = () => {
   const alert = useAlert();
@@ -18,6 +20,8 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { loading, error, posts } = useSelector((state) => state.posts);
+
+  const { resources } = useSelector((state) => state.resource);
 
   const { user } = useSelector((state) => state.user);
 
@@ -28,25 +32,29 @@ const Home = () => {
     }
     dispatch(getAllPost());
 
+    dispatch(getAllResources());
+
     // Function to handle scroll event
-  const handleScroll = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > 100) {  // If the user scrolls down more than 100 pixels, show the button
-      document.body.classList.add("show-back-to-top");
-    } else {
-      // Otherwise, hide the button
-      document.body.classList.remove("show-back-to-top");
-    }
-  };
+      if (scrollTop > 100) {
+        // If the user scrolls down more than 100 pixels, show the button
+        document.body.classList.add("show-back-to-top");
+      } else {
+        // Otherwise, hide the button
+        document.body.classList.remove("show-back-to-top");
+      }
+    };
 
-  // Attach the scroll event listener
-  window.addEventListener("scroll", handleScroll);
+    // Attach the scroll event listener
+    window.addEventListener("scroll", handleScroll);
 
-  // Clean up the event listener on component unmount
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [dispatch, error, alert]);
 
   return (
@@ -130,7 +138,8 @@ const Home = () => {
                   Access a comprehensive library of articles, tutorials, and
                   documentation covering a wide range of programming languages,
                   tools, and technologies. Stay updated with the latest industry
-                  trends and best practices.
+                  trends and best practices. Chnage your coading experience with
+                  us.
                 </p>
               </div>
 
@@ -191,6 +200,18 @@ const Home = () => {
               ducimus animi ex rem maxime, illo quod harum atque, quis et
               perferendis odio.
             </h5>
+          </div>
+
+          <div className="preContainer">
+            <h2>Some Of Our Resouces</h2>
+          </div>
+
+          <div className="container" id="container">
+            {resources && resources.map((resource) => <ResourceCard resource={resource} />)}
+          </div>
+
+          <div className="homeComm">
+            <NavLink to="/resources">View All Resources</NavLink>
           </div>
 
           <div className="preContainer">

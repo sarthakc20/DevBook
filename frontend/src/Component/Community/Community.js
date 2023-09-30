@@ -9,6 +9,7 @@ import Pagination from "react-js-pagination";
 import { Typography } from "@mui/material";
 import "./Community.css";
 import { AiOutlinePlus } from "react-icons/ai";
+import { RiFilter3Fill } from "react-icons/ri";
 import Loader from "../../Loader/Loader.js"
 
 const topics = [
@@ -27,8 +28,6 @@ const topics = [
 const Community = () => {
   const alert = useAlert();
 
-  const { keyword } = useParams();
-
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +35,8 @@ const Community = () => {
   const [topic, setTopic] = useState("");
 
   const { user } = useSelector((state) => state.user);
+
+  const [keyword, setKeyword] = useState("");
 
   const {
     loading,
@@ -62,14 +63,15 @@ const Community = () => {
 
   let count = filteredPostsCount;
 
-  const [key, setKey] = useState();
+  
 
   const navigate = useNavigate();
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
-    if (key.trim()) {
-      navigate(`/community?${key}`);
+    
+    if (keyword.trim()) {
+      navigate(`/community/${keyword}`);
     } else {
       navigate(`/community`);
     }
@@ -79,7 +81,7 @@ const Community = () => {
   return (
     <>
       <div className="filterBox">
-        <Typography>Topics</Typography>
+        <Typography>Topics <RiFilter3Fill /></Typography>
         <ul className="topicBox">
           {topics.map((topic) => (
             <li
@@ -112,7 +114,7 @@ const Community = () => {
               <input
                 type="text"
                 placeholder="Search Posts..."
-                onChange={(e) => setKey(e.target.value)}
+                onChange={(e) => setKeyword(e.target.value)}
               />
               <input type="submit" value="Search" />
             </form>

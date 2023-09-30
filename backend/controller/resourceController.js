@@ -6,23 +6,33 @@ const ApiFeatures = require("../utils/apiFeatures");
 
 // Create Resource
 exports.createResource = catchAsyncError(async (req, res, next) => {
-  const image = req.body.image;
+  let images = [];
 
-  if (typeof image === "string") {
-    // If it's a string, there is only one image
-    const result = await cloudinary.v2.uploader.upload(image, {
+  if (typeof req.body.images === "string") {
+    // "string" means there is only one image
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
+
+  const imagesLinks = [];
+
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
       folder: "posts",
     });
 
-    const imageLink = {
+    imagesLinks.push({
       public_id: result.public_id,
       url: result.secure_url,
-    };
-
-    req.body.image = imageLink;
+    });
   }
 
+  req.body.images = imagesLinks;
+
   req.body.user = req.user.name; // who posted
+
+  req.body.userID = req.user._id; // user's ID
 
   const resource = await Resource.create(req.body);
 
@@ -34,7 +44,7 @@ exports.createResource = catchAsyncError(async (req, res, next) => {
 
 // Get all Resource
 exports.getAllResource = catchAsyncError(async (req, res) => {
-  const resultPerPage = 8;
+  const resultPerPage = 9;
   const resourcesCount = await Resource.countDocuments();
   // In MongoDB, the countDocuments() method counts the number of documents that matches to the selection criteria.
 
@@ -56,6 +66,16 @@ exports.getAllResource = catchAsyncError(async (req, res) => {
     resourcesCount,
     resultPerPage,
     filteredresourcesCount,
+  });
+});
+
+// Get Logged in user resources
+exports.myResources = catchAsyncError(async (req, res, next) => {
+  const resources = await Resource.find({ userID: req.user._id }); // 'userID' field to filter
+
+  res.status(200).json({
+    success: true,
+    resources,
   });
 });
 

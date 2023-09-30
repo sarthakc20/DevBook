@@ -17,7 +17,7 @@ const resourceSchema = new mongoose.Schema({
     required: [true, "Please enter link"],
   },
 
-  image: [
+  images: [
     {
       public_id: {
         type: String,
@@ -37,6 +37,12 @@ const resourceSchema = new mongoose.Schema({
 
   user: {
     type: String,
+    ref: "User",
+    requireed: true,
+  },
+
+  userID: {
+    type: mongoose.Schema.ObjectId,
     ref: "User",
     requireed: true,
   },

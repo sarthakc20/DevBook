@@ -10,6 +10,7 @@ import About from "./Component/Layout/About/About";
 import Contact from "./Component/Layout/Contact/Contact";
 import Community from "./Component/Community/Community";
 import Resource from "./Component/Resource/Resource";
+import CreateResource from "./Component/Resource/CreateResource";
 import { useEffect } from "react";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
@@ -48,6 +49,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/community/:keyword" element={<Community />} />
         <Route path="/resources" element={<Resource />} />
         <Route path="/community/:id" element={<CommunityPostDetails />} />
 
@@ -55,6 +57,7 @@ function App() {
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
         <Route path="/logout" element={<Logout />} />
         <Route path="/community/new" element={<CreateCommunity />} />
+        <Route path="/resources/new" element={<CreateResource />} />
         <Route path="/account" element={<Profile />} />
         <Route path="/account/my/posts" element={<MyPosts />} />
         <Route path="/account/my/posts/:id" element={<UpdateMyPost />} />

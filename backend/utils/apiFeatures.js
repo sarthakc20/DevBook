@@ -22,13 +22,18 @@ class ApiFeatures {
 
   filter() {
     const queryCopy = { ...this.queryStr };
-    const removeFields = ["keyword", "page", "limit", "topic"]; // Add "topic" to removeFields
+    const removeFields = ["keyword", "page", "limit", "topic", "category"]; // Add "topic" to removeFields
 
     removeFields.forEach((key) => delete queryCopy[key]);
 
     // Handle the "topic" filter
     if (this.queryStr.topic) {
       this.query = this.query.find({ topic: this.queryStr.topic });
+    }
+
+    // Handle the "category" filter
+    if (this.queryStr.category) {
+      this.query = this.query.find({ category: this.queryStr.category });
     }
 
     return this;

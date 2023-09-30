@@ -1,5 +1,6 @@
 .resBox {
   background-color: #21313c;
+  margin: 0;
 }
 
 .resourcesHeading {
@@ -29,6 +30,7 @@
   padding: 0 5vmax;
   justify-content: center;
   min-height: 25vh;
+  margin-left: 5vmax;
 }
 
 .paginationBoxx {
@@ -83,8 +85,8 @@
   color: white;
 }
 
-.filterBox {
-  width: 10vmax;
+.filterBox_Res {
+  width: 12vmax;
   position: absolute;
   top: 10vmax;
   left: 4vmax;
@@ -116,7 +118,7 @@
 }
 
 .resourceCard {
-  width: 19.2vmax;
+  width: 20vmax;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -129,7 +131,8 @@
 }
 
 .resourceCard > img {
-  width: 14vmax;
+  width: 20vmax;
+  min-height: 12vmax;
 }
 
 .resourceCard > div {
@@ -142,6 +145,17 @@
 .resourceCardSpan {
   margin: 0.5vmax;
   font: 300 0.8vmax "Roboto";
+  display: inline-block;
+}
+
+.resourcecardSpan button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #21313c;
+  display: inline-block;
+  padding: 0;
 }
 
 .resourceCard > p {
@@ -164,7 +178,7 @@
 .resourceCard > h5 {
   margin: 0.5vmax;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 1.2vmax;
+  font-size: 1.1vmax;
 }
 
 .resourceCard:hover {
@@ -204,6 +218,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 900px;
   margin: 0 auto;
+  margin-top: 6vmax;
 }
 
 .aboutRes p {
@@ -218,9 +233,17 @@
   color: #13aa52;
 }
 
+#resTogg {
+  color: #13aa52;
+}
+
 @media screen and (max-width: 768px) {
   .resourcesHeading {
     font: 500 2vmax "Roboto";
+  }
+  
+  .resBox {
+    max-width: 100%;
   }
 
   .filterBox {
@@ -245,5 +268,9 @@
 
   .category-link {
     font: 400 1.8vmax "Roboto";
+  }
+
+  .typo {
+    color: #21313c;
   }
 }

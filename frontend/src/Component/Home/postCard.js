@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogActions,
 } from "@mui/material";
+import { BiSolidUser } from "react-icons/bi";
 
 const PostCard = ({ post }) => {
   const [open, setOpen] = useState(false);
@@ -59,6 +60,7 @@ const PostCard = ({ post }) => {
             post.comments.map((comment, index) => (
               <div key={index}>
                 <p>
+                  <BiSolidUser className="userIcon" />
                   <strong>{comment.name}:</strong> {comment.comment}
                 </p>
               </div>

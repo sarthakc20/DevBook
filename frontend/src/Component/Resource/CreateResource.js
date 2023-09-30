@@ -2,39 +2,41 @@ import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearErrors, createPost } from "../../actions/postAction";
-import { NEW_POST_RESET } from "../../constants/postConstants";
+import { NEW_RESOURCE_RESET } from "../../constants/resourceConstant";
+import { clearErrors, createResource } from "../../actions/resourceAction";
 import { BsPencilSquare } from "react-icons/bs";
 import { MdCategory, MdDescription } from "react-icons/md";
-import { Button } from "@mui/material";
 import MetaData from "../Layout/MetaData";
-import "./CreateCommunity.css";
+import { Button } from "@mui/material";
+import { AiOutlineLink } from "react-icons/ai";
 
-const CreateCommunity = () => {
+const CreateResource = () => {
   const alert = useAlert();
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const { loading, error, success } = useSelector((state) => state.newPost);
+  const { loading, error, success } = useSelector((state) => state.newResource);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [topic, setTopic] = useState("");
+  const [category, setCategory] = useState("");
+  const [link, setLink] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const topics = [
-    "Development",
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Redux",
-    "Node",
-    "Express",
-    "Python",
+  const categories = [
+    "AI-chatbot",
+    "AI-chatbot Advanced",
+    "AI Code Assistant",
+    "Resume with AI",
+    "Development with AI",
+    "Design with AI",
+    "SEO with AI",
+    "Bugs Finder",
+    "Auto Code Completion",
+    "Documentation Generator",
   ];
 
   useEffect(() => {
@@ -44,29 +46,30 @@ const CreateCommunity = () => {
     }
 
     if (success) {
-      alert.success("Post Created Successfully");
-      navigate("/community");
-      dispatch({ type: NEW_POST_RESET });
+      alert.success("Resource Created Successfully");
+      navigate("/resources");
+      dispatch({ type: NEW_RESOURCE_RESET });
     }
   }, [dispatch, alert, error, navigate, success]);
 
-  const createPostSubmitHandler = (e) => {
+  const createResourceSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData(); 
 
     myForm.set("name", name);
     myForm.set("description", description);
-    myForm.set("topic", topic);
+    myForm.set("category", category);
+    myForm.set("link", link);
 
     images.forEach((image) => {
       myForm.append("images", image);
     });
 
-    dispatch(createPost(myForm));
+    dispatch(createResource(myForm));
   };
 
-  const createPostImageChange = (e) => {
+  const createResourceImageChange = (e) => {
     const files = Array.from(e.target.files);
     // Array.from creates a copy of an array
 
@@ -86,24 +89,24 @@ const CreateCommunity = () => {
       reader.readAsDataURL(file);
     });
   };
-
+  
   return (
     <>
-      <MetaData title="Create Post" />
+      <MetaData title="Create Resource" />
       <div className="backdrop">
         <div className="newPostContainer">
           <form
             className="createPostForm"
             encType="multipart/form-data"
-            onSubmit={createPostSubmitHandler}
+            onSubmit={createResourceSubmitHandler}
           >
-            <h1>Create Post</h1>
+            <h1>Create Resource</h1>
 
             <div>
               <BsPencilSquare />
               <input
                 type="text"
-                placeholder="Post Name"
+                placeholder="Resource Name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -114,7 +117,7 @@ const CreateCommunity = () => {
               <MdDescription />
 
               <textarea
-                placeholder="Post Description"
+                placeholder="Resource Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"
@@ -123,12 +126,23 @@ const CreateCommunity = () => {
             </div>
 
             <div>
+              <AiOutlineLink />
+              <input
+                type="text"
+                placeholder="Link"
+                required
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+              />
+            </div>
+
+            <div>
               <MdCategory />
-              <select onChange={(e) => setTopic(e.target.value)}>
-                <option value="">Choose Topic</option>
-                {topics.map((top) => (
-                  <option key={top} value={top}>
-                    {top}
+              <select onChange={(e) => setCategory(e.target.value)}>
+                <option value="">Choose Category</option>
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
                   </option>
                 ))}
               </select>
@@ -139,14 +153,14 @@ const CreateCommunity = () => {
                 type="file"
                 name="avatar"
                 accept="image/*"
-                onChange={createPostImageChange}
+                onChange={createResourceImageChange}
                 multiple={true}
               />
             </div>
 
             <div id="createPostFormImage">
               {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Post Preview" />
+                <img key={index} src={image} alt="Resource Preview" />
               ))}
             </div>
 
@@ -164,4 +178,4 @@ const CreateCommunity = () => {
   );
 };
 
-export default CreateCommunity;
+export default CreateResource;

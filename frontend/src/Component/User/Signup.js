@@ -51,7 +51,7 @@ const Signin = () => {
     }
 
     if (isAuthenticated) {
-      navigate("./account");
+      navigate("/account");
     }
   }, [dispatch, error, alert, isAuthenticated, navigate]);
 
