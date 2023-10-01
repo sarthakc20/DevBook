@@ -1,65 +1,73 @@
 import React, { useEffect } from "react";
 import "./MyProfile.css";
-import { useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import MetaData from "../Layout/MetaData";
-import profile from "../../images/user.png";
 import Loader from "../../Loader/Loader";
+import Sidebar from "./Sidebar";
+import { Typography } from "@mui/material";
+import { myPosts } from "../../actions/postAction";
 
 const MyProfile = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const { user, loading=true, isAuthenticated } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (isAuthenticated === false) {
-            navigate("/signin");
-        }
-    }, [navigate, isAuthenticated]);
+  const {
+    user,
+    loading = true,
+    isAuthenticated,
+  } = useSelector((state) => state.user);
 
-  return ( 
-  <>
-    {loading ? (
+  const { posts } = useSelector((state) => state.myPosts);
+
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      navigate("/signin");
+    }
+
+    dispatch(myPosts());
+  }, [dispatch, navigate, isAuthenticated]);
+
+  return (
+    <>
+      {loading ? (
         <Loader />
       ) : (
         <>
-          <MetaData title={`${user.name.split(' ')[0]}'s Profile`} />
+          <MetaData title={`${user.name.split(" ")[0]}'s Profile`} />
           <div className="profileContainer">
-            <div>
-              <h1>My Profile</h1>
-              
-              <NavLink to="/me/update">Edit Profile</NavLink>
-            </div>
-            <div className="cont">
-                <div className="contsub">
-              <div>
-                <h4>Full Name</h4>
-                <div className="flexBox">
-                <img src={profile} alt="image" className="profImg"/>
-                <p>{user.name}</p>
-                </div>
-              </div>
-              <div>
-                <h4>Email</h4>
-                <p>{user.email}</p>
-              </div>
-              <div>
-                <h4>Joined On</h4>
-                <p>{String(user.createdAt).substring(0, 10)}</p>
-              </div>
-              </div>
+            <Sidebar />
+            <div className="infoContainer">
+              <Typography component="h1">My Profile</Typography>
 
-              <div className="contsub btns">
-                <NavLink to="/account/my/posts">My Posts</NavLink>
-                <NavLink to="/account/my/resources">My Resources</NavLink>
-                <NavLink to="/password/update">Change Password</NavLink>
+              <div className="infoSummary">
+                <div>
+                  <p>
+                    Name <br /> {user.name}
+                  </p>
+                </div>
+                <div className="infoSummaryBox2">
+                  <div>
+                    <p>Total Posts</p>
+                    <p>{posts && posts.length}</p>
+                  </div>
+                  <div>
+                    <p>Email</p>
+                    <p>{user.email}</p>
+                  </div>
+                  <div>
+                    <p>Joined On</p>
+                    <p>{String(user.createdAt).substring(0, 10)}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </>
       )}
-  </>
-  )
-}
+    </>
+  );
+};
 
-export default MyProfile
+export default MyProfile;

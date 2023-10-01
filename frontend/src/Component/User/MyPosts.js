@@ -7,6 +7,8 @@ import "./MyPosts.css";
 import Loader from "../../Loader/Loader";
 import MetaData from "../Layout/MetaData";
 import { NavLink } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import { DELETE_POST_RESET } from "../../constants/postConstants";
 
 const MyPosts = () => {
   const alert = useAlert();
@@ -14,6 +16,10 @@ const MyPosts = () => {
   const dispatch = useDispatch();
 
   const { loading, error, posts } = useSelector((state) => state.myPosts);
+
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state.editPost
+  );
 
   const { user } = useSelector((state) => state.user);
 
@@ -23,8 +29,18 @@ const MyPosts = () => {
       dispatch(clearErrors());
     }
 
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch(clearErrors());
+    }
+
+    if (isDeleted) {
+      alert.success("Post Deleted Successfully");
+      dispatch({ type: DELETE_POST_RESET });
+    }
+
     dispatch(myPosts());
-  }, [dispatch, alert, error]);
+  }, [dispatch, alert, error, isDeleted, deleteError]);
 
   return (
     <>
@@ -33,20 +49,26 @@ const MyPosts = () => {
       ) : (
         <>
           <MetaData title={`${user.name.split(" ")[0]}'s Posts`} />
-          <h1 className="mypostHeading">
-            {user && user.name}'s Community Posts
-          </h1>
-          {posts && posts.length > 0 ? (
-            <div className="container" id="container">
-              {posts && posts.map((post) => <Posts post={post} />)}
+          <div className="profileContainer">
+            <Sidebar />
+            <div className="infoContainer">
+              <h1 className="mypostHeading">
+                {user && user.name}'s Community Posts
+              </h1>
+              {posts && posts.length > 0 ? (
+                <div className="posts" id="container">
+                  {posts && posts.map((post) => <Posts post={post} />)}
+                </div>
+              ) : (
+                <>
+                  <p className="mypostHeading">You have no post yet!</p>
+                  <NavLink className="readLink commLink" to="/community">
+                    Check Community
+                  </NavLink>
+                </>
+              )}
             </div>
-          ) : ( <>
-            <p className="mypostHeading">You have no post yet!</p>
-            <NavLink className="readLink commLink" to="/community">
-            Check Community
-          </NavLink>
-          </>
-          )}
+          </div>
         </>
       )}
     </>

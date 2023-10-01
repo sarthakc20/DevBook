@@ -20,9 +20,9 @@ const categories = [
   "Development with AI",
   "Design with AI",
   "SEO with AI",
-  "Bugs Finder", // DeepCode
-  "Auto Code Completion", // tabnine, copilot
-  "Documentation Generator", // Mintlify
+  "Bugs Finder", 
+  "Auto Code Completion", 
+  "Documentation Generator", 
   "All",
 ];
 

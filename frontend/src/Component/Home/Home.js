@@ -13,6 +13,7 @@ import { clearErrors, getAllPost } from "../../actions/postAction";
 import Loader from "../../Loader/Loader";
 import { getAllResources } from "../../actions/resourceAction";
 import ResourceCard from "../Resource/ResourceCard";
+import Carousel from "react-material-ui-carousel";
 
 const Home = () => {
   const alert = useAlert();
@@ -206,8 +207,13 @@ const Home = () => {
             <h2>Some Of Our Resouces</h2>
           </div>
 
-          <div className="container" id="container">
-            {resources && resources.map((resource) => <ResourceCard resource={resource} />)}
+          <div className="containerRes">
+            <Carousel className="caroselClass">
+              {resources &&
+                resources.map((resource) => (
+                  <ResourceCard resource={resource} />
+                ))}
+            </Carousel>
           </div>
 
           <div className="homeComm">

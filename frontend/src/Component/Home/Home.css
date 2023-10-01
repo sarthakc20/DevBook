@@ -198,11 +198,26 @@
 
 .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 2vmax auto;
   width: 96vw;
   flex-wrap: wrap;
-  justify-content: center;
   max-width: 100%;
+}
+
+.containerRes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2vmax auto;
+  width: 25vw;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.caroselClass {
+  width: 100%;
 }
 
 .preContainer > h2 {
@@ -234,6 +249,7 @@
 
 .postCard > img {
   width: 28vmax;
+  min-height: 12vmax;
 }
 
 .postCard > div {

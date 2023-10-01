@@ -7,8 +7,13 @@ import {
   DialogTitle,
   DialogActions,
 } from "@mui/material";
+import { deletePost } from "../../actions/postAction";
+import { useDispatch } from "react-redux";
 
 const MyPostCard = ({ post }) => {
+
+  const dispatch = useDispatch();
+
   const [open, setOpen] = useState(false);
 
   const commentToggle = () => {
@@ -24,7 +29,9 @@ const MyPostCard = ({ post }) => {
     commentToggle();
   };
 
-  const deletePosthandler = () => {};
+  const deletePosthandler = (id) => {
+    dispatch(deletePost(id));
+  };
 
   return (
     <>
@@ -42,10 +49,11 @@ const MyPostCard = ({ post }) => {
           </span>
         </div>
         <h5>Posted by {post.user}</h5>
+        <span>Posted On : {String(post.createdAt).substring(0, 10)}</span>
         <button onClick={commentToggle}>Comments ({post.numOfComments})</button>
         <div className="btnContainer">
           <NavLink to={`/account/my/posts/${post._id}`}>Edit Post</NavLink>
-          <button onClick={deletePosthandler}>Delete Post</button>
+          <button onClick={() => deletePosthandler(`${post._id}`)}>Delete Post</button>
         </div>
       </div>
 

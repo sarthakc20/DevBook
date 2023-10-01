@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { editPostReducer, myPostsReducer, newPostReducer, postDetailsReducer, postReducer } from "./reducers/postReducer";
-import { myResourcesReducer, newResourceReducer, resourceReducer, updateResourcetReducer } from "./reducers/resourceReducer";
+import { deleteResourcetReducer, myResourcesReducer, newResourceReducer, resourceReducer } from "./reducers/resourceReducer";
 import { forgotPasswordReducer, profileReducer, userReducer } from "./reducers/userReducer";
 
 const reducer = combineReducers({
@@ -17,7 +17,7 @@ const reducer = combineReducers({
   postDetails: postDetailsReducer,
   newResource: newResourceReducer,
   myResources: myResourcesReducer,
-  updateResource: updateResourcetReducer,
+  deleteResource: deleteResourcetReducer,
 });
 
 let initialState = {};

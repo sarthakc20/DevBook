@@ -3,6 +3,10 @@ import {
   ALL_RESOURCE_REQUEST,
   ALL_RESOURCE_SUCCESS,
   CLEAR_ERRORS,
+  DELETE_RESOURCE_FAIL,
+  DELETE_RESOURCE_REQUEST,
+  DELETE_RESOURCE_RESET,
+  DELETE_RESOURCE_SUCCESS,
   MY_RESOURCES_FAIL,
   MY_RESOURCES_REQUEST,
   MY_RESOURCES_SUCCESS,
@@ -10,10 +14,6 @@ import {
   NEW_RESOURCE_REQUEST,
   NEW_RESOURCE_RESET,
   NEW_RESOURCE_SUCCESS,
-  UPDATE_RESOURCE_FAIL,
-  UPDATE_RESOURCE_REQUEST,
-  UPDATE_RESOURCE_RESET,
-  UPDATE_RESOURCE_SUCCESS,
 } from "../constants/resourceConstant";
 
 export const resourceReducer = (state = { resources: [] }, action) => {
@@ -112,32 +112,32 @@ export const myResourcesReducer = (state = { resources: [] }, action) => {
   }
 };
 
-export const updateResourcetReducer = (state = { post: {} }, action) => {
+export const deleteResourcetReducer = (state = { resource: {} }, action) => {
   switch (action.type) {
-    case UPDATE_RESOURCE_REQUEST:
+    case DELETE_RESOURCE_REQUEST:
       return {
         ...state,
         loading: true,
       };
 
-    case UPDATE_RESOURCE_SUCCESS:
+    case DELETE_RESOURCE_SUCCESS:
       return {
         ...state,
         loading: false,
-        isUpdated: action.payload,
+        isDeleted: action.payload,
       };
 
-    case UPDATE_RESOURCE_FAIL:
+    case DELETE_RESOURCE_FAIL:
       return {
         ...state,
         loading: false,
         error: action.payload,
       };
 
-    case UPDATE_RESOURCE_RESET:
+    case DELETE_RESOURCE_RESET:
       return {
         ...state,
-        isUpdated: false,
+        isDeleted: false,
       };
 
     case CLEAR_ERRORS:

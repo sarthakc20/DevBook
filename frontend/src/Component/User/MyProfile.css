@@ -1,18 +1,162 @@
 .profileContainer {
-  display: flex;
   height: 100vh;
   width: 100vw;
-  position: fixed;
-  top: 0%;
-  left: 0%;
   max-width: 100%;
-  background-image: url("../../images/bg-pr.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  position: absolute;
 }
 
-.profileContainer > div {
+.infoContainer {
+  border-left: 1px solid rgba(0, 0, 0, 0.13);
+  background-color: rgb(255, 255, 255);
+  padding: 3rem 0;
+}
+
+.infoContainer > h1 {
+  color: rgba(31, 31, 31, 0.733);
+  font: 300 2rem "Roboto";
+  text-align: center;
+  width: 50%;
+  padding: 1.5rem;
+  margin: auto;
+}
+
+.infoSummary {
+  margin: 2rem 0;
+}
+
+.infoSummary > div {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+}
+
+.infoSummary > div > p {
+  background-color: rgba(77, 125, 228, 0.89);
+  color: white;
+  font: 300 1.3rem "Roboto";
+  text-align: center;
+  padding: 1.5rem;
+  width: 100%;
+  margin: 0 2rem;
+}
+
+.infoSummaryBox2 > div {
+  color: rgb(71, 68, 68);
+  font: 300 2rem "Roboto";
+  text-align: center;
+  background-color: rgb(255, 233, 174);
+  text-decoration: none;
+  padding: 1.5rem;
+  width: 23vmax;
+  height: 6.5vmax;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.infoSummaryBox2 > div:first-child {
+  background-color: #1ccf67;
+  color: rgb(255, 255, 255);
+}
+
+.infoSummaryBox2 > div:last-child {
+  background-color: #ffcd58;
+  color: rgb(255, 255, 255);
+}
+
+.flexBox {
+  display: flex;
+  align-items: center;
+}
+
+.profImg {
+  width: 2vmax;
+  height: 2vmax;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-bottom: 1.7vmax;
+}
+
+
+.profImg:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+  .profileContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .infoContainer {
+    border-left: none;
+  }
+
+  .infoSummary > div > p {
+    margin: 0;
+  }
+
+  .infoSummaryBox2 > div {
+    width: 50%;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    font: 300 0.9rem "Roboto";
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .profileContainer > div {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -123,7 +267,7 @@
 
 .profileContainer > div:last-child > div:last-child > a:hover {
   background-color: rgb(31, 31, 31);
-}
+} */
 /* 
 @media screen and (max-width: 768px) {
   .profileContainer {

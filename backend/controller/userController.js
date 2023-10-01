@@ -3,6 +3,7 @@ const catchAsyncError = require("../middleware/catchAsyncError");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const ErrorHandler = require("../utils/errorHandler");
+const crypto = require("crypto");
 
 // Sign Up User
 exports.signupUser = catchAsyncError(async (req, res, next) => {

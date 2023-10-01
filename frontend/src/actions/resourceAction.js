@@ -4,15 +4,15 @@ import {
   ALL_RESOURCE_REQUEST,
   ALL_RESOURCE_SUCCESS,
   CLEAR_ERRORS,
+  DELETE_RESOURCE_FAIL,
+  DELETE_RESOURCE_REQUEST,
+  DELETE_RESOURCE_SUCCESS,
   MY_RESOURCES_FAIL,
   MY_RESOURCES_REQUEST,
   MY_RESOURCES_SUCCESS,
   NEW_RESOURCE_FAIL,
   NEW_RESOURCE_REQUEST,
   NEW_RESOURCE_SUCCESS,
-  UPDATE_RESOURCE_FAIL,
-  UPDATE_RESOURCE_REQUEST,
-  UPDATE_RESOURCE_SUCCESS,
 } from "../constants/resourceConstant";
 
 // GET ALL POSTS (With Search)
@@ -85,25 +85,20 @@ export const myResources = () => async (dispatch) => {
   }
 };
 
-// Update Resource
-export const updateResource = (id, resData) => async (dispatch) => {
+// Delete Resource
+export const deleteResource = (id) => async (dispatch) => {
   try {
-    dispatch({ type: UPDATE_RESOURCE_REQUEST });
+    dispatch({ type: DELETE_RESOURCE_REQUEST });
 
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
+    const { data } = await axios.delete(`/api/v1/me/resource/${id}`);
 
-    const { data } = await axios.put(
-      `/api/v1/me/resource/${id}`,
-      resData,
-      config
-    );
-
-    dispatch({ type: UPDATE_RESOURCE_SUCCESS, payload: data.success });
+    dispatch({
+      type: DELETE_RESOURCE_SUCCESS,
+      payload: data.success,
+    });
   } catch (error) {
     dispatch({
-      type: UPDATE_RESOURCE_FAIL,
+      type: DELETE_RESOURCE_FAIL,
       payload: error.response.data.message,
     });
   }
