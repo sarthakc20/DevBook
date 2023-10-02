@@ -132,6 +132,8 @@ const UpdateMyPost = () => {
           >
             <h1>Edit Post</h1>
 
+            <p>You can specify code language (eg. ```javascript)</p>
+
             <div>
               <BsPencilSquare />
               <input

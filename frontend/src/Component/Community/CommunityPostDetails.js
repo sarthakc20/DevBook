@@ -11,10 +11,19 @@ import {
   DialogTitle,
   DialogActions,
 } from "@mui/material";
-import { clearErrors, getPostDetails } from "../../actions/postAction";
+import {
+  clearErrors,
+  getPostDetails,
+  newComment,
+} from "../../actions/postAction";
 import "./CommunityPostDetails.css";
 import { MdEdit } from "react-icons/md";
 import { BiSolidUser } from "react-icons/bi";
+import { NEW_COMMENT_RESET } from "../../constants/postConstants";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const CommunityPostDetails = () => {
   const { id } = useParams();
@@ -25,6 +34,10 @@ const CommunityPostDetails = () => {
 
   const { post, loading, error } = useSelector((state) => state.postDetails);
 
+  const { success, error: commentError } = useSelector(
+    (state) => state.comment
+  );
+
   const { user } = useSelector((state) => state.user);
 
   const [open, setOpen] = useState(false);
@@ -34,16 +47,37 @@ const CommunityPostDetails = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
+  const submitCommentHandler = () => {
+    const myForm = new FormData();
+
+    myForm.set("comment", comment);
+    myForm.set("postId", id);
+
+    dispatch(newComment(myForm));
+
+    setOpen(false);
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
+    if (commentError) {
+      alert.error(commentError);
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      alert.success("Comment Added Successfully");
+      dispatch({ type: NEW_COMMENT_RESET });
+    }
+
     dispatch(getPostDetails(id));
 
     window.scrollTo(0, 0);
-  }, [dispatch, id, error, alert]);
+  }, [dispatch, id, error, alert, commentError, success]);
 
   return (
     <>
@@ -71,14 +105,39 @@ const CommunityPostDetails = () => {
 
             <div>
               <div className="detailsBlock-1">
-                  <h2>{post.name}</h2>
+                <h2>{post.name}</h2>
                 <p>Post # {post._id}</p>
                 <h3>Posted by {post.user}</h3>
                 <span>Topic :{post.topic}</span>
               </div>
 
               <div className="detailsBlock-2">
-                <span>Description</span> : <p>{post.description}</p>
+                <span>Description</span> :{" "}
+                <div className="detailsBlock-2-1">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    code: ({ node, inline, className, children, ...props }) => {
+                      const match = /language-(\w+)/.exec(className || "");
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          style={darcula}
+                          language={match[1]}
+                          PreTag="div"
+                          children={String(children).replace(/\n$/, "")}
+                          {...props}
+                        />
+                      ) : (
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}
+                >
+                  {post.description}
+                </ReactMarkdown>
+                </div>
               </div>
 
               <div className="detailsBlock-3">
@@ -96,7 +155,7 @@ const CommunityPostDetails = () => {
               post.comments.map((comment, index) => (
                 <div key={index}>
                   <p>
-                    <BiSolidUser className="userIcon"/>
+                    <BiSolidUser className="userIcon" />
                     <strong>{comment.name}:</strong> {comment.comment}
                   </p>
                 </div>
@@ -114,9 +173,17 @@ const CommunityPostDetails = () => {
             className="dialog"
           >
             <DialogTitle>Comments - {post.name}</DialogTitle>
-            <DialogContent className="submitDialogActions"></DialogContent>
+            <DialogContent className="submitDialogActions">
+              <textarea
+                className="submitDialogTextArea"
+                cols="50"
+                rows="5"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
+            </DialogContent>
             <DialogActions>
-              <Button onClick={commentToggle} color="primary">
+              <Button onClick={submitCommentHandler} color="primary">
                 Add
               </Button>
               <Button onClick={commentToggle} color="secondary">

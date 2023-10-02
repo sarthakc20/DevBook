@@ -99,6 +99,8 @@ const CreateCommunity = () => {
           >
             <h1>Create Post</h1>
 
+            <p>You can specify code language (eg. ```javascript)</p>
+
             <div>
               <BsPencilSquare />
               <input

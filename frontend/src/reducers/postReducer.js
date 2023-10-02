@@ -10,6 +10,10 @@ import {
   MY_POSTS_FAIL,
   MY_POSTS_REQUEST,
   MY_POSTS_SUCCESS,
+  NEW_COMMENT_FAIL,
+  NEW_COMMENT_REQUEST,
+  NEW_COMMENT_RESET,
+  NEW_COMMENT_SUCCESS,
   NEW_POST_FAIL,
   NEW_POST_REQUEST,
   NEW_POST_RESET,
@@ -188,6 +192,40 @@ export const postDetailsReducer = (state = { post: {} }, action) => {
       return {
         loading: false,
         error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const commentReducer = (state = {}, action) => {
+  switch (action.type) {
+    case NEW_COMMENT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case NEW_COMMENT_SUCCESS:
+      return {
+        loading: false,
+        success: action.payload,
+      };
+    case NEW_COMMENT_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case NEW_COMMENT_RESET:
+      return {
+        ...state,
+        success: false,
       };
     case CLEAR_ERRORS:
       return {

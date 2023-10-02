@@ -1,9 +1,25 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { editPostReducer, myPostsReducer, newPostReducer, postDetailsReducer, postReducer } from "./reducers/postReducer";
-import { deleteResourcetReducer, myResourcesReducer, newResourceReducer, resourceReducer } from "./reducers/resourceReducer";
-import { forgotPasswordReducer, profileReducer, userReducer } from "./reducers/userReducer";
+import {
+  commentReducer,
+  editPostReducer,
+  myPostsReducer,
+  newPostReducer,
+  postDetailsReducer,
+  postReducer,
+} from "./reducers/postReducer";
+import {
+  deleteResourcetReducer,
+  myResourcesReducer,
+  newResourceReducer,
+  resourceReducer,
+} from "./reducers/resourceReducer";
+import {
+  forgotPasswordReducer,
+  profileReducer,
+  userReducer,
+} from "./reducers/userReducer";
 
 const reducer = combineReducers({
   posts: postReducer,
@@ -18,6 +34,7 @@ const reducer = combineReducers({
   newResource: newResourceReducer,
   myResources: myResourcesReducer,
   deleteResource: deleteResourcetReducer,
+  comment: commentReducer,
 });
 
 let initialState = {};

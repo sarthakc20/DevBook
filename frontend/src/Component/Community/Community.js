@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PostCard from "../Home/postCard";
 import { useAlert } from "react-alert";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getAllPost } from "../../actions/postAction";
 import MetaData from "../Layout/MetaData";
@@ -51,6 +51,8 @@ const Community = () => {
     setCurrentPage(e);
   };
 
+  let [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -58,23 +60,22 @@ const Community = () => {
     }
     dispatch(getAllPost(keyword, currentPage, topic));
 
+    setSearchParams();
+
     window.scrollTo(0, 0);
-  }, [dispatch, error, alert, keyword, currentPage, topic]);
+  }, [dispatch, error, alert, currentPage, topic]);
 
   let count = filteredPostsCount;
-
-  
-
-  const navigate = useNavigate();
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
     
     if (keyword.trim()) {
-      navigate(`/community/${keyword}`);
-    } else {
-      navigate(`/community`);
+      // Set the 'keyword' parameter in the URL
+      setSearchParams({ keyword: keyword });
+      dispatch(getAllPost(keyword, 1, topic));
     }
+   
   };
   
 
@@ -114,6 +115,7 @@ const Community = () => {
               <input
                 type="text"
                 placeholder="Search Posts..."
+                value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
               />
               <input type="submit" value="Search" />

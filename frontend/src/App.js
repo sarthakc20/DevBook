@@ -54,7 +54,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/community" element={<Community />} />
-        {/* <Route path="/community/:keyword" element={<Community />} /> */}
         <Route path="/resources" element={<Resource />} />
         <Route path="/community/:id" element={<CommunityPostDetails />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />

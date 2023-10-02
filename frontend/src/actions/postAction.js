@@ -10,6 +10,9 @@ import {
   MY_POSTS_FAIL,
   MY_POSTS_REQUEST,
   MY_POSTS_SUCCESS,
+  NEW_COMMENT_FAIL,
+  NEW_COMMENT_REQUEST,
+  NEW_COMMENT_SUCCESS,
   NEW_POST_FAIL,
   NEW_POST_REQUEST,
   NEW_POST_SUCCESS,
@@ -151,6 +154,29 @@ export const getPostDetails = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: POST_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// New Comment
+export const newComment = (commentData) => async (dispatch) => {
+  try {
+    dispatch({ type: NEW_COMMENT_REQUEST });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axios.put(`/api/v1/comment`, commentData, config);
+
+    dispatch({
+      type: NEW_COMMENT_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    dispatch({
+      type: NEW_COMMENT_FAIL,
       payload: error.response.data.message,
     });
   }

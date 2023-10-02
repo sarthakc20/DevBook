@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useSearchParams } from "react-router-dom";
 import { clearErrors, getAllResources } from "../../actions/resourceAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
@@ -20,22 +20,22 @@ const categories = [
   "Development with AI",
   "Design with AI",
   "SEO with AI",
-  "Bugs Finder", 
-  "Auto Code Completion", 
-  "Documentation Generator", 
+  "Bugs Finder",
+  "Auto Code Completion",
+  "Documentation Generator",
   "All",
 ];
 
 const Resource = () => {
   const alert = useAlert();
 
-  const { keyword } = useParams();
-
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const [category, setCategory] = useState("");
+
+  const [keyword, setKeyword] = useState("");
 
   const { user } = useSelector((state) => state.user);
 
@@ -52,22 +52,40 @@ const Resource = () => {
     setCurrentPage(e);
   };
 
+  let [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
+    
     dispatch(getAllResources(keyword, currentPage, category));
 
+    setSearchParams();
+
     window.scrollTo(0, 0);
-  }, [dispatch, error, alert, keyword, currentPage, category]);
+  }, [dispatch, error, alert, currentPage, category]);
 
   let count = filteredresourcesCount;
+
+  const searchSubmitHandler = (e) => {
+    e.preventDefault();
+    
+    if (keyword.trim()) {
+      // Set the 'keyword' parameter in the URL
+      setSearchParams({ keyword: keyword });
+      dispatch(getAllResources(keyword, 1, category));
+    }
+   
+  };
 
   return (
     <>
       <div className="filterBox_Res">
-        <Typography className="typo">Categories <RiFilter3Fill /></Typography>
+        <Typography className="typo">
+          Categories <RiFilter3Fill />
+        </Typography>
         <ul className="categoryBox">
           {categories.map((category) => (
             <li
@@ -88,7 +106,9 @@ const Resource = () => {
 
           {user && user ? (
             <NavLink to={`/resources/new`} className="postTogg">
-              <span className="postToggText" id="resTogg">Add Yours</span>
+              <span className="postToggText" id="resTogg">
+                Add Yours
+              </span>
               <AiOutlinePlus />
             </NavLink>
           ) : null}
@@ -97,6 +117,18 @@ const Resource = () => {
             <h2 className="resourcesHeading">
               AI-Powered Coding Resources | Your Coding Journey Companion
             </h2>
+
+            <div className="searchBoxRes">
+            <form className="searchBoxRes" onSubmit={searchSubmitHandler}>
+              <input
+                type="text"
+                placeholder="Search Posts..."
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+              />
+              <input type="submit" value="Search" />
+            </form>
+          </div>
 
             <h3 className="resourceFound">
               {count < 1

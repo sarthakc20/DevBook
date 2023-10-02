@@ -84,7 +84,11 @@ body {
   color: #00684a;
 }
 
-.detailsBlock-2 > p {
+.detailsBlock-2-1 {
+  padding-right: 2vmax;
+}
+
+.detailsBlock-2-1 > p {
   font: 100 1.1vmax "Roboto";
   padding-top: 1vmax;
   padding-right: 2vmax;
