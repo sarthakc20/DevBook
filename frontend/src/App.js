@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 import Logout from "./Component/User/Logout";
 import CreateCommunity from "./Component/Community/CreateCommunity";
 import CommunityPostDetails from "./Component/Community/CommunityPostDetails";
+import RecommendedPost from "./Component/Community/RecommendedPost";
 import Profile from "./Component/User/MyProfile"
 import MyPosts from "./Component/User/MyPosts"
 import UpdateMyPost from "./Component/User/UpdateMyPost"
@@ -58,6 +59,7 @@ function App() {
         <Route path="/community/:id" element={<CommunityPostDetails />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
+        <Route path="/community/:id" element={<RecommendedPost />} />
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>

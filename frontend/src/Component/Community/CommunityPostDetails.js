@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import {
   clearErrors,
+  getAllPost,
   getPostDetails,
   newComment,
 } from "../../actions/postAction";
@@ -24,6 +25,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import RecommendedPost from "./RecommendedPost";
 
 const CommunityPostDetails = () => {
   const { id } = useParams();
@@ -76,6 +78,8 @@ const CommunityPostDetails = () => {
 
     dispatch(getPostDetails(id));
 
+    dispatch(getAllPost());
+
     window.scrollTo(0, 0);
   }, [dispatch, id, error, alert, commentError, success]);
 
@@ -114,29 +118,35 @@ const CommunityPostDetails = () => {
               <div className="detailsBlock-2">
                 <span>Description</span> :{" "}
                 <div className="detailsBlock-2-1">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    code: ({ node, inline, className, children, ...props }) => {
-                      const match = /language-(\w+)/.exec(className || "");
-                      return !inline && match ? (
-                        <SyntaxHighlighter
-                          style={darcula}
-                          language={match[1]}
-                          PreTag="div"
-                          children={String(children).replace(/\n$/, "")}
-                          {...props}
-                        />
-                      ) : (
-                        <code className={className} {...props}>
-                          {children}
-                        </code>
-                      );
-                    },
-                  }}
-                >
-                  {post.description}
-                </ReactMarkdown>
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      code: ({
+                        node,
+                        inline,
+                        className,
+                        children,
+                        ...props
+                      }) => {
+                        const match = /language-(\w+)/.exec(className || "");
+                        return !inline && match ? (
+                          <SyntaxHighlighter
+                            style={darcula}
+                            language={match[1]}
+                            PreTag="div"
+                            children={String(children).replace(/\n$/, "")}
+                            {...props}
+                          />
+                        ) : (
+                          <code className={className} {...props}>
+                            {children}
+                          </code>
+                        );
+                      },
+                    }}
+                  >
+                    {post.description}
+                  </ReactMarkdown>
                 </div>
               </div>
 
@@ -164,6 +174,8 @@ const CommunityPostDetails = () => {
               <p>No Comments</p>
             )}
           </div>
+
+          <RecommendedPost />
 
           <Dialog
             aria-labelledby="Simple-dialog-title"
