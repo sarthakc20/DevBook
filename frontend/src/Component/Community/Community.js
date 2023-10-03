@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PostCard from "../Home/postCard";
 import { useAlert } from "react-alert";
-import { NavLink, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getAllPost } from "../../actions/postAction";
 import MetaData from "../Layout/MetaData";
@@ -10,7 +10,7 @@ import { Typography } from "@mui/material";
 import "./Community.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RiFilter3Fill } from "react-icons/ri";
-import Loader from "../../Loader/Loader.js"
+import Loader from "../../Loader/Loader.js";
 
 const topics = [
   "Development",
@@ -37,6 +37,8 @@ const Community = () => {
   const { user } = useSelector((state) => state.user);
 
   const [keyword, setKeyword] = useState("");
+
+   const [showResults, setShowResults] = useState(true);
 
   const {
     loading,
@@ -69,20 +71,26 @@ const Community = () => {
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
-    
+
     if (keyword.trim()) {
       // Set the 'keyword' parameter in the URL
       setSearchParams({ keyword: keyword });
       dispatch(getAllPost(keyword, 1, topic));
     }
-   
   };
-  
+
+  const handleResultClick = (search) => {
+    setKeyword(search);
+
+    setShowResults(false);
+  };
 
   return (
     <>
       <div className="filterBox">
-        <Typography>Topics <RiFilter3Fill /></Typography>
+        <Typography>
+          Topics <RiFilter3Fill />
+        </Typography>
         <ul className="topicBox">
           {topics.map((topic) => (
             <li
@@ -121,6 +129,28 @@ const Community = () => {
               <input type="submit" value="Search" />
             </form>
           </div>
+
+          {showResults && ( // Show results container if showResults is true
+            <div className="searchResultsContainer">
+              {posts
+                .filter((item) => {
+                  const name = item.name.toLowerCase();
+                  return keyword && name.includes(keyword.toLowerCase());
+                })
+                .map((item) => (
+                  <div
+                    key={item._id}
+                    className="searchResultItem"
+                    onClick={() => handleResultClick(item.name)}
+                  >
+                    {keyword &&
+                      item.name.toLowerCase().includes(keyword.toLowerCase()) && (
+                        <div>{item.name}</div>
+                      )}
+                  </div>
+                ))}
+            </div>
+          )}
 
           <h3 className="postFound">
             {count < 1

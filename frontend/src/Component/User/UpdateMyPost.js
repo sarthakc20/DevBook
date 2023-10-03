@@ -3,7 +3,11 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { UPDATE_POST_RESET } from "../../constants/postConstants";
-import { clearErrors, getPostDetails, updatePost } from "../../actions/postAction";
+import {
+  clearErrors,
+  getPostDetails,
+  updatePost,
+} from "../../actions/postAction";
 import { Button } from "@mui/material";
 import { MdCategory, MdDescription } from "react-icons/md";
 import { BsPencilSquare } from "react-icons/bs";
@@ -56,7 +60,6 @@ const UpdateMyPost = () => {
       setOldImages(post.images);
     }
 
-
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -72,16 +75,7 @@ const UpdateMyPost = () => {
       navigate("/account/my/posts");
       dispatch({ type: UPDATE_POST_RESET });
     }
-  }, [
-    dispatch,
-    alert,
-    error,
-    navigate,
-    updateError,
-    isUpdated,
-    id,
-    post,
-  ]);
+  }, [dispatch, alert, error, navigate, updateError, isUpdated, id, post]);
 
   const updatePostSubmitHandler = (e) => {
     e.preventDefault();
@@ -177,6 +171,13 @@ const UpdateMyPost = () => {
                 onChange={updatePostImagesChange}
                 multiple={true}
               />
+            </div>
+
+            <div id="createPostFormImage">
+              {oldImages &&
+                oldImages.map((image, index) => (
+                  <img key={index} src={image.url} alt="Old Product Preview" />
+                ))}
             </div>
 
             <div id="createPostFormImage">

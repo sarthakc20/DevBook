@@ -10,16 +10,16 @@
 .postTogg {
   background-color: #13aa52;
   position: fixed;
-  bottom: 20px; 
-  right: 20px; 
+  bottom: 20px;
+  right: 20px;
   width: 50px;
-  height: 50px; 
+  height: 50px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px; 
-  color: white; 
+  font-size: 24px;
+  color: white;
   box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
   text-decoration: none;
   transition: all 0.5s;
@@ -39,7 +39,7 @@
 }
 
 .postTogg:hover {
-  background-color: #0f8f42; 
+  background-color: #0f8f42;
   transform: scale(1.1);
 }
 
@@ -60,7 +60,7 @@
 .searchBox input[type="text"] {
   flex: 1; /* Take up available space */
   padding: 10px 50px;
-  margin-right: 10px; 
+  margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
@@ -83,7 +83,6 @@
 .searchBox input[type="submit"]:hover {
   background-color: #128f40;
 }
-
 
 .postFound {
   margin: 2vmax auto;
@@ -178,6 +177,39 @@
 .topic-link:hover {
   color: #13aa52;
 }
+
+/* Add this style to create the search results container */
+.searchResultsContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 29%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  top: 50px; 
+  left: 35.1vmax;
+  margin-top: 14.5vmax;
+}
+
+/* Style for each search result item */
+.searchResultItem {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.searchResultItem:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
+
+/* Style for the selected result item (optional) */
+.searchResultItem.selected {
+  background-color: #f5f5f5;
+}
+
+
 
 @media screen and (max-width: 768px) {
   .postsHeading {
