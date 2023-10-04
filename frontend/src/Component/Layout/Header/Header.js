@@ -14,9 +14,8 @@ const Header = () => {
   return (
     <>
       <div className={openMenue ? "menuIcon active" : "menuIcon"}>
-        <nav>
-        {user && user ?
-          (
+        {user && user ? (
+          <nav>
             <ul className="navbar-list">
               <li className="logo">
                 <NavLink
@@ -97,9 +96,9 @@ const Header = () => {
                 </li>
               </div>
             </ul>
-          )
-          : (
-          
+          </nav>
+        ) : (
+          <nav>
             <ul className="navbar-list">
               <li className="logo">
                 <NavLink
@@ -180,8 +179,8 @@ const Header = () => {
                 </li>
               </div>
             </ul>
-          )}
-        </nav>
+          </nav>
+        )}
 
         <div className="mobile-nav">
           <BiMenu

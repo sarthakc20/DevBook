@@ -38,7 +38,7 @@ const Home = () => {
     // Function to handle scroll event
     const handleScroll = () => {
       const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
+        window.scrollY || document.documentElement.scrollTop;
 
       if (scrollTop > 100) {
         // If the user scrolls down more than 100 pixels, show the button
@@ -106,8 +106,8 @@ const Home = () => {
           <div className="homepage3" id="homeContainer2">
             <h1>We have</h1>
             <div className="homepage3-sub">
-              <p>100+ Users</p>
-              <p>500+ Resources</p>
+              <p>1000+ Users</p>
+              <p>5000+ Resources</p>
               <p>Strong Community Support</p>
             </div>
 

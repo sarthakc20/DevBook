@@ -37,6 +37,8 @@ const Resource = () => {
 
   const [keyword, setKeyword] = useState("");
 
+  const [showResults, setShowResults] = useState(true);
+
   const { user } = useSelector((state) => state.user);
 
   const {
@@ -59,7 +61,7 @@ const Resource = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    
+
     dispatch(getAllResources(keyword, currentPage, category));
 
     setSearchParams();
@@ -71,13 +73,18 @@ const Resource = () => {
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
-    
+
     if (keyword.trim()) {
       // Set the 'keyword' parameter in the URL
       setSearchParams({ keyword: keyword });
       dispatch(getAllResources(keyword, 1, category));
     }
-   
+  };
+
+  const handleResultClick = (search) => {
+    setKeyword(search);
+
+    setShowResults(false);
   };
 
   return (
@@ -119,16 +126,40 @@ const Resource = () => {
             </h2>
 
             <div className="searchBoxRes">
-            <form className="searchBoxRes" onSubmit={searchSubmitHandler}>
-              <input
-                type="text"
-                placeholder="Search Posts..."
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-              />
-              <input type="submit" value="Search" />
-            </form>
-          </div>
+              <form className="searchBoxRes" onSubmit={searchSubmitHandler}>
+                <input
+                  type="text"
+                  placeholder="Search Posts..."
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+                <input type="submit" value="Search" />
+              </form>
+            </div>
+
+            {showResults && ( // Show results container if showResults is true
+              <div className="searchResultsContainer">
+                {resources
+                  .filter((item) => {
+                    const name = item.name.toLowerCase();
+                    return keyword && name.includes(keyword.toLowerCase());
+                  })
+                  .map((item) => (
+                    <div
+                      key={item._id}
+                      className="searchResultItem"
+                      onClick={() => handleResultClick(item.name)}
+                    >
+                      {keyword &&
+                        item.name
+                          .toLowerCase()
+                          .includes(keyword.toLowerCase()) && (
+                          <div>{item.name}</div>
+                        )}
+                    </div>
+                  ))}
+              </div>
+            )}
 
             <h3 className="resourceFound">
               {count < 1

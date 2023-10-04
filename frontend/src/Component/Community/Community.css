@@ -184,6 +184,8 @@
   flex-direction: column;
   position: absolute;
   width: 29%;
+  max-height: 15vmax;
+  overflow-y: auto;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
