@@ -18,6 +18,9 @@ import {
   NEW_POST_REQUEST,
   NEW_POST_RESET,
   NEW_POST_SUCCESS,
+  NO_FILTER_ALL_POST_FAIL,
+  NO_FILTER_ALL_POST_REQUEST,
+  NO_FILTER_ALL_POST_SUCCESS,
   POST_DETAILS_FAIL,
   POST_DETAILS_REQUEST,
   POST_DETAILS_SUCCESS,
@@ -43,6 +46,34 @@ export const postReducer = (state = { posts: [] }, action) => {
         filteredPostsCount: action.payload.filteredPostsCount,
       };
     case ALL_POST_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+// All Posts Without Filters
+export const allPostReducer = (state = { posts: [] }, action) => {
+  switch (action.type) {
+    case NO_FILTER_ALL_POST_REQUEST:
+      return {
+        loading: true,
+        posts: [],
+      };
+    case NO_FILTER_ALL_POST_SUCCESS:
+      return {
+        loading: false,
+        posts: action.payload.posts,
+      };
+    case NO_FILTER_ALL_POST_FAIL:
       return {
         loading: false,
         error: action.payload,

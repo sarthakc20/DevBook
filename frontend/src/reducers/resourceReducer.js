@@ -14,6 +14,9 @@ import {
   NEW_RESOURCE_REQUEST,
   NEW_RESOURCE_RESET,
   NEW_RESOURCE_SUCCESS,
+  NO_FILTER_ALL_RESOURCE_FAIL,
+  NO_FILTER_ALL_RESOURCE_REQUEST,
+  NO_FILTER_ALL_RESOURCE_SUCCESS,
 } from "../constants/resourceConstant";
 
 export const resourceReducer = (state = { resources: [] }, action) => {
@@ -33,6 +36,35 @@ export const resourceReducer = (state = { resources: [] }, action) => {
       };
 
     case ALL_RESOURCE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+// All resources without filter 
+export const allResourceReducer = (state = { resources: [] }, action) => {
+  switch (action.type) {
+    case NO_FILTER_ALL_RESOURCE_REQUEST:
+      return {
+        loading: true,
+        resources: [],
+      };
+    case NO_FILTER_ALL_RESOURCE_SUCCESS:
+      return {
+        loading: false,
+        resources: action.payload.resources,
+      };
+
+    case NO_FILTER_ALL_RESOURCE_FAIL:
       return {
         loading: false,
         error: action.payload,

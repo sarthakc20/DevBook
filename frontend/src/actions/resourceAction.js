@@ -13,6 +13,9 @@ import {
   NEW_RESOURCE_FAIL,
   NEW_RESOURCE_REQUEST,
   NEW_RESOURCE_SUCCESS,
+  NO_FILTER_ALL_RESOURCE_FAIL,
+  NO_FILTER_ALL_RESOURCE_REQUEST,
+  NO_FILTER_ALL_RESOURCE_SUCCESS,
 } from "../constants/resourceConstant";
 
 // GET ALL POSTS (With Search)
@@ -45,6 +48,25 @@ export const getAllResources =
       });
     }
   };
+
+// GET ALL RESOURCES (Without Filter)
+export const getAllResourcesWithoutFilter = () => async (dispatch) => {
+  try {
+    dispatch({ type: NO_FILTER_ALL_RESOURCE_REQUEST });
+
+    const { data } = await axios.get("api/v1/resources/nofilter");
+
+    dispatch({
+      type: NO_FILTER_ALL_RESOURCE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: NO_FILTER_ALL_RESOURCE_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // Create Resource
 export const createResource = (resData) => async (dispatch) => {

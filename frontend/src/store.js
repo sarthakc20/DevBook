@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
+  allPostReducer,
   commentReducer,
   editPostReducer,
   myPostsReducer,
@@ -10,6 +11,7 @@ import {
   postReducer,
 } from "./reducers/postReducer";
 import {
+  allResourceReducer,
   deleteResourcetReducer,
   myResourcesReducer,
   newResourceReducer,
@@ -23,7 +25,9 @@ import {
 
 const reducer = combineReducers({
   posts: postReducer,
+  allPosts: allPostReducer,
   resource: resourceReducer,
+  allResources: allResourceReducer,
   user: userReducer,
   profile: profileReducer,
   forgotPassword: forgotPasswordReducer,

@@ -100,7 +100,7 @@ nav {
 
 .navbar-link.signin {
   align-items: center;
-  padding: 0.8vmax 1.4vmax;
+  padding: 0.6vmax 1.3vmax;
   background-color: #00ed64;
   color: #000000;
   font-size: 1.2vmax;
@@ -114,7 +114,7 @@ nav {
 
 .navbar-link.signup {
   align-items: center;
-  padding: 0.8vmax 1.4vmax;
+  padding: 0.6vmax 1.3vmax;
   background-color: #ffffff;
   color: #000000;
   font-size: 1.2vmax;

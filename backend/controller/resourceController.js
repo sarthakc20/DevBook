@@ -69,6 +69,16 @@ exports.getAllResource = catchAsyncError(async (req, res) => {
   });
 });
 
+// Get All Resources with any filter or pagination
+exports.getAllResourcesWithoutFilter = catchAsyncError(async (req, res, next) => {
+  const resources = await Resource.find();
+
+  res.status(200).json({
+    success: true,
+    resources,
+  });
+});
+
 // Get Logged in user resources
 exports.myResources = catchAsyncError(async (req, res, next) => {
   const resources = await Resource.find({ userID: req.user._id }); // 'userID' field to filter

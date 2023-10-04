@@ -3,7 +3,7 @@ import PostCard from "../Home/postCard";
 import { useAlert } from "react-alert";
 import { NavLink, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, getAllPost } from "../../actions/postAction";
+import { clearErrors, getAllPost, getAllPostsWithoutFilter } from "../../actions/postAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
 import { Typography } from "@mui/material";
@@ -36,6 +36,8 @@ const Community = () => {
 
   const { user } = useSelector((state) => state.user);
 
+  const { posts: allPosts } = useSelector((state) => state.allPosts);
+
   const [keyword, setKeyword] = useState("");
 
    const [showResults, setShowResults] = useState(true);
@@ -61,6 +63,8 @@ const Community = () => {
       dispatch(clearErrors());
     }
     dispatch(getAllPost(keyword, currentPage, topic));
+
+    dispatch(getAllPostsWithoutFilter());
 
     setSearchParams();
 
@@ -132,7 +136,7 @@ const Community = () => {
 
           {showResults && ( // Show results container if showResults is true
             <div className="searchResultsContainer">
-              {posts
+              {allPosts && allPosts
                 .filter((item) => {
                   const name = item.name.toLowerCase();
                   return keyword && name.includes(keyword.toLowerCase());

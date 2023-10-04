@@ -5,12 +5,15 @@ const {
   getAllResource,
   deleteResource,
   myResources,
+  getAllResourcesWithoutFilter,
 } = require("../controller/resourceController");
 const router = express.Router();
 
 router.route("/resource/new").post(isAuthenticatedUser, createResource);
 
 router.route("/resources").get(getAllResource);
+
+router.route("/resources/nofilter").get(getAllResourcesWithoutFilter);
 
 router.route("/me/resources").get(isAuthenticatedUser, myResources);
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams, useSearchParams } from "react-router-dom";
-import { clearErrors, getAllResources } from "../../actions/resourceAction";
+import { NavLink, useSearchParams } from "react-router-dom";
+import { clearErrors, getAllResources, getAllResourcesWithoutFilter } from "../../actions/resourceAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
 import { Typography } from "@mui/material";
@@ -41,6 +41,8 @@ const Resource = () => {
 
   const { user } = useSelector((state) => state.user);
 
+  const { resources: allResources } = useSelector((state) => state.allResources);
+
   const {
     loading,
     error,
@@ -63,6 +65,8 @@ const Resource = () => {
     }
 
     dispatch(getAllResources(keyword, currentPage, category));
+
+    dispatch(getAllResourcesWithoutFilter());
 
     setSearchParams();
 
@@ -139,7 +143,7 @@ const Resource = () => {
 
             {showResults && ( // Show results container if showResults is true
               <div className="searchResultsContainer">
-                {resources
+                {allResources && allResources
                   .filter((item) => {
                     const name = item.name.toLowerCase();
                     return keyword && name.includes(keyword.toLowerCase());

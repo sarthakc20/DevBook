@@ -69,6 +69,16 @@ exports.getAllPosts = catchAsyncError(async (req, res) => {
   });
 });
 
+// Get All Posts with any filter or pagination
+exports.getAllPostsWithoutFilter = catchAsyncError(async (req, res, next) => {
+  const posts = await Community.find();
+
+  res.status(200).json({
+    success: true,
+    posts,
+  });
+});
+
 //Get post details
 exports.getPostDetails = catchAsyncError(async (req, res, next) => {
   const post = await Community.findById(req.params.id);

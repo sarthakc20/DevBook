@@ -16,6 +16,9 @@ import {
   NEW_POST_FAIL,
   NEW_POST_REQUEST,
   NEW_POST_SUCCESS,
+  NO_FILTER_ALL_POST_FAIL,
+  NO_FILTER_ALL_POST_REQUEST,
+  NO_FILTER_ALL_POST_SUCCESS,
   POST_DETAILS_FAIL,
   POST_DETAILS_REQUEST,
   POST_DETAILS_SUCCESS,
@@ -50,6 +53,27 @@ export const getAllPost =
     } catch (error) {
       dispatch({
         type: ALL_POST_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+// GET ALL POSTS (Without Filter)
+export const getAllPostsWithoutFilter =
+  () =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: NO_FILTER_ALL_POST_REQUEST });
+
+      const { data } = await axios.get("api/v1/community/nofilter");
+
+      dispatch({
+        type: NO_FILTER_ALL_POST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: NO_FILTER_ALL_POST_FAIL,
         payload: error.response.data.message,
       });
     }
