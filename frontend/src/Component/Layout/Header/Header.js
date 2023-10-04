@@ -77,7 +77,7 @@ const Header = () => {
               <div className="sign-div">
                 <li className="sign-btn">
                   <NavLink
-                    className="navbar-link signin"
+                    className="navbar-link"
                     to="/account"
                     onClick={() => setOpenMenue(false)}
                   >
