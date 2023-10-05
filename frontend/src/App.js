@@ -28,6 +28,7 @@ import UpdatePassword from "./Component/User/UpdatePassword"
 import UpdateProfile from "./Component/User/UpdateProfile"
 import ForgotPassword from "./Component/User/ForgotPassword"
 import ResetPassword from "./Component/User/ResetPassword"
+import NotFound from "./Component/Layout/Not Found/NotFound";
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/community/:id" element={<RecommendedPost />} />
+        <Route path="*" element={<NotFound />} />
 
         {/* Protected Routes */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>

@@ -249,7 +249,7 @@
 
 .postCard > img {
   width: 28vmax;
-  min-height: 12vmax;
+  max-height: 15vmax;
 }
 
 .postCard > div {

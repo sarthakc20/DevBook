@@ -50,7 +50,12 @@ const MyPostCard = ({ post }) => {
         </div>
         <h5>Posted by {post.user}</h5>
         <span>Posted On : {String(post.createdAt).substring(0, 10)}</span>
+        <div className="postCardBtn">
         <button onClick={commentToggle}>Comments ({post.numOfComments})</button>
+        <NavLink className="readLink" to={`/community/${post._id}`}>
+            Click To Read
+          </NavLink>
+          </div>
         <div className="btnContainer">
           <NavLink to={`/account/my/posts/${post._id}`}>Edit Post</NavLink>
           <button onClick={() => deletePosthandler(`${post._id}`)}>Delete Post</button>

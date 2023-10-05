@@ -1,0 +1,39 @@
+.PageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.PageNotFound img {
+  width: 23vmax;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.PageNotFound p {
+  font-size: 1.4vmax;
+  color: rgba(81, 74, 74, 0.945);
+  margin-bottom: 1vmax;
+}
+
+.PageNotFound a {
+  align-items: center;
+  padding: 0.6vmax 1.3vmax;
+  background-color: #00ed64;
+  color: #000000;
+  font-size: 1.2vmax;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.PageNotFound a:hover {
+  background-color: #13aa52;
+  color: #fbfbfb;
+}

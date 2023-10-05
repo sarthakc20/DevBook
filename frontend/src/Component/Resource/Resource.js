@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useSearchParams } from "react-router-dom";
-import { clearErrors, getAllResources, getAllResourcesWithoutFilter } from "../../actions/resourceAction";
+import {
+  clearErrors,
+  getAllResources,
+  getAllResourcesWithoutFilter,
+} from "../../actions/resourceAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
 import { Typography } from "@mui/material";
@@ -41,7 +45,9 @@ const Resource = () => {
 
   const { user } = useSelector((state) => state.user);
 
-  const { resources: allResources } = useSelector((state) => state.allResources);
+  const { resources: allResources } = useSelector(
+    (state) => state.allResources
+  );
 
   const {
     loading,
@@ -143,32 +149,37 @@ const Resource = () => {
 
             {showResults && ( // Show results container if showResults is true
               <div className="searchResultsContainer">
-                {allResources && allResources
-                  .filter((item) => {
-                    const name = item.name.toLowerCase();
-                    return keyword && name.includes(keyword.toLowerCase());
-                  })
-                  .reduce((uniqueItems, item) => {
-                    const name = item.name;
-                    if (!uniqueItems.some((uniqueItem) => uniqueItem.name === name)) {
-                      uniqueItems.push(item);
-                    }
-                    return uniqueItems;
-                  }, [])
-                  .map((item) => (
-                    <div
-                      key={item._id}
-                      className="searchResultItem"
-                      onClick={() => handleResultClick(item.name)}
-                    >
-                      {keyword &&
-                        item.name
-                          .toLowerCase()
-                          .includes(keyword.toLowerCase()) && (
-                          <div>{item.name}</div>
-                        )}
-                    </div>
-                  ))}
+                {allResources &&
+                  allResources
+                    .filter((item) => {
+                      const name = item.name.toLowerCase();
+                      return keyword && name.includes(keyword.toLowerCase());
+                    })
+                    .reduce((uniqueItems, item) => {
+                      const name = item.name;
+                      if (
+                        !uniqueItems.some(
+                          (uniqueItem) => uniqueItem.name === name
+                        )
+                      ) {
+                        uniqueItems.push(item);
+                      }
+                      return uniqueItems;
+                    }, [])
+                    .map((item) => (
+                      <div
+                        key={item._id}
+                        className="searchResultItem"
+                        onClick={() => handleResultClick(item.name)}
+                      >
+                        {keyword &&
+                          item.name
+                            .toLowerCase()
+                            .includes(keyword.toLowerCase()) && (
+                            <div>{item.name}</div>
+                          )}
+                      </div>
+                    ))}
               </div>
             )}
 
@@ -226,9 +237,9 @@ const Resource = () => {
               curated AI websites. Whether you are a seasoned AI practitioner or
               just starting your coding journey, you'll find something valuable
               here. Explore a wide range of websites that cover topics such as
-              machine learning, deep learning, natural language processing,
-              computer vision, and more. Each website is accompanied by a brief
-              description, helping you understand its focus and relevance.
+              AI-chatbot, Resume Builder, Bugs Finder, computer vision, and
+              more. Each website is accompanied by a brief description, helping
+              you understand its focus and relevance.
             </p>
           </div>
         </>
