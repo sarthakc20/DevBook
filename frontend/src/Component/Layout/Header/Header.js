@@ -5,14 +5,19 @@ import { BiMenu } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import logo from "../../../images/DevbookLogo.png";
 import { useSelector } from "react-redux";
+import Loader from "../../../Loader/Loader";
 
 const Header = () => {
   const [openMenue, setOpenMenue] = useState(false);
 
-  const { user } = useSelector((state) => state.user);
+  const { loading, user } = useSelector((state) => state.user);
 
   return (
     <>
+    {loading ? (
+        <Loader />
+      ) : (
+        <>
       <div className={openMenue ? "menuIcon active" : "menuIcon"}>
         {user && user ? (
           <nav>
@@ -201,6 +206,8 @@ const Header = () => {
         </NavLink>
       </div> */}
       </div>
+      </>
+      )}
     </>
   );
 };

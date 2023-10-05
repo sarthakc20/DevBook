@@ -141,6 +141,13 @@ const Community = () => {
                   const name = item.name.toLowerCase();
                   return keyword && name.includes(keyword.toLowerCase());
                 })
+                .reduce((uniqueItems, item) => {
+                  const name = item.name;
+                  if (!uniqueItems.some((uniqueItem) => uniqueItem.name === name)) {
+                    uniqueItems.push(item);
+                  }
+                  return uniqueItems;
+                }, [])
                 .map((item) => (
                   <div
                     key={item._id}
