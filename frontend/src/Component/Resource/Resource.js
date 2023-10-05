@@ -132,7 +132,8 @@ const Resource = () => {
 
           <div className="resBox">
             <h2 className="resourcesHeading">
-              AI-Powered Coding Resources | Your Coding Journey Companion
+              AI-Powered Coding Resources | Your Coding Journey Companion <br />
+              <a href="#about">click here to know more</a>
             </h2>
 
             <div className="searchBoxRes">
@@ -200,7 +201,7 @@ const Resource = () => {
             </div>
 
             {resultPerPage < count && (
-              <div className="paginationBoxx">
+              <div className="paginationBoxx" id="about">
                 <Pagination
                   activePage={currentPage}
                   itemsCountPerPage={resultPerPage}
@@ -219,7 +220,7 @@ const Resource = () => {
             )}
           </div>
 
-          <div className="aboutRes">
+          <div className="aboutRes" >
             <p>
               In the fast-paced world of technology and coding, staying
               up-to-date with the latest tools, frameworks, and resources is
