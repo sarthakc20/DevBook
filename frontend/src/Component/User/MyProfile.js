@@ -35,7 +35,7 @@ const MyProfile = () => {
         <Loader />
       ) : (
         <>
-          <MetaData title={`${user.name.split(" ")[0]}'s Profile`} />
+          <MetaData title={`${user && user.name.split(" ")[0]}'s Profile`} />
           <div className="profileContainer">
             <Sidebar />
             <div className="infoContainer">
