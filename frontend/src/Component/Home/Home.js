@@ -225,7 +225,7 @@ const Home = () => {
           </div>
 
           <div className="container" id="container">
-            {posts && posts.map((post) => <Post post={post} />)}
+            {posts && posts.slice(0,6).map((post) => <Post post={post} />)}
           </div>
 
           <div className="homeComm">
