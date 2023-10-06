@@ -94,10 +94,6 @@ nav {
   display: flex;
 }
 
-/* .mobile-logo {
-  display: none;
-} */
-
 .navbar-link.signin {
   align-items: center;
   padding: 0.6vmax 1.3vmax;
@@ -124,10 +120,6 @@ nav {
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s;
-}
-
-.sign-div {
-  padding-top: 0.4vmax;
 }
 
 /* Hover effect for buttons */
