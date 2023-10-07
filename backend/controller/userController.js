@@ -17,7 +17,7 @@ exports.signupUser = catchAsyncError(async (req, res, next) => {
     password,
   });
 
-  const devBookUrl = `${process.env.LOCALHOST}/`;
+  const devBookUrl = `${req.protocol}://${req.get("host")}/`;
 
   const message = `Welcome to DevBook, ${user.name}. You are registered successfully.\n Start exploring now!\nClick to visit DevBook: \n${devBookUrl}`;
 
@@ -91,11 +91,11 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  // const resetPassowrdUrl = `${req.protocol}://${req.get(
-  //   "host"
-  // )}/password/reset/${resetToken}`;
+  const resetPassowrdUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/password/reset/${resetToken}`;
 
-  const resetPassowrdUrl = `${process.env.LOCALHOST}/password/reset/${resetToken}`;
+  // const resetPassowrdUrl = `${process.env.LOCALHOST}/password/reset/${resetToken}`;
 
   const message = `Your password reset token is:- \n\n ${resetPassowrdUrl} \n\nIf you have not requested this email then, please ignore this.`;
 
@@ -281,7 +281,6 @@ exports.getSingleUser = catchAsyncError(async (req, res, next) => {
 
 // Get all users
 exports.getAllUser = catchAsyncError(async (req, res, next) => {
-
   const apifeature = new ApiFeatures(User.find(), req.query).searchUser();
 
   let users = await apifeature.query;

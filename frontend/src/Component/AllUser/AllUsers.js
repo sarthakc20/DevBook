@@ -59,8 +59,8 @@ const AllUsers = () => {
         <Loader />
       ) : (
         <>
-          <MetaData title={`DevBook Users`} />
-          <h2 className="postsHeading">Our Community Creator</h2>
+          <MetaData title={`DevBook Creators`} />
+          <h2 className="postsHeading">DevBook Community Creators</h2>
           <div className="searchBox">
             <form className="searchBox" onSubmit={searchSubmitHandler}>
               <input

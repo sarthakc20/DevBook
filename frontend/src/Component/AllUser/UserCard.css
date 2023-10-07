@@ -25,7 +25,8 @@
 }
 
 .ProfileCardInfo > img {
-  width: 5vmax;
+  width: 5.2vmax;
+  height: 5.2vmax;
 }
 
 .ProfileCardInfo > div {
