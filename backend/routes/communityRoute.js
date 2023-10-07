@@ -9,6 +9,7 @@ const {
   createPostComment,
   myPosts,
   getAllPostsWithoutFilter,
+  userPosts,
 } = require("../controller/communityController");
 const { isAuthenticatedUser } = require("../middleware/auth");
 const router = express.Router();
@@ -22,6 +23,8 @@ router.route("/community/nofilter").get(getAllPostsWithoutFilter);
 router.route("/community/:id").get(getPostDetails);
 
 router.route("/me/community/posts").get(isAuthenticatedUser, myPosts);
+
+router.route("/community/user/:id").get(userPosts);
 
 router.route("/me/community/:id").put(isAuthenticatedUser, updatePost);
 

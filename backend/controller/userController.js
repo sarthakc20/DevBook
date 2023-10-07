@@ -4,6 +4,8 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const ErrorHandler = require("../utils/errorHandler");
 const crypto = require("crypto");
+const cloudinary = require("cloudinary");
+const ApiFeatures = require("../utils/apiFeatures");
 
 // Sign Up User
 exports.signupUser = catchAsyncError(async (req, res, next) => {
@@ -191,6 +193,26 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
     name: req.body.name,
   };
 
+  // Adding cloudinary
+  if (req.body.avatar !== "") {
+    const user = await User.findById(req.user.id);
+
+    const imageId = user.avatar.public_id;
+
+    await cloudinary.v2.uploader.destroy(imageId);
+
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+
+    newUserData.avatar = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+  }
+
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,
@@ -199,5 +221,78 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+  });
+});
+
+// Update User Profile Image
+exports.updateImage = catchAsyncError(async (req, res, next) => {
+  // Adding cloudinary
+  const user = await User.findById(req.user.id);
+
+  // Check if the user exists
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User not found.",
+    });
+  }
+
+  // If the user already has an avatar, delete the old one from Cloudinary
+  if (user.avatar && user.avatar.public_id) {
+    await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+  }
+
+  // Upload the new avatar to Cloudinary
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
+
+  // Update the user's avatar field in the user object
+  user.avatar = {
+    public_id: myCloud.public_id,
+    url: myCloud.secure_url,
+  };
+
+  // Save the updated user data
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
+// Get single user
+exports.getSingleUser = catchAsyncError(async (req, res, next) => {
+  const singleUser = await User.findById(req.params.id);
+
+  if (!singleUser) {
+    return next(
+      new ErrorHandler(`User does not exist with Id: ${req.params.id}`, 400)
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    singleUser,
+  });
+});
+
+// Get all users
+exports.getAllUser = catchAsyncError(async (req, res, next) => {
+
+  const apifeature = new ApiFeatures(User.find(), req.query).searchUser();
+
+  let users = await apifeature.query;
+
+  let filteredUsersCount = users.length;
+
+  users = await apifeature.query.clone();
+
+  res.status(200).json({
+    success: true,
+    users,
+    filteredUsersCount,
   });
 });

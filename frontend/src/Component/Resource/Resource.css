@@ -231,6 +231,16 @@
   font-size: 1.1vmax;
 }
 
+.resourceCard > h5 > a {
+  color: #00684a;
+  text-decoration: none;
+}
+
+.resourceCard > h5 > a:hover {
+  color: #0f8f42;
+  text-decoration: underline;
+}
+
 .resourceCard:hover {
   box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
   transform: translateY(-1vmax);

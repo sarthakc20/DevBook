@@ -9,6 +9,7 @@ import {
   newPostReducer,
   postDetailsReducer,
   postReducer,
+  userPostsReducer,
 } from "./reducers/postReducer";
 import {
   allResourceReducer,
@@ -18,8 +19,10 @@ import {
   resourceReducer,
 } from "./reducers/resourceReducer";
 import {
+  allUsersReducer,
   forgotPasswordReducer,
   profileReducer,
+  userDetailsReducer,
   userReducer,
 } from "./reducers/userReducer";
 
@@ -39,6 +42,9 @@ const reducer = combineReducers({
   myResources: myResourcesReducer,
   deleteResource: deleteResourcetReducer,
   comment: commentReducer,
+  userPosts: userPostsReducer,
+  userDetails: userDetailsReducer,
+  allUsers: allUsersReducer,
 });
 
 let initialState = {};

@@ -65,6 +65,19 @@ const communitySchema = new mongoose.Schema({
     requireed: true,
   },
 
+  userAvatar: {
+    public_id: {
+      type: String,
+      required: true,
+      ref: "User",
+    },
+    url: {
+      type: String,
+      required: true,
+      ref: "User",
+    },
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,

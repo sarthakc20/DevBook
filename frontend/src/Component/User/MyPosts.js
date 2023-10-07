@@ -15,13 +15,13 @@ const MyPosts = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, error, posts } = useSelector((state) => state.myPosts);
+  const { loading:postloading, error, posts } = useSelector((state) => state.myPosts);
 
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.editPost
   );
 
-  const { user } = useSelector((state) => state.user);
+  const { loading=true, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (error) {
@@ -44,7 +44,7 @@ const MyPosts = () => {
 
   return (
     <>
-      {loading ? (
+      {(loading || postloading) ? (
         <Loader />
       ) : (
         <>

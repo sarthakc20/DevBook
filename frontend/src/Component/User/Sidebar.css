@@ -2,17 +2,18 @@
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .sidebar > a:first-child {
   padding: 0;
-  padding-top: 2.5vmax;
+  padding-top: 1.2vmax;
 }
 
 .sidebar > a > img {
   width: 100%;
   transition: all 0.5s;
+  padding-bottom: 1vmax;
 }
 
 .sidebar > a > img:hover {
@@ -23,12 +24,13 @@
   text-decoration: none;
   color: #13aa52;
   font: 200 1rem "Roboto";
-  padding: 2rem;
+  padding: 1.5rem;
   transition: all 0.5s;
 }
+
 .sidebar a:hover {
   color: #148a45;
-  transform: scale(1.1);
+  transform: scale(1.06);
 }
 
 .sidebar a > P {

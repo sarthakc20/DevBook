@@ -22,6 +22,63 @@
   margin: auto;
 }
 
+/* Avatar */
+.updateImageBox {
+  text-align: center;
+  margin-top: 20px; 
+}
+
+.updateImageBox img {
+  max-width: 100%;
+  width: 12vmax;
+  height: 12vmax;
+  object-fit: cover;
+  border-radius: 50%; 
+}
+
+.updateAvatarForm {
+  margin-top: 20px; 
+}
+
+#updateAvatarImage {
+  text-align: center;
+}
+
+#updateAvatarImage > input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  z-index: 2;
+  height: 5vh;
+  border: none;
+  margin: 0%;
+  font: 400 0.8vmax Lucida Sans;
+  transition: all 0.5s;
+  padding: 0 1vmax;
+  color: rgba(0, 0, 0, 0.623);
+  background-color: #bdddff;
+}
+
+#updateAvatarImage > input::file-selector-button:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.updateAvatarBtn {
+  display: block;
+  margin: 10px auto; 
+  margin-left: 44.6vmax;
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.updateAvatarBtn:hover {
+  background-color: #036ee0; 
+}
+
+
 .infoSummary {
   margin: 2rem 0;
 }

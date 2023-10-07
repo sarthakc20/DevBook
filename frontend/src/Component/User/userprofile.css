@@ -1,0 +1,71 @@
+.ProfileInfo {
+  display: flex;
+  padding: 1vmax;
+  height: 7vmax;
+  align-items: flex-start;
+  box-sizing: border-box;
+  margin-top: 4vmax;
+  margin-left: 2vmax;
+}
+
+.ProfileInfo > img {
+  width: 9.2vmax;
+  border-radius: 50%;
+}
+
+.ProfileInfo > div {
+  display: flex;
+  margin: 0.5vmax 1vmax;
+  flex-direction: column;
+}
+
+.ProfileInfo > div > h2 {
+  font: 300 2.8vmax Lucida Sans;
+  color: #00684a;
+  text-decoration: none;
+}
+
+.ProfileInfo > div > span {
+  font: 300 1.2vmax "Roboto";
+  color: rgba(62, 62, 62, 0.852);
+}
+
+.ProfileInfo > div > p {
+  padding-top: 0.4vmax;
+  color: #13aa52;
+  font: 100 1vmax "Roboto";
+}
+
+.infoContainer > p {
+  text-align: center;
+  color: #13aa52;
+  font: 100 1.3vmax "Roboto";
+}
+
+@media screen and (max-width: 768px) {
+  .ProfileInfo {
+    padding: 3vmax;
+    height: 25vmax;
+  }
+
+  .ProfileInfo > img {
+    width: 9vmax;
+  }
+
+  .ProfileInfo > div {
+    margin: 1vmax 2vmax;
+  }
+
+  .ProfileInfo > div > h2 {
+    font: 300 2vmax Lucida Sans;
+  }
+
+  .ProfileInfo > div > span {
+    padding-top: 0.2vmax;
+    font: 300 1.9vmax "Roboto";
+  }
+
+  .ProfileInfo > div > p {
+    font: 100 2vmax "Roboto";
+  }
+}

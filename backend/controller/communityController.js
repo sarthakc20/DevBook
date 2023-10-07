@@ -33,6 +33,8 @@ exports.createPost = catchAsyncError(async (req, res, next) => {
   req.body.user = req.user.name; // who posted
 
   req.body.userID = req.user._id; // user's ID
+
+  req.body.userAvatar = req.user.avatar;
   
   const post = await Community.create(req.body);
 
@@ -154,10 +156,10 @@ exports.deletePosts = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Post not found", 404));
   }
 
-  // if (post.image) {
+  // if (post.images) {
   //   // Delete the image from Cloudinary
-  //   await cloudinary.v2.uploader.destroy(post.image.public_id);
-  //   post.image = null;
+  //   await cloudinary.v2.uploader.destroy(post.images.public_id);
+  //   post.images = null;
   // }
 
   await post.deleteOne();
@@ -177,6 +179,19 @@ exports.myPosts = catchAsyncError(async (req, res, next) => {
     posts,
   });
 });
+
+// Get posts by a specific user
+exports.userPosts = catchAsyncError(async (req, res, next) => {
+  const userId = req.params.id; 
+
+  const userPosts = await Community.find({ userID: userId }); // 'userID' field to filter
+
+  res.status(200).json({
+    success: true,
+    userPosts,
+  });
+});
+
 
 // Get All Comments of a Post
 exports.getPostComment = catchAsyncError(async (req, res, next) => {

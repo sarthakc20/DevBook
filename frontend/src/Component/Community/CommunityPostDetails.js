@@ -26,6 +26,7 @@ import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import RecommendedPost from "./RecommendedPost";
+import profilelogo from "../../images/user.png";
 
 const CommunityPostDetails = () => {
   const { id } = useParams();
@@ -111,7 +112,18 @@ const CommunityPostDetails = () => {
               <div className="detailsBlock-1">
                 <h2>{post.name}</h2>
                 <p>Post # {post._id}</p>
-                <h3>Posted by {post.user}</h3>
+                <h3>
+                  <div>
+                  { post.userAvatar ? (
+                    <img src={post.userAvatar.url} alt={post.user} />
+                  ) : (
+                    <img src={profilelogo} alt={post.user} />
+                  )}
+                  </div>
+                  <NavLink to={`/user/profile/${post.userID}`}>{post.user}</NavLink>
+                  <br />
+                  <p>Posted on {String(post.createdAt).substring(0, 10)}</p>
+                </h3>
                 <span>Topic :{post.topic}</span>
               </div>
 

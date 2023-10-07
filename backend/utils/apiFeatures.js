@@ -20,6 +20,20 @@ class ApiFeatures {
     return this;
   }
 
+  searchUser() {
+    const keyword = this.queryStr.keyword
+      ? {
+          name: {
+            $regex: this.queryStr.keyword,
+            $options: "i",
+          },
+        }
+      : {};
+
+    this.query = this.query.find({ ...keyword });
+    return this;
+  }
+
   filter() {
     const queryCopy = { ...this.queryStr };
     const removeFields = ["keyword", "page", "limit", "topic", "category"]; // Add "topic" to removeFields

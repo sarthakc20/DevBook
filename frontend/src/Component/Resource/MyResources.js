@@ -14,11 +14,11 @@ const MyResources = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, error, resources } = useSelector(
+  const { loading:resloading, error, resources } = useSelector(
     (state) => state.myResources
   );
 
-  const { user } = useSelector((state) => state.user);
+  const { loading=true, user } = useSelector((state) => state.user);
 
   const { error: deleteError, isDeleted } = useSelector((state) => state.deleteResource);
 
@@ -43,7 +43,7 @@ const MyResources = () => {
 
   return (
     <>
-      {loading ? (
+      {(loading || resloading) ? (
         <Loader />
       ) : (
         <>

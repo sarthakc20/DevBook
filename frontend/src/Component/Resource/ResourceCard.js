@@ -6,6 +6,7 @@ import {
   DialogTitle,
   DialogActions,
 } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const ResourceCard = ({ resource }) => {
 
@@ -34,7 +35,7 @@ const ResourceCard = ({ resource }) => {
           {truncate(resource?.description, 210)} <button onClick={readToggle}>...Click to Read</button>
         </span>
       </div>
-      <h5>Resourceed by {resource.user}</h5>
+      <h5>Resourceed by <NavLink to={`/user/profile/${resource.userID}`}>{resource.user}</NavLink></h5>
       <a href={resource.link} target="_blank">
         Click To Visit
       </a>

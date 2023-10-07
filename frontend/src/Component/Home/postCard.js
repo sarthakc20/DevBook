@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
             {truncate(post?.description, 150)}
           </span>
         </div>
-        <h5>Posted by {post.user}</h5>
+        <h5>Posted by <NavLink to={`/user/profile/${post.userID}`}>{post.user}</NavLink></h5>
         <div className="postCardBtn">
           <button className="cmntLink" onClick={commentToggle}>
             Comments ({post.numOfComments})

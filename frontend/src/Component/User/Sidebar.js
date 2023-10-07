@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
 import logo from "../../images/DevbookLogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { TreeView, TreeItem } from "@mui/lab";
 import { MdExpandMore } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
 import { MdImportExport } from "react-icons/md";
-import { FaList, FaUserEdit } from "react-icons/fa";
+import { FaList, FaUserEdit, FaUsers } from "react-icons/fa";
 import { RiDashboardFill } from "react-icons/ri";
-import { BiSolidLockOpen } from "react-icons/bi";
+import { BiSolidLockOpen, BiWorld } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+
+  const { user } = useSelector((state) => state.user);
+
   return (
     <div className="sidebar">
       <Link to="/">
@@ -36,7 +40,6 @@ const Sidebar = () => {
             <Link to="/community/new">
               <TreeItem nodeId="3" label="Create Post" icon={<MdAddCircle />} />
             </Link>
-
           </TreeItem>
         </TreeView>
       </Link>
@@ -52,22 +55,37 @@ const Sidebar = () => {
             </Link>
 
             <Link to="/resources/new">
-              <TreeItem nodeId="3" label="Create Resource" icon={<MdAddCircle />} />
+              <TreeItem
+                nodeId="3"
+                label="Create Resource"
+                icon={<MdAddCircle />}
+              />
             </Link>
-
           </TreeItem>
         </TreeView>
       </Link>
 
       <Link to="/me/update">
         <p>
-            <FaUserEdit /> Edit Profile
+          <FaUserEdit /> Edit Profile
         </p>
       </Link>
 
       <Link to="/password/update">
         <p>
-            <BiSolidLockOpen /> Change Password
+          <BiSolidLockOpen /> Change Password
+        </p>
+      </Link>
+
+      <Link to="/users">
+        <p>
+          <FaUsers /> All Users
+        </p>
+      </Link>
+
+      <Link to={`/user/profile/${user._id}`}>
+        <p>
+          <BiWorld /> My Public Profile
         </p>
       </Link>
     </div>

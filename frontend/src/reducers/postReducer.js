@@ -28,6 +28,9 @@ import {
   UPDATE_POST_REQUEST,
   UPDATE_POST_RESET,
   UPDATE_POST_SUCCESS,
+  USER_POSTS_FAIL,
+  USER_POSTS_REQUEST,
+  USER_POSTS_SUCCESS,
 } from "../constants/postConstants";
 
 export const postReducer = (state = { posts: [] }, action) => {
@@ -137,6 +140,36 @@ export const myPostsReducer = (state = { posts: [] }, action) => {
       };
 
     case MY_POSTS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const userPostsReducer = (state = { userPosts: [] }, action) => {
+  switch (action.type) {
+    case USER_POSTS_REQUEST:
+      return {
+        loading: true,
+      };
+
+    case USER_POSTS_SUCCESS:
+      return {
+        loading: false,
+        userPosts: action.payload,
+      };
+
+    case USER_POSTS_FAIL:
       return {
         loading: false,
         error: action.payload,

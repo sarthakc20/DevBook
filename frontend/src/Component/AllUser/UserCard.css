@@ -1,0 +1,80 @@
+.userCard {
+  width: 28vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+  border: 1px solid rgba(205, 205, 205, 0.833);
+  border-radius: 5px;
+}
+
+.userCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1vmax);
+}
+
+.ProfileCardInfo {
+  display: flex;
+  padding: 1vmax;
+  height: 7vmax;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.ProfileCardInfo > img {
+  width: 5vmax;
+}
+
+.ProfileCardInfo > div {
+  display: flex;
+  margin: 0vmax 1vmax;
+  flex-direction: column;
+}
+
+.ProfileCardInfo > div > h2 {
+  font: 300 1.8vmax Lucida Sans;
+  color: #00684a;
+  text-decoration: none;
+}
+
+.ProfileCardInfo > div > span {
+  font: 300 1vmax "Roboto";
+  color: rgba(62, 62, 62, 0.852);
+}
+
+.ProfileCardInfo > div > p {
+  padding-top: 0.4vmax;
+  color: #13aa52;
+  font: 100 0.9vmax "Roboto";
+}
+
+@media screen and (max-width: 768px) {
+  .ProfileCardInfo {
+    padding: 3vmax;
+    height: 25vmax;
+  }
+
+  .ProfileCardInfo > img {
+    width: 9vmax;
+  }
+
+  .ProfileInfo > div {
+    margin: 1vmax 2vmax;
+  }
+
+  .ProfileInfo > div > h2 {
+    font: 300 2vmax Lucida Sans;
+  }
+
+  .ProfileInfo > div > span {
+    padding-top: 0.2vmax;
+    font: 300 1.9vmax "Roboto";
+  }
+
+  .ProfileInfo > div > p {
+    font: 100 2vmax "Roboto";
+  }
+}

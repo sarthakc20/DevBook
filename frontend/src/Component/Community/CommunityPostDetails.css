@@ -52,10 +52,28 @@ body {
   border-bottom: 2px solid rgba(0, 0, 0, 0.171);
   padding-bottom: 2vmax;
   color: rgba(0, 0, 0, 0.678);
-  font: 500 1.5vmax "Roboto";
+  font: 500 2vmax "Roboto";
   text-align: center;
   display: block;
   width: 100%;
+}
+
+.detailsBlock-1 > h3 > a {
+  text-decoration: none;
+  color: #00684a;
+  font: 500 2vmax "Roboto";
+}
+
+.detailsBlock-1 > h3 > a:hover {
+  text-decoration: underline;
+  color: #13aa52;
+}
+
+.detailsBlock-1 > h3 > div > img {
+  width: 2.9vmax; 
+  height: 2.9vmax;
+  border-radius: 50%; 
+  margin-right: 5px;
 }
 
 .detailsBlock-1 p {
@@ -85,6 +103,7 @@ body {
 }
 
 .detailsBlock-2-1 {
+  margin-top: 1vmax;
   padding-right: 2vmax;
 }
 

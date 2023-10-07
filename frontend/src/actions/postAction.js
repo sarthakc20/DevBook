@@ -25,6 +25,9 @@ import {
   UPDATE_POST_FAIL,
   UPDATE_POST_REQUEST,
   UPDATE_POST_SUCCESS,
+  USER_POSTS_FAIL,
+  USER_POSTS_REQUEST,
+  USER_POSTS_SUCCESS,
 } from "../constants/postConstants";
 
 // GET ALL POSTS (With Search)
@@ -117,6 +120,22 @@ export const myPosts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MY_POSTS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// User Posts
+export const userAllPosts = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_POSTS_REQUEST });
+
+    const { data } = await axios.get(`/api/v1/community/user/${id}`);
+
+    dispatch({ type: USER_POSTS_SUCCESS, payload: data.userPosts });
+  } catch (error) {
+    dispatch({
+      type: USER_POSTS_FAIL,
       payload: error.response.data.message,
     });
   }
