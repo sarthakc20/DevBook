@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 import logo from "../../images/DevbookLogo.png";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@mui/lab";
 import { MdExpandMore } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";

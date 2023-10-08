@@ -9,6 +9,7 @@ import MetaData from "../Layout/MetaData";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, register } from "../../actions/userAction";
+import profilelogo from "../../images/user.png";
 
 const Signin = () => {
   const alert = useAlert();
@@ -27,6 +28,9 @@ const Signin = () => {
     password: "",
   });
 
+  const [avatar, setAvatar] = useState();
+  const [avatarPreview, setAvatarPreview] = useState(profilelogo);
+
   const { name, email, password } = user;
 
   const registerSubmit = (e) => {
@@ -37,11 +41,25 @@ const Signin = () => {
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("password", password);
+    myForm.set("avatar", avatar);
     dispatch(register(myForm));
   };
 
-  const registerHandler = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  const registerDataChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
 
   useEffect(() => {
@@ -77,7 +95,7 @@ const Signin = () => {
                         placeholder="name"
                         name="name"
                         value={name}
-                        onChange={registerHandler}
+                        onChange={registerDataChange}
                       />
                     </div>
                     <div className="inputBx">
@@ -89,7 +107,7 @@ const Signin = () => {
                         placeholder="email"
                         name="email"
                         value={email}
-                        onChange={registerHandler}
+                        onChange={registerDataChange}
                       />
                     </div>
 
@@ -102,7 +120,17 @@ const Signin = () => {
                         placeholder="password"
                         name="password"
                         value={password}
-                        onChange={registerHandler}
+                        onChange={registerDataChange}
+                      />
+                    </div>
+
+                    <div id="registerImage">
+                      <img src={avatarPreview} alt="Avatar Preview" />
+                      <input
+                        type="file"
+                        name="avatar"
+                        accept="image/*"
+                        onChange={registerDataChange}
                       />
                     </div>
 

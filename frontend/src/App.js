@@ -34,7 +34,7 @@ import NotFound from "./Component/Layout/Not Found/NotFound";
 
 function App() {
 
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
 
@@ -43,8 +43,11 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-
-    store.dispatch(loadUser());
+    
+    if(user){
+      store.dispatch(loadUser());
+    }
+    
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { clearErrors, userAllPosts } from "../../actions/postAction";
 import {
-  getUserDetails,
+  getUserDetail,
   clearErrors as userClear,
 } from "../../actions/userAction";
 import Loader from "../../Loader/Loader";
@@ -43,7 +43,7 @@ const UserProfile = () => {
 
     dispatch(userAllPosts(id));
 
-    dispatch(getUserDetails(id));
+    dispatch(getUserDetail(id));
 
     window.scrollTo(0, 0);
   }, [dispatch, error, alert, id]);

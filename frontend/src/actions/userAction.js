@@ -20,9 +20,6 @@ import {
   RESET_PASSWORD_FAIL,
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
-  UPDATE_AVATAR_FAIL,
-  UPDATE_AVATAR_REQUEST,
-  UPDATE_AVATAR_SUCCESS,
   UPDATE_PASSWORD_FAIL,
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_SUCCESS,
@@ -59,7 +56,7 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
 
-    const config = { headers: { "Content-Type": "application/json" } };
+    const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     const { data } = await axios.post(`/api/v1/signup`, userData, config);
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
@@ -113,23 +110,23 @@ export const updateProfile = (userData) => async (dispatch) => {
   }
 };
 
-// Update Avatar
-export const updateAvatar = (userData) => async (dispatch) => {
-  try {
-    dispatch({ type: UPDATE_AVATAR_REQUEST });
+// // Update Avatar
+// export const updateAvatar = (userData) => async (dispatch) => {
+//   try {
+//     dispatch({ type: UPDATE_AVATAR_REQUEST });
 
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
+//     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
-    const { data } = await axios.put(`/api/v1/me/avatar`, userData, config);
+//     const { data } = await axios.put(`/api/v1/me/avatar`, userData, config);
 
-    dispatch({ type: UPDATE_AVATAR_SUCCESS, payload: data.success });
-  } catch (error) {
-    dispatch({
-      type: UPDATE_AVATAR_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+//     dispatch({ type: UPDATE_AVATAR_SUCCESS, payload: data.success });
+//   } catch (error) {
+//     dispatch({
+//       type: UPDATE_AVATAR_FAIL,
+//       payload: error.response.data.message,
+//     });
+//   }
+// };
 
 // Update Password
 export const updatePassword = (passwords) => async (dispatch) => {
@@ -192,7 +189,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 };
 
 // Get User Details 
-export const getUserDetails = (id) => async (dispatch) => {
+export const getUserDetail = (id) => async (dispatch) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
 

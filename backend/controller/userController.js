@@ -9,12 +9,21 @@ const ApiFeatures = require("../utils/apiFeatures");
 
 // Sign Up User
 exports.signupUser = catchAsyncError(async (req, res, next) => {
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
   const { name, email, password } = req.body;
 
   const user = await User.create({
     name,
     email,
     password,
+    avatar: {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    },
   });
 
   const devBookUrl = `${req.protocol}://${req.get("host")}/`;
@@ -224,44 +233,44 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
   });
 });
 
-// Update User Profile Image
-exports.updateImage = catchAsyncError(async (req, res, next) => {
-  // Adding cloudinary
-  const user = await User.findById(req.user.id);
+// // Update User Profile Image
+// exports.updateImage = catchAsyncError(async (req, res, next) => {
+//   // Adding cloudinary
+//   const user = await User.findById(req.user.id);
 
-  // Check if the user exists
-  if (!user) {
-    return res.status(404).json({
-      success: false,
-      message: "User not found.",
-    });
-  }
+//   // Check if the user exists
+//   if (!user) {
+//     return res.status(404).json({
+//       success: false,
+//       message: "User not found.",
+//     });
+//   }
 
-  // If the user already has an avatar, delete the old one from Cloudinary
-  if (user.avatar && user.avatar.public_id) {
-    await cloudinary.v2.uploader.destroy(user.avatar.public_id);
-  }
+//   // If the user already has an avatar, delete the old one from Cloudinary
+//   if (user.avatar && user.avatar.public_id) {
+//     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+//   }
 
-  // Upload the new avatar to Cloudinary
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    folder: "avatars",
-    width: 150,
-    crop: "scale",
-  });
+//   // Upload the new avatar to Cloudinary
+//   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+//     folder: "avatars",
+//     width: 150,
+//     crop: "scale",
+//   });
 
-  // Update the user's avatar field in the user object
-  user.avatar = {
-    public_id: myCloud.public_id,
-    url: myCloud.secure_url,
-  };
+//   // Update the user's avatar field in the user object
+//   user.avatar = {
+//     public_id: myCloud.public_id,
+//     url: myCloud.secure_url,
+//   };
 
-  // Save the updated user data
-  await user.save();
+//   // Save the updated user data
+//   await user.save();
 
-  res.status(200).json({
-    success: true,
-  });
-});
+//   res.status(200).json({
+//     success: true,
+//   });
+// });
 
 // Get single user
 exports.getSingleUser = catchAsyncError(async (req, res, next) => {

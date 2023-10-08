@@ -8,7 +8,6 @@ const {
   getUserDetails,
   updatePassword,
   updateProfile,
-  updateImage,
   getSingleUser,
   getAllUser,
 } = require("../controller/userController");
@@ -31,7 +30,7 @@ router.route("/user/:id").get(getSingleUser);
 
 router.route("/users").get(getAllUser);
 
-router.route("/me/avatar").put(isAuthenticatedUser, updateImage);
+// router.route("/me/avatar").put(isAuthenticatedUser, updateImage);
 
 router.route("/password/update").put(isAuthenticatedUser, updatePassword);
 
