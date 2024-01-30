@@ -113,6 +113,7 @@ const Community = () => {
       ) : (
         <>
           <MetaData title={`Community Post (${currentPage})`} />
+
           <h2 className="postsHeading">Our Community Posts</h2>
 
           {user && user ? (

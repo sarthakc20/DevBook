@@ -90,8 +90,25 @@ nav {
   display: none;
 }
 
+
+#navigationSelect {
+  background-color: #fff; 
+  border: none;
+  padding-right: 0.65vmax; 
+  padding-left: 0.65vmax; 
+  font-size: 1.2vmax; 
+  cursor: pointer;
+  transition: color 0.3s;
+  outline: none;
+}
+
+#navigationSelect:hover {
+  color: #13aa52;
+}
+
 .sign-div {
   display: flex;
+  padding-top: 0.2vmax;
 }
 
 .navbar-link.signin {

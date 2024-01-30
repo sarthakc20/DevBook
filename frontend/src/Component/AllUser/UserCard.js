@@ -6,7 +6,7 @@ import "./UserCard.css";
 const UserCard = ({ user }) => {
   return (
     <>
-      <NavLink to={`/user/profile/${user._id}`} className="userCard">
+      <NavLink to={`/users/profile/${user._id}`} className="userCard">
         <div className="ProfileCardInfo">
           {user.avatar ? (
             <img src={user.avatar.url} alt={user.name} />

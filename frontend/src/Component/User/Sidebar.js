@@ -83,7 +83,7 @@ const Sidebar = () => {
         </p>
       </Link>
 
-      <Link to={`/user/profile/${user._id}`}>
+      <Link to={`/users/profile/${user._id}`}>
         <p>
           <BiWorld /> My Public Profile
         </p>

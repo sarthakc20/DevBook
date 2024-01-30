@@ -375,6 +375,30 @@
   
 }
 
+.homeCommUser {
+  display: flex;
+  justify-content: center;
+}
+
+.homeCommUser > a {
+  background-color: #21313c;
+  color: #eaeaea;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 1vmax;
+  border: 0.1vmax solid #13aa52;
+  border-radius: 4px;
+  transition: all 0.5s;
+}
+
+.homeCommUser > a:hover {
+  background-color: white;
+  color: #13aa52;
+  
+}
+
 /* Back top Toggle */
 .back-to-top-button {
   background-color: #13aa52;

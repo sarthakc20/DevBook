@@ -120,7 +120,7 @@ const CommunityPostDetails = () => {
                     <img src={profilelogo} alt={post.user} />
                   )}
                   </div>
-                  <NavLink to={`/user/profile/${post.userID}`}>{post.user}</NavLink>
+                  <NavLink to={`/users/profile/${post.userID}`}>{post.user}</NavLink>
                   <br />
                   <p>Posted on {String(post.createdAt).substring(0, 10)}</p>
                 </h3>

@@ -26,26 +26,30 @@ exports.signupUser = catchAsyncError(async (req, res, next) => {
     },
   });
 
-  const devBookUrl = `${req.protocol}://${req.get("host")}/`;
-
-  const message = `Welcome to DevBook, ${user.name}. You are registered successfully.\n Start exploring now!\nClick to visit DevBook: \n${devBookUrl}`;
-
   sendToken(user, 201, res);
 
-  try {
-    await sendEmail({
-      email: user.email,
-      subject: `DeevBook Registration Successfull`,
-      message,
-    });
+  // const devBookUrl = `${req.protocol}://${req.get("host")}/`;
 
-    res.status(200).json({
-      success: true,
-      message: `A successfull registration Email sent to ${user.email}`,
-    });
-  } catch (error) {
-    return next(new ErrorHandler(error.message, 500));
-  }
+  // const devBookUrl = `${process.env.LOCALHOST}/`;
+
+  // const message = `Welcome to DevBook, ${user.name}. You are registered successfully.\n Start exploring now!\nClick to visit DevBook: \n${devBookUrl}`;
+
+  // sendToken(user, 201, res);
+
+  // try {
+  //   await sendEmail({
+  //     email: user.email,
+  //     subject: `DeevBook Registration Successfull`,
+  //     message,
+  //   });
+
+  //   res.status(200).json({
+  //     success: true,
+  //     message: `A successfull registration Email sent to ${user.email}`,
+  //   });
+  // } catch (error) {
+  //   return next(new ErrorHandler(error.message, 500));
+  // }
 });
 
 // Login User

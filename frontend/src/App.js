@@ -31,6 +31,7 @@ import ResetPassword from "./Component/User/ResetPassword"
 import UserProfile from "./Component/User/UserProfile"
 import AllUsers from "./Component/AllUser/AllUsers"
 import NotFound from "./Component/Layout/Not Found/NotFound";
+import Breadcrumbs from "./Component/Breadcrumbs/Breadcrumbs";
 
 function App() {
 
@@ -54,6 +55,8 @@ function App() {
     <>
       <Header />
 
+      <Breadcrumbs/>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin />} />
@@ -66,7 +69,7 @@ function App() {
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/community/:id" element={<RecommendedPost />} />
-        <Route path="/user/profile/:id" element={<UserProfile />} />
+        <Route path="/users/profile/:id" element={<UserProfile />} />
         <Route path="/users" element={<AllUsers />} />
         <Route path="*" element={<NotFound />} />
 

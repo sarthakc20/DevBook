@@ -14,6 +14,7 @@ import Loader from "../../Loader/Loader";
 import { getAllResources } from "../../actions/resourceAction";
 import ResourceCard from "../Resource/ResourceCard";
 import Carousel from "react-material-ui-carousel";
+import { FaUsers } from "react-icons/fa";
 
 const Home = () => {
   const alert = useAlert();
@@ -37,8 +38,7 @@ const Home = () => {
 
     // Function to handle scroll event
     const handleScroll = () => {
-      const scrollTop =
-        window.scrollY || document.documentElement.scrollTop;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       if (scrollTop > 100) {
         // If the user scrolls down more than 100 pixels, show the button
@@ -109,6 +109,12 @@ const Home = () => {
               <p>1000+ Users</p>
               <p>5000+ Resources</p>
               <p>Strong Community Support</p>
+            </div>
+
+            <div className="homeCommUser">
+              <NavLink to="/users">
+                <FaUsers /> All Users
+              </NavLink>
             </div>
 
             <div className="homepage3-sub1">
@@ -225,7 +231,7 @@ const Home = () => {
           </div>
 
           <div className="container" id="container">
-            {posts && posts.slice(0,6).map((post) => <Post post={post} />)}
+            {posts && posts.slice(0, 6).map((post) => <Post post={post} />)}
           </div>
 
           <div className="homeComm">
