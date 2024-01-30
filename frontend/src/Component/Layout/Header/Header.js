@@ -59,7 +59,8 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li>
-                  <select
+
+                  {/* <select
                       id="navigationSelect"
                       required
                       onChange={handleNavigation}
@@ -69,14 +70,15 @@ const Header = () => {
                       </option>
                       <option value="Community">Community</option>
                       <option value="Learn">Learn</option>
-                    </select>
-                    {/* <NavLink
+                    </select> */}
+
+                    <NavLink
                       className="navbar-link"
                       to="/community"
                       onClick={() => setOpenMenue(false)}
                     >
                       Community
-                    </NavLink> */}
+                    </NavLink>
                   </li>
                   <li>
                     <NavLink
@@ -153,7 +155,7 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <select
+                    {/* <select
                       id="navigationSelect"
                       required
                       onChange={handleNavigation}
@@ -163,15 +165,15 @@ const Header = () => {
                       </option>
                       <option value="Community">Community</option>
                       <option value="Learn">Learn</option>
-                    </select>
+                    </select> */}
 
-                    {/* <NavLink
+                    <NavLink
                   className="navbar-link"
                   to="/community"
                   onClick={() => setOpenMenue(false)}
                 >
                   Community
-                </NavLink> */}
+                </NavLink>
                   </li>
                   <li>
                     <NavLink
