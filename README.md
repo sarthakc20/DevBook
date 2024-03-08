@@ -1,5 +1,5 @@
 **Hosted Link:** https://deevbook.onrender.com/
-(It may take some time to load for using a free hosting)
+ (It may take some time to load for using a free hosting)
 
 ![Home Page Scroll 1](image.png)
 
