@@ -1,15 +1,24 @@
-# Hosted Link: https://deevbook.onrender.com/
+**Hosted Link:** https://deevbook.onrender.com/
 (It may take some time to load for using a free hosting)
 
 ![Home Page Scroll 1](image.png)
+
 ![Home Page Scroll 2](image-1.png)
+
 ![Community Page](image-2.png)
+
 ![Community Page Bottom](image-3.png)
+
 ![Community Post Detail](image-4.png)
+
 ![Resource Page](image-5.png)
+
 ![Resource Page Bottom](image-6.png)
+
 ![Sign In](image-7.png)
+
 ![Sign Up](image-8.png)
+
 
 # About this project:
 **Name**: DevBook
@@ -21,8 +30,7 @@
 • Managed the state with Redux and secured with jwt authentication.
 • Used Nodemailer for email sending and Cloudinary for image uploads.
 
-Sign in or sign up to DevBook to create your first community post.
-
+Sign in or sign up to DevBook to create your first community post. [Click to Visit](https://deevbook.onrender.com/)
 
 
 
