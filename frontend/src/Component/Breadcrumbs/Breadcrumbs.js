@@ -9,7 +9,7 @@ const Breadcrumbs = () => {
   let breadcrumbPath = "";
 
   // Check if pathnames contain "resources", and don't render breadcrumbs if true
-  if (pathnames.length === 1 && pathnames[0] === "resources") {
+  if (pathnames.length === 1 && pathnames[0] === "resources" && pathnames[0] === "account") {
     return null;
   }
 
