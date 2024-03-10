@@ -6,12 +6,13 @@ import "./Breadcrumbs.css";
 const Breadcrumbs = () => {
   const { pathname } = useLocation();
   const pathnames = pathname.split("/").filter((a) => a); // filter to get rid of falsy paths
-  let breadcrumbPath = "";
 
-  // Check if pathnames contain "resources", and don't render breadcrumbs if true
-  if (pathnames.length === 1 && pathnames[0] === "resources" && pathnames[0] === "account") {
+  // Check if path contains "resources" or "account" or if it has only one segment, and don't render breadcrumbs if true
+  if ((pathnames.includes("resources") || pathnames.includes("account")) || pathnames.length === 1) {
     return null;
   }
+
+  let breadcrumbPath = "";
 
   return (
     <div className="breadcrumbs">
