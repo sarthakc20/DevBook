@@ -2,68 +2,44 @@ import React from "react";
 import "./Sidebar.css";
 // import logo from "../../images/DevbookLogo.png";
 import { Link } from "react-router-dom";
-import { TreeView, TreeItem } from '@mui/x-tree-view';
-import { MdExpandMore } from "react-icons/md";
 import { MdAddCircle } from "react-icons/md";
-import { MdImportExport } from "react-icons/md";
 import { FaList, FaUserEdit, FaUsers } from "react-icons/fa";
 import { RiDashboardFill } from "react-icons/ri";
 import { BiSolidLockOpen, BiWorld } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
 const Sidebar = () => {
-
   const { user } = useSelector((state) => state.user);
 
   return (
     <div className="sidebar">
-      {/* <Link to="/">
-        <img src={logo} alt="E-MARKET" />
-      </Link> */}
-
-      <Link to="/account">
+      <div className="inner-side">
+      <Link to="/account/my/posts">
         <p>
-          <RiDashboardFill /> My Profile
+          <FaList /> My Posts
         </p>
       </Link>
 
-      <Link>
-        <TreeView
-          defaultCollapseIcon={<MdExpandMore />}
-          defaultExpandIcon={<MdImportExport />}
-        >
-          <TreeItem nodeId="1" label="Community">
-            <Link to="/account/my/posts">
-              <TreeItem nodeId="2" label="My Posts" icon={<FaList />} />
-            </Link>
+      <Link to="/community/new">
+        <p>
+          <MdAddCircle /> Create Post
+        </p>
+      </Link>
+      </div>
 
-            <Link to="/community/new">
-              <TreeItem nodeId="3" label="Create Post" icon={<MdAddCircle />} />
-            </Link>
-          </TreeItem>
-        </TreeView>
+      <div className="inner-side">
+      <Link to="/account/my/resources">
+        <p>
+          <FaList /> My Resources
+        </p>
       </Link>
 
-      <Link>
-        <TreeView
-          defaultCollapseIcon={<MdExpandMore />}
-          defaultExpandIcon={<MdImportExport />}
-        >
-          <TreeItem nodeId="1" label="Resources">
-            <Link to="/account/my/resources">
-              <TreeItem nodeId="2" label="My Resources" icon={<FaList />} />
-            </Link>
-
-            <Link to="/resources/new">
-              <TreeItem
-                nodeId="3"
-                label="Create Resource"
-                icon={<MdAddCircle />}
-              />
-            </Link>
-          </TreeItem>
-        </TreeView>
+      <Link to="/resources/new">
+        <p>
+          <MdAddCircle /> Create Resource
+        </p>
       </Link>
+      </div>
 
       <Link to="/me/update">
         <p>
