@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Sidebar.css";
 // import logo from "../../images/DevbookLogo.png";
 import { Link } from "react-router-dom";

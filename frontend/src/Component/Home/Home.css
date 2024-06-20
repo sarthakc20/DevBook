@@ -2,10 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  padding-right: 0;
-  padding-left: 0;
-  padding-bottom: 0;
 }
 
 .banner {
@@ -293,9 +289,9 @@
 }
 
 .postCard > h5 > a > img {
-  width: 1.2vmax; 
+  width: 1.2vmax;
   height: 1.2vmax;
-  border-radius: 50%; 
+  border-radius: 50%;
   margin-right: 2px;
 }
 
@@ -372,7 +368,6 @@
 .homeComm > a:hover {
   background-color: white;
   color: #13aa52;
-  
 }
 
 .homeCommUser {
@@ -396,22 +391,21 @@
 .homeCommUser > a:hover {
   background-color: white;
   color: #13aa52;
-  
 }
 
 /* Back top Toggle */
 .back-to-top-button {
   background-color: #13aa52;
   position: fixed;
-  bottom: 20px; 
-  right: 20px; 
-  padding: 15px; 
+  bottom: 20px;
+  right: 20px;
+  padding: 15px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px; 
-  color: white; 
+  font-size: 24px;
+  color: white;
   box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
   text-decoration: none;
   transition: all 0.5s;
@@ -420,7 +414,7 @@
 }
 
 .back-to-top-button:hover {
-  background-color: #0f8f42; 
+  background-color: #0f8f42;
   transform: scale(1.1);
 }
 
