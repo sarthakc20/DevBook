@@ -241,11 +241,15 @@
   margin: 2vmax;
   transition: all 0.5s;
   padding-bottom: 0.5vmax;
+  border-radius: 8px;
+  box-shadow: 0 0 1.5px rgba(15, 15, 15, 0.141);
 }
 
 .postCard > img {
   width: 28vmax;
   max-height: 15vmax;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .postCard > div {
@@ -428,9 +432,9 @@ body.show-back-to-top .back-to-top-button {
     display: none;
   }
 
-  /* .homepage1 {
-    flex-direction: column;
-    padding: 20px;
+  .feature-box {
+    flex: unset;
+    margin-bottom: 2vmax;
   }
 
   .banner > h1 {
@@ -453,10 +457,11 @@ body.show-back-to-top .back-to-top-button {
   }
 
   .buttons {
-    flex-direction: column;
+    justify-content: center;
     padding-left: 0;
     text-align: center;
     margin-top: 1vmax;
+    gap: 20px;
   }
 
   .buttons > a {
@@ -465,6 +470,8 @@ body.show-back-to-top .back-to-top-button {
 
   .homepage3 {
     padding-top: 2vmax;
+    padding-left: 1vmax;
+    padding-right: 1vmax;
   }
 
   .homepage3 > h1 {
@@ -486,33 +493,37 @@ body.show-back-to-top .back-to-top-button {
   .homepage3-sub1 > h1 {
     font-size: 2.5vmax;
     margin: 2vmax 0 0 0;
+    text-align: center;
+    padding-bottom: 1vmax;
   }
 
   .homepage3-sub1 > p {
     font-size: 2vmax;
     margin: 0 0 2vmax 0;
+    text-align: center;
+  }
+
+  .homepage4 {
+    padding: 2vmax;
   }
 
   .homepage4 > img {
     width: 100%;
-    border-radius: 0;
-    border: none;
   }
 
   .homepage5 > h1 {
     font-size: 2.5vmax;
-    margin: 2vmax 0 0 0;
-    padding-top: 1vmax;
+    text-align: center;
   }
 
   .homepage5 > h2 {
     font-size: 2vmax;
-    margin: 0 0 2vmax 0;
+    text-align: center;
   }
 
   .homepage5 > p {
     font-size: 1.2vmax;
-    margin: 0 0 2vmax 0;
+    text-align: center;
   }
 
   .last-btn {
@@ -521,5 +532,5 @@ body.show-back-to-top .back-to-top-button {
 
   .homepage5 > h1:last-child {
     padding-top: 0;
-  } */
+  }
 }

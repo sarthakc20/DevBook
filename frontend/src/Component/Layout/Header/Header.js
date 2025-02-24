@@ -52,7 +52,7 @@ const Header = () => {
                     <NavLink
                       className="navbar-link"
                       to="/"
-                      exact
+                      exact="true"
                       onClick={() => setOpenMenue(false)}
                     >
                       Home
@@ -148,7 +148,7 @@ const Header = () => {
                     <NavLink
                       className="navbar-link"
                       to="/"
-                      exact
+                      exact="true"
                       onClick={() => setOpenMenue(false)}
                     >
                       Home

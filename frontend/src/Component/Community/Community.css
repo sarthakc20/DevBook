@@ -215,7 +215,8 @@
 
 @media screen and (max-width: 768px) {
   .postsHeading {
-    font: 500 2vmax "Roboto";
+    font: 500 2.5vmax "Roboto";
+    width: auto;
   }
 
   .filterBox {
@@ -224,6 +225,19 @@
     position: static;
     margin: auto;
     align-items: center;
+  }
+
+  .searchResultsContainer {
+    top: auto;
+    left: auto;
+    width: 100%;
+    max-height: 21vmax;
+    margin-top: 0;
+  }
+
+  .postFound {
+    margin: 1.5vmax auto;
+    width: auto;
   }
 
   .centered-slider {

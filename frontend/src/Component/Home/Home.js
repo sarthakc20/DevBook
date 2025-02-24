@@ -139,7 +139,7 @@ const Home = () => {
             </div>
 
             <div className="homepage4-1">
-              <div class="feature-box">
+              <div className="feature-box">
                 <h2>Rich Developer Knowledge Base</h2>
                 <p>
                   Access a comprehensive library of articles, tutorials, and
@@ -150,7 +150,7 @@ const Home = () => {
                 </p>
               </div>
 
-              <div class="feature-box">
+              <div className="feature-box">
                 <h2>Vibrant Developer Community</h2>
                 <p>
                   Join a diverse and active community of developers from around
@@ -161,7 +161,7 @@ const Home = () => {
                 </p>
               </div>
 
-              <div class="feature-box">
+              <div className="feature-box">
                 <h2>Empower Others with Your Knowledge</h2>
                 <p>
                   Share your insights, code snippets, and tutorials with the
@@ -216,8 +216,8 @@ const Home = () => {
           <div className="containerRes">
             <Carousel className="caroselClass">
               {resources &&
-                resources.map((resource) => (
-                  <ResourceCard resource={resource} />
+                resources.map((resource, index) => (
+                  <ResourceCard key={index} resource={resource} />
                 ))}
             </Carousel>
           </div>
@@ -231,7 +231,10 @@ const Home = () => {
           </div>
 
           <div className="container" id="container">
-            {posts && posts.slice(0, 6).map((post) => <Post post={post} />)}
+            {posts &&
+              posts
+                .slice(0, 6)
+                .map((post, index) => <Post key={index} post={post} />)}
           </div>
 
           <div className="homeComm">
