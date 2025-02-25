@@ -181,7 +181,7 @@
 }
 
 .resourceCard > img {
-  width: 20vmax;
+  width: 100%;
   min-height: 12vmax;
 }
 
@@ -298,15 +298,24 @@
 }
 
 @media screen and (max-width: 768px) {
+  .resources {
+    margin-left: 0;
+  }
+  .resourceCard {
+    width: 30vmax;
+  }
+
   .resourcesHeading {
     font: 500 2vmax "Roboto";
-  }
+    padding: 2vmax 0;
+    
+}
   
   .resBox {
     max-width: 100%;
   }
 
-  .filterBox {
+  .filterBox_Res {
     padding-top: 2%;
     width: 20vmax;
     position: static;
