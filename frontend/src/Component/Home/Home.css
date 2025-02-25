@@ -533,4 +533,8 @@ body.show-back-to-top .back-to-top-button {
   .homepage5 > h1:last-child {
     padding-top: 0;
   }
+
+  .containerRes {
+    width: 50vw;
+  }
 }

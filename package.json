@@ -14,7 +14,7 @@
   "author": "Sarthak Chatterjee",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.2",
     "cloudinary": "^1.40.0",
     "cookie-parser": "^1.4.6",
