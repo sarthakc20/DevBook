@@ -15,17 +15,20 @@ import { getAllResources } from "../../actions/resourceAction";
 import ResourceCard from "../Resource/ResourceCard";
 import Carousel from "react-material-ui-carousel";
 import { FaUsers } from "react-icons/fa";
+import { getAllUsers } from "../../actions/userAction";
 
 const Home = () => {
   const alert = useAlert();
 
   const dispatch = useDispatch();
 
-  const { loading, error, posts } = useSelector((state) => state.posts);
+  const { loading, error, posts, filteredPostsCount } = useSelector((state) => state.posts);
 
-  const { resources } = useSelector((state) => state.resource);
+  const { resources, filteredresourcesCount } = useSelector((state) => state.resource);
 
   const { user } = useSelector((state) => state.user);
+
+  const { error: usersError, users } = useSelector((state) => state.allUsers);
 
   useEffect(() => {
     if (error) {
@@ -35,6 +38,8 @@ const Home = () => {
     dispatch(getAllPost());
 
     dispatch(getAllResources());
+
+    dispatch(getAllUsers());
 
     // Function to handle scroll event
     const handleScroll = () => {
@@ -57,6 +62,11 @@ const Home = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [dispatch, error, alert]);
+
+  let userCount = users.length;
+  let resourceCount = filteredresourcesCount;
+  let postCount = filteredPostsCount;
+  
 
   return (
     <>
@@ -106,9 +116,9 @@ const Home = () => {
           <div className="homepage3" id="homeContainer2">
             <h1>We have</h1>
             <div className="homepage3-sub">
-              <p>1000+ Users</p>
-              <p>5000+ Resources</p>
-              <p>Strong Community Support</p>
+              <p>{userCount}+ Users</p>
+              <p>{resourceCount}+ Resources</p>
+              <p>Strong Community Support with {postCount}+ posts</p>
             </div>
 
             <div className="homeCommUser">
