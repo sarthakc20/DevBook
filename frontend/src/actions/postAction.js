@@ -22,6 +22,9 @@ import {
   POST_DETAILS_FAIL,
   POST_DETAILS_REQUEST,
   POST_DETAILS_SUCCESS,
+  TRACK_POST_CLICK_FAIL,
+  TRACK_POST_CLICK_REQUEST,
+  TRACK_POST_CLICK_SUCCESS,
   UPDATE_POST_FAIL,
   UPDATE_POST_REQUEST,
   UPDATE_POST_SUCCESS,
@@ -62,25 +65,23 @@ export const getAllPost =
   };
 
 // GET ALL POSTS (Without Filter)
-export const getAllPostsWithoutFilter =
-  () =>
-  async (dispatch) => {
-    try {
-      dispatch({ type: NO_FILTER_ALL_POST_REQUEST });
+export const getAllPostsWithoutFilter = () => async (dispatch) => {
+  try {
+    dispatch({ type: NO_FILTER_ALL_POST_REQUEST });
 
-      const { data } = await axios.get("api/v1/community/nofilter");
+    const { data } = await axios.get("api/v1/community/nofilter");
 
-      dispatch({
-        type: NO_FILTER_ALL_POST_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: NO_FILTER_ALL_POST_FAIL,
-        payload: error.response.data.message,
-      });
-    }
-  };
+    dispatch({
+      type: NO_FILTER_ALL_POST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: NO_FILTER_ALL_POST_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // Create Post
 export const createPost = (postData) => async (dispatch) => {
@@ -221,6 +222,25 @@ export const newComment = (commentData) => async (dispatch) => {
     dispatch({
       type: NEW_COMMENT_FAIL,
       payload: error.response.data.message,
+    });
+  }
+};
+
+// Track Post Click
+export const trackPostClick = (postId) => async (dispatch) => {
+  try {
+    dispatch({ type: TRACK_POST_CLICK_REQUEST });
+
+    const { data } = await axios.put(`/api/v1/post/click/${postId}`);
+
+    dispatch({
+      type: TRACK_POST_CLICK_SUCCESS,
+      payload: data.clicks, // Returning updated click count
+    });
+  } catch (error) {
+    dispatch({
+      type: TRACK_POST_CLICK_FAIL,
+      payload: error.response?.data?.message || "Something went wrong",
     });
   }
 };

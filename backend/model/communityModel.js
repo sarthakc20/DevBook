@@ -78,6 +78,8 @@ const communitySchema = new mongoose.Schema({
     },
   },
 
+  clicks: { type: Number, default: 0 },
+
   createdAt: {
     type: Date,
     default: Date.now,

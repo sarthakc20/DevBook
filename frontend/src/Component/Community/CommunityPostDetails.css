@@ -101,6 +101,10 @@ body {
   text-justify: inter-word;
 }
 
+.detailsBlock-2-1 > p > img {
+  width: 100%;
+}
+
 pre > div {
   border-radius: 5px;
 }

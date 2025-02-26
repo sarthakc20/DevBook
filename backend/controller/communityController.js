@@ -242,3 +242,27 @@ exports.createPostComment = catchAsyncError(async (req, res, next) => {
     success: true,
   });
 });
+
+const userIpSet = new Set(); // Store user IPs temporarily
+
+exports.trackPostClick = catchAsyncError(async (req, res, next) => {
+  const { id } = req.params;
+  const userIp = req.ip; // Get user IP
+
+  if (userIpSet.has(userIp)) {
+    return res.status(429).json({ success: false, message: "Too many clicks!" });
+  }
+
+  userIpSet.add(userIp);
+  setTimeout(() => userIpSet.delete(userIp), 60000); // Allow clicks after 1 min
+
+  const post = await Community.findById(id);
+  if (!post) return res.status(404).json({ success: false, message: "Post not found" });
+
+  post.clicks = (post.clicks || 0) + 1;
+  await post.save({ validateBeforeSave: false });
+
+  res.status(200).json({ success: true, clicks: post.clicks });
+});
+
+

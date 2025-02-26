@@ -22,13 +22,17 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, error, posts, filteredPostsCount } = useSelector((state) => state.posts);
+  const { loading, error, posts, filteredPostsCount } = useSelector(
+    (state) => state.posts
+  );
 
-  const { resources, filteredresourcesCount } = useSelector((state) => state.resource);
+  const { resources, filteredresourcesCount } = useSelector(
+    (state) => state.resource
+  );
 
   const { user } = useSelector((state) => state.user);
 
-  const { error: usersError, users } = useSelector((state) => state.allUsers);
+  const { users } = useSelector((state) => state.allUsers);
 
   useEffect(() => {
     if (error) {
@@ -66,7 +70,6 @@ const Home = () => {
   let userCount = users.length;
   let resourceCount = filteredresourcesCount;
   let postCount = filteredPostsCount;
-  
 
   return (
     <>

@@ -24,6 +24,9 @@ import {
   POST_DETAILS_FAIL,
   POST_DETAILS_REQUEST,
   POST_DETAILS_SUCCESS,
+  TRACK_POST_CLICK_FAIL,
+  TRACK_POST_CLICK_REQUEST,
+  TRACK_POST_CLICK_SUCCESS,
   UPDATE_POST_FAIL,
   UPDATE_POST_REQUEST,
   UPDATE_POST_RESET,
@@ -300,3 +303,33 @@ export const commentReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// Track clicks
+export const postClickReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TRACK_POST_CLICK_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case TRACK_POST_CLICK_SUCCESS:
+      return {
+        loading: false,
+        clicks: action.payload,
+      };
+    case TRACK_POST_CLICK_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+

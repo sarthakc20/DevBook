@@ -176,13 +176,15 @@
   margin: 2vmax;
   transition: all 0.5s;
   padding-bottom: 0.5vmax;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: white;
 }
 
 .resourceCard > img {
   width: 100%;
   min-height: 12vmax;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .resourceCard > div {

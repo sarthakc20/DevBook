@@ -214,6 +214,10 @@
 
 
 @media screen and (max-width: 768px) {
+  .posts {
+    padding: 0 3.5vmax;
+  }
+  
   .postsHeading {
     font: 500 2.5vmax "Roboto";
     width: auto;

@@ -77,21 +77,21 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .contactBox {
     display: grid;
     align-items: center;
-    margin-top: 30%;
     width: 70%;
+    margin-top: 0;
+  }
+
+  .contactContainer {
+    height: 51vh;
   }
 
   .contact_info_item {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 1.5vmax;
-  }
-
-  .contact_info_item:last-child {
-    margin-bottom: 0px;
   }
 }

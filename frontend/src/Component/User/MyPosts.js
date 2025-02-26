@@ -57,7 +57,7 @@ const MyPosts = () => {
               </h1>
               {posts && posts.length > 0 ? (
                 <div className="posts" id="container">
-                  {posts && posts.map((post) => <Posts post={post} />)}
+                  {posts && posts.map((post, index) => <Posts key={index} post={post} />)}
                 </div>
               ) : (
                 <>
