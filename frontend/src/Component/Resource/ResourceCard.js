@@ -35,7 +35,7 @@ const ResourceCard = ({ resource }) => {
           {truncate(resource?.description, 210)} <button onClick={readToggle}>...Click to Read</button>
         </span>
       </div>
-      <h5>Resourceed by <NavLink to={`/users/profile/${resource.userID}`}>{resource.user}</NavLink></h5>
+      <h5>Resourceed by <NavLink to={`/users/${resource.userID}`}>{resource.user}</NavLink></h5>
       <a href={resource.link} target="_blank">
         Click To Visit
       </a>

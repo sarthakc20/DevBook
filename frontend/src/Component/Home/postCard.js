@@ -12,6 +12,7 @@ import { IoMdPricetags } from "react-icons/io";
 import { BiSolidUser } from "react-icons/bi";
 import { trackPostClick } from "../../actions/postAction";
 import { useDispatch } from "react-redux";
+import { FaReadme } from "react-icons/fa6";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -73,6 +74,12 @@ const PostCard = ({ post }) => {
           <h4>No image available</h4>
         )}
         <p>{post.name}</p>
+        <div className="post_clicks-container">
+          <p className="post_duration-or-clicks-text">
+            <FaReadme style={{ verticalAlign: "middle" }} /> {post.clicks}{" "}
+            {post.clicks < 2 ? "read" : "reads"}
+          </p>
+        </div>
         <span>
           <IoMdPricetags style={{ verticalAlign: "middle" }} /> {post.topic}
         </span>
@@ -82,8 +89,7 @@ const PostCard = ({ post }) => {
           </span>
         </div>
         <h5>
-          Posted by{" "}
-          <NavLink to={`/users/profile/${post.userID}`}>{post.user}</NavLink>
+          Posted by <NavLink to={`/users/${post.userID}`}>{post.user}</NavLink>
         </h5>
         <div className="postCardBtn">
           <button className="cmntLink" onClick={commentToggle}>

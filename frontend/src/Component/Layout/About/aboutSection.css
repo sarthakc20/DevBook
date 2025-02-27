@@ -99,6 +99,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .aboutSectionContainer {
+    top: 43%;
+  }
   .aboutSectionContainer > div {
     display: block;
   }

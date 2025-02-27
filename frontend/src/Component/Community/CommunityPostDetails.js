@@ -61,6 +61,16 @@ const CommunityPostDetails = () => {
     setOpen(false);
   };
 
+  const calculateReadingTime = (text) => {
+    if (!text) return "0 min"; // Handle empty description
+
+    const wordsPerMinute = 200; // Average reading speed
+    const words = text.trim().split(/\s+/).length; // Count words
+    const time = Math.ceil(words / wordsPerMinute); // Round up to full minute
+
+    return `${time} min read`;
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -110,17 +120,22 @@ const CommunityPostDetails = () => {
 
             <div>
               <div className="detailsBlock-1">
+                <div className="post_name-post_duration">
                 <h2>{post.name}</h2>
-                <p>Post # {post._id}</p>
+                <p className="post_duration-or-clicks-text"> {calculateReadingTime(post.description)}</p>
+                </div>
+                <p>Post id: {post._id}</p>
                 <h3>
                   <div>
-                  { post.userAvatar ? (
-                    <img src={post.userAvatar.url} alt={post.user} />
-                  ) : (
-                    <img src={profilelogo} alt={post.user} />
-                  )}
+                    {post.userAvatar ? (
+                      <img src={post.userAvatar.url} alt={post.user} />
+                    ) : (
+                      <img src={profilelogo} alt={post.user} />
+                    )}
                   </div>
-                  <NavLink to={`/users/profile/${post.userID}`}>{post.user}</NavLink>
+                  <NavLink to={`/users/${post.userID}`}>
+                    {post.user}
+                  </NavLink>
                   <br />
                   <p>Posted on {String(post.createdAt).substring(0, 10)}</p>
                 </h3>

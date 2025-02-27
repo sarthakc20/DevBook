@@ -69,7 +69,7 @@ function App() {
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/community/:id" element={<RecommendedPost />} />
-        <Route path="/users/profile/:id" element={<UserProfile />} />
+        <Route path="/users/:id" element={<UserProfile />} />
         <Route path="/users" element={<AllUsers />} />
         <Route path="*" element={<NotFound />} />
 
