@@ -1,10 +1,43 @@
-.postsHeading {
-  margin: 2vmax auto;
-  width: 15vw;
+.community__heading {
+  display: flex;
+  margin: 0 auto;
   padding: 2vmax;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.postsHeading {
   color: rgba(0, 0, 0, 0.678);
   font: 500 1.5vmax "Roboto";
   text-align: center;
+  padding-top: 2vmax;
+}
+
+.filterbox__mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.filterbox__mobile svg {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 750px) {
+  .moile_visibility {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .desktop_visibility {
+    display: none;
+  }
 }
 
 .postTogg {
@@ -55,12 +88,12 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 10px;
 }
 
 .searchBox input[type="text"] {
   flex: 1; /* Take up available space */
   padding: 10px 50px;
-  margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
@@ -189,9 +222,10 @@
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  top: 50px; 
+  top: 50px;
   left: 35.1vmax;
   margin-top: 18vmax;
+  z-index: 9;
 }
 
 /* Style for each search result item */
@@ -211,13 +245,11 @@
   background-color: #f5f5f5;
 }
 
-
-
 @media screen and (max-width: 768px) {
   .posts {
     padding: 0 3.5vmax;
   }
-  
+
   .postsHeading {
     font: 500 2.5vmax "Roboto";
     width: auto;
@@ -229,6 +261,10 @@
     position: static;
     margin: auto;
     align-items: center;
+  }
+
+  .searchBox input[type="text"] {
+    padding: 10px 20px;
   }
 
   .searchResultsContainer {

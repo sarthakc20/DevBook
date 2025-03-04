@@ -25,6 +25,10 @@
   color: #13aa52;
 }
 
+.resheading {
+  color: white;
+}
+
 .searchBoxRes {
   display: flex;
   justify-content: center;
@@ -36,12 +40,12 @@
   align-items: center;
   border-radius: 10px;
   padding: 20px;
+  gap: 10px;
 }
 
 .searchBoxRes input[type="text"] {
   flex: 1; /* Take up available space */
   padding: 10px 50px;
-  margin-right: 10px; 
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
@@ -310,9 +314,8 @@
   .resourcesHeading {
     font: 500 2vmax "Roboto";
     padding: 2vmax 0;
-    
-}
-  
+  }
+
   .resBox {
     max-width: 100%;
   }
@@ -343,5 +346,14 @@
 
   .typo {
     color: #21313c;
+  }
+
+  .searchBoxRes input[type="text"] {
+    padding: 10px 20px;
+  }
+
+  .resourceCard > a {
+    padding: 1vmax 3.2vmax;
+    font: 400 1.6vmax "Roboto";
   }
 }

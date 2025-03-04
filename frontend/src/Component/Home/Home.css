@@ -425,7 +425,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 15px;
+  padding: 15px 18px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -437,6 +437,7 @@
   transition: all 0.5s;
   cursor: pointer;
   display: none; /* Initially hide the button */
+  z-index: 10;
 }
 
 .back-to-top-button:hover {
@@ -460,17 +461,17 @@ body.show-back-to-top .back-to-top-button {
   }
 
   .banner > h1 {
-    font-size: 3vmax;
+    font-size: 3.5vmax;
     text-align: center;
   }
 
   .banner > p {
-    font-size: 2vmax;
+    font-size: 2.5vmax;
     text-align: center;
   }
 
   .banner > p > img {
-    width: 12vmax;
+    width: 15vmax;
   }
 
   .lorem {
@@ -487,6 +488,8 @@ body.show-back-to-top .back-to-top-button {
   }
 
   .buttons > a {
+    padding: 1.5vmax 3.5vmax;
+    font: 400 1.6vmax "Roboto";
     margin: 1vmax 0;
   }
 
@@ -510,6 +513,11 @@ body.show-back-to-top .back-to-top-button {
   .homepage3-sub > p {
     padding-right: 0;
     text-align: center;
+  }
+
+  .homeCommUser > a {
+    padding: 1.5vmax 3.5vmax;
+    font: 400 1.6vmax "Roboto";
   }
 
   .homepage3-sub1 > h1 {
@@ -571,5 +579,20 @@ body.show-back-to-top .back-to-top-button {
   .badgeContainer {
     top: 1px;
     right: 2px;
+  }
+
+  .cmntLink {
+    font: 400 1.6vmax "Roboto";
+    padding: 1.2vmax 2.5vmax;
+  }
+
+  .readLink {
+    font: 400 1.6vmax "Roboto";
+    padding: 1.2vmax 2.5vmax;
+  }
+
+  .homeComm > a {
+    padding: 1.5vmax 3.5vmax;
+    font: 400 1.6vmax "Roboto";
   }
 }

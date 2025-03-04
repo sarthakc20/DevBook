@@ -9,7 +9,14 @@ import {
 } from "../../actions/resourceAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
-import { Typography } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Typography,
+} from "@mui/material";
 import ResourceCard from "./ResourceCard.js";
 import "./Resource.css";
 import Loader from "../../Loader/Loader";
@@ -42,6 +49,8 @@ const Resource = () => {
   const [keyword, setKeyword] = useState("");
 
   const [showResults, setShowResults] = useState(true);
+
+  const [open, setOpen] = useState(false);
 
   const { user } = useSelector((state) => state.user);
 
@@ -97,9 +106,13 @@ const Resource = () => {
     setShowResults(false);
   };
 
+  const mobileFilterBoxToggle = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
+
   return (
     <>
-      <div className="filterBox_Res">
+      <div className="filterBox_Res desktop_visibility">
         <Typography className="typo">
           Categories <RiFilter3Fill />
         </Typography>
@@ -115,6 +128,39 @@ const Resource = () => {
           ))}
         </ul>
       </div>
+
+      <Dialog
+        aria-labelledby="Simple-dialog-title"
+        open={open}
+        maxWidth="xl"
+        onClose={mobileFilterBoxToggle}
+        className="dialog"
+      >
+        <DialogTitle>
+          Categories <RiFilter3Fill />
+        </DialogTitle>
+        <DialogContent className="submitDialogActions">
+          <div className="filterBox_Res">
+            <ul className="categoryBox">
+              {categories.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={mobileFilterBoxToggle} color="secondary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       {loading ? (
         <Loader />
       ) : (
@@ -136,8 +182,18 @@ const Resource = () => {
               <a href="#about">click here to know more</a>
             </h2>
 
+            <div className="community__heading moile_visibility">
+            <h2 className="postsHeading resheading">Our Resources</h2>
+              <button
+                className="filterbox__mobile"
+                onClick={mobileFilterBoxToggle}
+              >
+                <RiFilter3Fill />
+              </button>
+            </div>
+
             <div className="searchBoxRes">
-              <form className="searchBoxRes" onSubmit={searchSubmitHandler}>
+              <form onSubmit={searchSubmitHandler}>
                 <input
                   type="text"
                   placeholder="Search Posts..."
@@ -220,7 +276,7 @@ const Resource = () => {
             )}
           </div>
 
-          <div className="aboutRes" >
+          <div className="aboutRes">
             <p>
               In the fast-paced world of technology and coding, staying
               up-to-date with the latest tools, frameworks, and resources is

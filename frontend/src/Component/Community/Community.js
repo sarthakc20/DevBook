@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getAllPost, getAllPostsWithoutFilter } from "../../actions/postAction";
 import MetaData from "../Layout/MetaData";
 import Pagination from "react-js-pagination";
-import { Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 import "./Community.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RiFilter3Fill } from "react-icons/ri";
@@ -42,6 +42,8 @@ const Community = () => {
 
    const [showResults, setShowResults] = useState(true);
 
+   const [open, setOpen] = useState(false);
+
   const {
     loading,
     error,
@@ -53,6 +55,10 @@ const Community = () => {
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
+  };
+
+  const mobileFilterBoxToggle = () => {
+    open ? setOpen(false) : setOpen(true);
   };
 
   let [searchParams, setSearchParams] = useSearchParams();
@@ -91,7 +97,7 @@ const Community = () => {
 
   return (
     <>
-      <div className="filterBox">
+      <div className="filterBox desktop_visibility">
         <Typography>
           Topics <RiFilter3Fill />
         </Typography>
@@ -108,13 +114,48 @@ const Community = () => {
         </ul>
       </div>
 
+      <Dialog
+        aria-labelledby="Simple-dialog-title"
+        open={open}
+        maxWidth="xl"
+        onClose={mobileFilterBoxToggle}
+        className="dialog"
+      >
+        <DialogTitle>Topics <RiFilter3Fill /></DialogTitle>
+        <DialogContent className="submitDialogActions">
+        <div className="filterBox">
+        <ul className="topicBox">
+          {topics.map((topic) => (
+            <li
+              className="topic-link"
+              key={topic}
+              onClick={() => setTopic(topic)}
+            >
+              {topic}
+            </li>
+          ))}
+        </ul>
+      </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={mobileFilterBoxToggle} color="secondary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       {loading ? (
         <Loader />
       ) : (
         <>
           <MetaData title={`Community Post (${currentPage})`} />
 
+          <div className="community__heading">
           <h2 className="postsHeading">Our Community Posts</h2>
+          <button className="filterbox__mobile moile_visibility" onClick={mobileFilterBoxToggle}>
+          <RiFilter3Fill />
+          </button>
+          </div>
 
           {user && user ? (
             <NavLink to={`/community/new`} className="postTogg">
@@ -124,7 +165,7 @@ const Community = () => {
           ) : null}
 
           <div className="searchBox">
-            <form className="searchBox" onSubmit={searchSubmitHandler}>
+            <form onSubmit={searchSubmitHandler}>
               <input
                 type="text"
                 placeholder="Search Posts..."
