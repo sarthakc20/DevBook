@@ -314,6 +314,7 @@
   .resourcesHeading {
     font: 500 2vmax "Roboto";
     padding: 2vmax 0;
+    margin: 0;
   }
 
   .resBox {

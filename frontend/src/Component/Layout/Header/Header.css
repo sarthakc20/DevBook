@@ -90,13 +90,18 @@ nav {
   display: none;
 }
 
+.mobile-menu,
+.mobile-close {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
 
 #navigationSelect {
-  background-color: #fff; 
+  background-color: #fff;
   border: none;
-  padding-right: 0.65vmax; 
-  padding-left: 0.65vmax; 
-  font-size: 1.2vmax; 
+  padding-right: 0.65vmax;
+  padding-left: 0.65vmax;
+  font-size: 1.2vmax;
   cursor: pointer;
   transition: color 0.3s;
   outline: none;
@@ -147,7 +152,15 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    background: #21313c;
+  }
+  nav {
+    padding: 0;
+    z-index: 12;
+  }
   .menuIcon ul {
+    position: absolute;
     background-color: #21313c;
     padding-top: 13vmax;
     padding-left: 2vmax;
@@ -168,6 +181,7 @@ nav {
 
   .mobile-menu {
     font-size: 4rem;
+    color: #fbfbfb;
   }
 
   /* .mobile-logo {
@@ -230,13 +244,17 @@ nav {
   .mobile-close {
     font-size: 4rem;
     position: absolute;
-    top: 3%;
-    right: 10%;
+    top: 2%;
+    right: 5%;
     color: rgb(255, 255, 255);
     z-index: 9999;
   }
 
-  .active .mobile-close {
+  .mobile-close:hover {
+    color: #ff5555;
+  }
+
+  .menu-open .mobile-close {
     display: inline-block;
   }
 
@@ -274,15 +292,6 @@ nav {
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-
-  .sign-btn {
-    padding-right: 7vmax;
-  }
-
-  .sign-div {
-    padding-top: 9vmax;
-    padding-left: 5.6vmax;
   }
 
   /* Hover effect for buttons */
